@@ -47,10 +47,113 @@ def saha_E(temp,elpress,ionstage):
 def sahabolt_E(temp, elpress, ion, level):
 	return saha_E(temp, elpress, ion)*boltz_E(temp, ion, level)
 
+def sahabolt_H(temp,elpress,level):
+	keVT = kev*temp
+	kergT =kerg*temp
+	eldens = elpress/kergT
+	#energy levels and weights for hydrogen
+	nrlevels = 100		#Pick a reasonable cutoff value for partition function
+	g = np.zeros((2,nrlevels))	#declaration weights
+	chiexc = np.zeros((2,nrlevels))	#declaration excitation energies
+
+	for s in range(nrlevels):
+		g[0,s] = 2.*(s+1.)**2			#statistical weights
+		chiexc[0,s] = 13.598*(1.-1./(s+1.)**2.)	#excitation weights
+	g[1,0] = 1.
+	chiexc[1,0] = 0.
+
+	#Partition functions
+	u = np.zeros([2])
+	for s in range(nrlevels):
+		u[0] = u[0] + g[0,s]*np.exp(-chiexc[0,s]/keVT)
+	u[1] = g[1,0]
+
+	#Saha
+	sahaconst = (2* np.pi *elmass*kergT/(h**2))**(3./2)*2/eldens
+	nstage = np.zeros(2)
+	nstage[0] = 1.
+	nstage[1] = nstage[0] + sahaconst*u[1]/u[0] *np.exp(-13.598/keVT)
+	ntotal = np.sum(nstage)	#sum both stages = total hydrogen density
+	
+	#Boltzmann
+	nlevel = nstage[0]*g[0,level-1]/u[0]*np.exp(-chiexc[0,level-1]/keVT)
+	nlevelrel = nlevel/ntotal	#Fraction of total hydrogen density
+
+
+	#Test block
+	"""
+	for s in range(6):
+		print s+1, g[0,s],chiexc[0,s],g[0,s]*np.exp(-chiexc[0,s]/keVT)
+
+	Print
+	for s in range(0,nrlevels,10):
+		print s+1, g[0,s],chiexc[0,s],g[0,s]*np.exp(-chiexc[0,s]/keVT)
+	"""
+
+
+	return nlevelrel
+
+
+
 #Main part calling the functions to do things
 
+#Plotting hydrogen levels
+#print sahabolt_H(5000,1e2,1)
 
-#Printing the population vs temperature for ground stage
+
+
+#Solar Ca+K versus Ha:line strength
+temp = np.arange(1000,20001,100)
+CaH = np.zeros(temp.shape)
+Caabund = 2.0e-6
+for i in range(0,191):
+	NCa = sahabolt_E(temp[i],1e2,2,1)
+	NH  = sahabolt_H(temp[i],1e2,2)
+	CaH[i] = NCa*Caabund/NH
+
+#print temp
+#print CaH
+
+plt.plot(temp,CaH,label=r'strength ratio Ca$^+$K /H$\alpha$')
+plt.yscale('log')
+plt.xlabel(r'temperature $T / K$',size=14)
+plt.ylabel(r'Ca II K / H$\alpha$',size=14)
+plt.legend(fontsize=14)
+plt.show()
+print 'Ca/H ratio at 5000 K = ', CaH[np.argwhere(temp==5000)][0][0]
+
+#solar Ca+K versus Ha: temperature sensitivity
+temp = np.arange(2000,20001,100)
+dNCadT = np.zeros(temp.shape)
+dNHdT = np.zeros(temp.shape)
+dT = 1.
+for i in range(101):
+	NCa = sahabolt_E(temp[i],1e2,2,1)
+	NCa2 = sahabolt_E(temp[i]-dT,1e2,2,1)
+	dNCadT[i] = (NCa - NCa2)/(dT*NCa)
+	NH = sahabolt_H(temp[i],1e2,2)
+	NH2 = sahabolt_H(temp[i]-dT,1e2,2)
+	dNHdT[i] = (NH-NH2)/(dT*NH)
+plt.figure()
+plt.plot(temp,np.abs(dNHdT),label=r'H')
+plt.plot(temp,np.abs(dNCadT),label=r'Ca$^+$K')
+plt.yscale('log')
+#plt.ylim(1e-9,1)
+plt.xlabel(r'temperature $T/K$',size=14)
+plt.ylabel(r'$\left| \left( \Delta n(r,s) / \Delta T\right) /  n(r,s) \right|$',size=20)
+plt.legend(loc=4,fontsize=12)
+
+NCa = np.zeros(temp.shape)
+NH = np.zeros(temp.shape)
+for i in range (101):
+	NCa[i] = sahabolt_E(temp[i],1e2,2,1)
+	NH[i] = sahabolt_H(temp[i],1e2,2)
+
+ax[1].plot(temp,NH/np.amax(NH), ls='--',label = 'rel. pop H')
+ax[1].plot(temp,NCa/np.amax(NCa),ls='--',label = r'rel. pop Ca$^+$K')
+plt.show()
+"""
+#Plotting the population vs temperature for s=1
 temp = np.arange(0,30001,1000)
 #print temp
 pop = np.zeros((5,31))
@@ -58,10 +161,9 @@ for T in np.arange(1,31):
 	for r in np.arange(1,5):
 		pop[r,T] = sahabolt_E(temp[T],131.,r,1)
 labellst= ['ground stage','first ion stage','seconds ion stage','third ion stage']
-print pop
-plt.figure(0)
-#plt.hold('on')
+#print pop
 #ground state plot
+plt.figure(0)
 for i in range(1,5):
 	plt.plot(temp,pop[i,:],label=labellst[i-1])
 
@@ -70,8 +172,53 @@ plt.ylabel('population',size=14)
 plt.yscale('log')
 plt.ylim([1e-3,1.1])
 plt.legend(loc='best')
+plt.title('Population vs Temperature for s=1')
 plt.show()
 
+#Plotting the population vs temperature for s=2
+temp = np.arange(0,30001,1000)
+#print temp
+pop = np.zeros((5,31))
+for T in np.arange(1,31):	
+	for r in np.arange(1,5):
+		pop[r,T] = sahabolt_E(temp[T],131.,r,2)
+labellst= ['ground stage','first ion stage','seconds ion stage','third ion stage']
+#print pop
+#ground state plot
+plt.figure(1)
+for i in range(1,5):
+	plt.plot(temp,pop[i,:],label=labellst[i-1])
+
+plt.xlabel('temperature',size=14)
+plt.ylabel('population',size=14)
+plt.yscale('log')
+plt.ylim([1e-3,1.1])
+plt.legend(loc='best')
+plt.title('Population vs Temperature for s=2')
+plt.show()
+
+#Plotting the population vs temperature for s=4
+temp = np.arange(0,30001,1000)
+#print temp
+pop = np.zeros((5,31))
+for T in np.arange(1,31):	
+	for r in np.arange(1,5):
+		pop[r,T] = sahabolt_E(temp[T],131.,r,4)
+labellst= ['ground stage','first ion stage','seconds ion stage','third ion stage']
+#print pop
+#ground state plot
+plt.figure(2)
+for i in range(1,5):
+	plt.plot(temp,pop[i,:],label=labellst[i-1])
+
+plt.xlabel('temperature',size=14)
+plt.ylabel('population',size=14)
+plt.yscale('log')
+plt.ylim([1e-3,1.1])
+plt.legend(loc='best')
+plt.title('Population vs Temperature for s=4')
+plt.show()
+"""
 
 #test block
 """
