@@ -24,10 +24,11 @@ b = np.zeros(wav.shape)
 
 plt.xlabel(r'wavelength $\lambda / \AA$',size=14)
 plt.ylabel(r'Planck function',size=14)
-plt.xlim(0,20800)
 plt.title('Radiation intensity emitted')
 for T in np.arange(5000,8001,200):
 	b[:] = planck(T,wav[:]*1e-8)
 	plt.plot(wav,b,'-')
-
+plt.yscale('log')
+#plt.xscale('log')
+plt.xlim(0,20800)
 plt.show()
