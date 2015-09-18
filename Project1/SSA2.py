@@ -5,31 +5,31 @@ from matplotlib import rc
 rc('font',**{'family':'serif'}) # This is for Latex writing
 
 # Definition of constants and variables
-k = 8.61734e-5 # Boltzmann constant in eV/deg
-KeV = 8.61734e-5
-kerg = 1.380658e-16	#Boltzmann constant in erg K 
-kev = 8.6173e-5	#Boltzmann constant in eV/deg
-h = 6.62607e-27	#Planck constant in erg s
-elmass = 9.109390e-28	#electron mass in grams
+keV	= 8.61734e-5 # Boltzmann constant in eV/deg
+kerg	= 1.380658e-16	#Boltzmann constant in erg K 
+h	= 6.62607e-27	#Planck constant in erg s
+c	= 2.99792e10	#Speed of light in cm/s
+elmass	= 9.109390e-28	#electron mass in grams
 
 # definition of functions
 def partfunc_E(temp):
 	"Parition function U_r"
+	keVT = keV*temp
 	chiion = np.array([7,16,31,51])
 	u = np.zeros(4)
 	for r in range(4):
 		for s in range(chiion[r]):
-			u[r] = u[r] + np.exp(-s/(k*temp))
+			u[r] = u[r] + np.exp(-s/(keVT))
 	return u 		#returns all the values of u array
 
 def boltz_E(temp,r,s):
 	"Boltzmann distribution n_r,s/N_r"
 	u = partfunc_E(temp)
-	relnrs = 1. / u[r-1]*np.exp(-(s-1)/(KeV*temp))
+	relnrs = 1. / u[r-1]*np.exp(-(s-1)/(keV*temp))
 	return relnrs
 
 def saha_E(temp,elpress,ionstage):
-	keVT = kev*temp
+	keVT = keV*temp
 	kergT =kerg*temp
 	eldens = elpress/kergT
 	chiion = np.array([7,16,31,51])
@@ -48,7 +48,7 @@ def sahabolt_E(temp, elpress, ion, level):
 	return saha_E(temp, elpress, ion)*boltz_E(temp, ion, level)
 
 def sahabolt_H(temp,elpress,level):
-	keVT = kev*temp
+	keVT = keV*temp
 	kergT =kerg*temp
 	eldens = elpress/kergT
 	#energy levels and weights for hydrogen
@@ -69,50 +69,53 @@ def sahabolt_H(temp,elpress,level):
 	u[1] = g[1,0]
 
 	#Saha
-	sahaconst = (2* np.pi *elmass*kergT/(h**2))**(3./2)*2/eldens
+	sahaconst = (2.* np.pi *elmass*kergT/(h*h))**(1.5)*2/eldens
 	nstage = np.zeros(2)
 	nstage[0] = 1.
-	nstage[1] = nstage[0] + sahaconst*u[1]/u[0] *np.exp(-13.598/keVT)
+	nstage[1] = nstage[0] * sahaconst*u[1]/u[0] *np.exp(-13.598/keVT)
 	ntotal = np.sum(nstage)	#sum both stages = total hydrogen density
 	
 	#Boltzmann
 	nlevel = nstage[0]*g[0,level-1]/u[0]*np.exp(-chiexc[0,level-1]/keVT)
 	nlevelrel = nlevel/ntotal	#Fraction of total hydrogen density
 
-	"""
+	
 	#Test block
+	"""
 	for s in range(6):
 		print s+1, g[0,s],chiexc[0,s],g[0,s]*np.exp(-chiexc[0,s]/keVT)
 	for s in range(0,nrlevels,10):
 		print s+1, g[0,s],chiexc[0,s],g[0,s]*np.exp(-chiexc[0,s]/keVT)
-	"""
+	"""	
 
 
 	return nlevelrel
 
 def partfunc_Ca(temp):
 	"Parition function U_r"
+	keVT = keV*temp
 	chiion = np.array([6.113, 11.871, 50.91, 67.15])
 	u = np.zeros(4)
 	for r in range(4):
 		for s in range(int(chiion[r])):
-			u[r] = u[r] + np.exp(-s/(k*temp))
+			u[r] = u[r] + np.exp(-s/(keVT))
 	return u 		#returns all the values of u array
 
 def boltz_Ca(temp,r,s):
 	"Boltzmann distribution n_r,s/N_r"
+	keVT = keV*temp
 	u = partfunc_Ca(temp)
-	relnrs = 1. / u[r-1]*np.exp(-(s-1)/(KeV*temp))
+	relnrs = 1. / u[r-1]*np.exp(-(s-1)/(keVT))
 	return relnrs
 
 def saha_Ca(temp,elpress,ionstage):
-	keVT = kev*temp
+	keVT = keV*temp
 	kergT =kerg*temp
 	eldens = elpress/kergT
 	chiion = np.array([6.113, 11.871, 50.91, 67.15])
 	u = partfunc_Ca(temp)
 	u = np.append(u,2) #append element to array
-	sahaconst = (2* np.pi *elmass*kergT/(h**2))**(3./2)*2/eldens
+	sahaconst = (2.*np.pi *elmass*kergT/(h*h))**(3./2)*2./eldens
 	nstage = np.zeros(5)
 	nstage[0] = 1.
 	for r in range(4):
@@ -126,11 +129,12 @@ def sahabolt_Ca(temp, elpress, ionstage, level):
 
 #Main part calling the functions to do things
 
-#Plotting hydrogen levels
-print sahabolt_H(6000,1e2,1)
-
+#Part2
 """
-
+#Printing hydrogen levels
+sahabolt_H(5000,1e2,1) this works as it should
+"""
+"""
 #Solar Ca+K versus Ha:line strength
 temp = np.arange(1000,20001,100)
 CaH = np.zeros(temp.shape)
@@ -146,11 +150,8 @@ plt.xlabel(r'temperature $T / K$',size=14)
 plt.ylabel(r'Ca II K / H$\alpha$',size=14)
 plt.legend(fontsize=14)
 plt.show()
-print CaH
 print 'Ca/H ratio at 5000 K = ', CaH[np.argwhere(temp==5000)][0][0]
-
 """
-
 """
 #solar Ca+K versus Ha: temperature sensitivity
 temp = np.arange(2000,12001,100)
@@ -168,12 +169,12 @@ plt.figure(0)
 plt.plot(temp,np.abs(dNHdT),label=r'H')
 plt.plot(temp,np.abs(dNCadT),label=r'Ca$^+$K')
 plt.yscale('log')
-#plt.ylim(1e-9,1)
+plt.ylim(1e-9,1e1)
 
 NCa = np.zeros(temp.shape)
 NH = np.zeros(temp.shape)
 for i in range (101):
-	NCa[i] = sahabolt_E(temp[i],1e2,2,1)
+	NCa[i] = sahabolt_Ca(temp[i],1e2,2,1)
 	NH[i] = sahabolt_H(temp[i],1e2,2)
 plt.plot(temp,NH/np.amax(NH), ls='--',label = 'rel. pop H')
 plt.plot(temp,NCa/np.amax(NCa),ls='--',label = r'rel. pop Ca$^+$K')
@@ -185,7 +186,22 @@ plt.legend(loc=4,fontsize=12)
 
 plt.show()
 """
+"""
+#Hot stars vs cold stars
+"Find at which temperature the hydrogen in stellar photospheres with P_e = 100 is about 50% ionized."
+for T in np.arange(2000,20001,2000):
+	print T,sahabolt_H(T,1e2,1)
+temp = np.arange(6000,14001,1e2)
+nH = np.zeros(temp.shape)
+for i in range(len(temp)):
+	nH[i] = sahabolt_H(temp[i],1e2,1)
 
+plt.plot(temp,nH)
+plt.xlabel(r'temperature $T/K$',size=14)
+plt.ylabel(r'neutral hydrogen fraction',size=14)
+plt.title('Fraction of neutral hydrogen in stellar photospheres')
+plt.show()
+"""
 """
 #Plotting the population vs temperature for s=1
 temp = np.arange(0,30001,1000)
@@ -254,7 +270,6 @@ plt.title('Population vs Temperature for s=4')
 plt.show()
 """
 
-#test block
 """
 #Compute distribution for T=5000,
 distribution_5k = np.zeros(11)
