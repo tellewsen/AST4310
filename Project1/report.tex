@@ -177,6 +177,7 @@ The Saha law reads
 \begin{equation}
  \frac{N_{r+1}}{N_r} = \frac{1}{N_e}\frac{2U_{r+1}}{U_r}\bigg(\frac{2\pi m_e kT}{h^2}\bigg)^{3/2} e^-{\chi_r/kT}.
 \end{equation}
+
 \begin{itemize}
  \item 
  Note in the first table that the partition functions computed from (2) are of order unity and barely sensitive to temperature.
@@ -197,6 +198,44 @@ Now it is time to reproduce Shadee's tables. This is done by using python routin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The modeling of \dots
 
+\subsection{Radiation through an isothermal layer}
+It can be shown that the total emergent radiation from a layer with optical thickness $\tau(x)$ and temperature $T(x)$ is:
+\begin{equation}\label{Radiation_general}
+\begin{aligned}
+ I_{\lambda} =& I_{\lambda}(0)e^{-\tau} + \int_0^\tau B_{\lambda}[T(x)]e^{-(\tau - \tau(x))}d\tau(x)
+\end{aligned}
+\end{equation}
+If one assumes that the layer is isothermal, this implies that the optical thickness and temperature is independent of position inside the layer. Inserting this into equation \ref{Radiation_general} gives the following
+
+\begin{equation*}
+\begin{aligned}
+I_{\lambda} =& I_{\lambda}(0)e^{-\tau} + \int_0^\tau B_{\lambda}[T(x)]e^{-(\tau - \tau(x)')}d\tau(x)'\\
+	    =& I_{\lambda}(0)e^{-\tau} + B_{\lambda}(T)e^{-\tau}\int_0^\tau e^{\tau'}d\tau'\\
+	    =& I_{\lambda}(0)e^{-\tau} + B_{\lambda}(T)e^{-\tau}(e^{\tau} - 1)\\
+\end{aligned}
+\end{equation*}
+
+\begin{equation}\label{Radiation_isothermal}
+ I_{\lambda} = I_{\lambda}(0)e^{-\tau} + B_{\lambda}(1 - e^{-\tau})
+\end{equation}
+
+\begin{figure}
+\includegraphics[width=.49\textwidth]{emergent_original.png}
+\caption{As the optical depth increases, the intensity converges to the intensity of the Source function B.}
+\label{emergent_original}
+\end{figure}
+
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{emergent_log.png}
+ \caption{The emergent intensity with a logarthimic scale.}
+ \label{emergent_log}
+\end{figure}
+Studying figures \ref{emergent_original} \& \ref{emergent_log} shows a few different things.
+If one first considers cases where $tau << 1$, the figures show that if $I_\lambda(0) = 0$, you get an exponential growth due to the source function B. And if $I_\lambda(0) > B_\lambda$ the intensity stays constant. This case corresponds to an ``optically thin'' medium. This is because whatever intensity that enters the medium passes straight through without being affected by the medium.
+
+The opposite case where $\tau >> 1$ is called an ``optically'' thick medium, since all the incident radiation is absorbed before it is able to pass through, and is replaced by the radiation emitted by the medium itself. As seen in the plot, the emergent intensity becomes independent of optical depth for large $\tau$. Mathematically one can see it by looking at equation \ref{Radiation_isothermal} and letting $\tau \rightarrow \infty$. In physical terms one can picture it such that both the incident radiation and the radiation emitted by the medium is absorbed while it is passing through the medium, but since the medium replenishes the radiation it is emitting along the path through it, this radiation is refilled as one goes through the medium.
+
+From this it should be clear that optically thin mediums allow us to view radiation originating from the other side of the medium, while optically thick mediums absorb all of the incident radiation before it can pass through, thus blocking our view past them.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions} \label{sec:conclusions}

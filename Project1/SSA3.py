@@ -1,4 +1,5 @@
 # importing useful libraries
+from scipy import special
 import numpy as np # numerical package
 import matplotlib.pyplot as plt # plotting package
 from matplotlib import rc 
@@ -12,6 +13,8 @@ c	= 2.99792e10	#Speed of light in cm/s
 elmass	= 9.109390e-28	#electron mass in grams
 
 #Part3
+"""
+#3.1 The Planck Law
 def planck(temp,wav):
 	B = 2.*h*c*c/(wav**5) / (np.exp( (h*c) / (wav*kerg*temp) ) - 1 )
 	return B
@@ -31,4 +34,55 @@ for T in np.arange(5000,8001,200):
 plt.yscale('log')
 #plt.xscale('log')
 plt.xlim(0,20800)
+plt.show()
+"""
+#3.2 Radiation through an isothermal layer
+"""
+B=2.
+tau = np.arange(0.01,10,0.01)
+intensity = np.zeros(tau.shape)
+for I_0 in range(4,-1,-1):
+	intensity[:] = I_0*np.exp(-tau[:]) + B*(1.-np.exp(-tau[:]))
+	plt.plot(tau,intensity,label= r'intensity I$_0$ = ' + str(I_0))
+
+plt.xlabel(r'optical depth $\tau$',size=14)
+plt.ylabel(r'intensity',size=14)
+plt.legend(loc='best',fontsize=12)
+plt.title('Emergent intensity through a layer')
+plt.xscale('log')
+plt.yscale('log')
+
+plt.show()
+"""
+#3.3 Spectral lines from a solar reversing layer
+
+def voigt(a,u):
+    "Calculates the voigt function for values u and a"
+    z = u + 1.j*a
+    return special.wofz(z).real
+
+u = np.arange(-10,10.1,0.1)
+a = np.array([0.001,0.01,0.1,1])
+vau = np.zeros((a.shape[0],u.shape[0]))
+
+plt.figure(0)
+for i in range(4):
+    vau[i,:] = voigt(a[i],u[:])
+    plt.plot(u[:],vau[i,:],label = 'a = '+ np.str(a[i]))
+plt.title('Voigt profile for different a values')
+plt.ylim(0,1)
+plt.xlim(-10,10)
+plt.legend(fontsize=12)
+plt.xlabel('Partition function u')
+plt.ylabel('voigt profile',size=12)
+
+plt.figure(1)
+plt.title('Voigt profile for different a values')
+for i in range(4):
+    vau[i,:] = voigt(a[i],u[:])
+    plt.plot(u[:],vau[i,:],label = 'a = '+ np.str(a[i]))
+plt.yscale('log')
+plt.legend(fontsize=12,loc=8)
+plt.xlabel('Partition function u',size=14)
+plt.ylabel('logarithmic voigt profile',size=12)
 plt.show()

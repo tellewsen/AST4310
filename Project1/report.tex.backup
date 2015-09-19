@@ -160,6 +160,13 @@ We ignore this and continue with Payne's assumption anyway.
  \item 
 Use this expectation to give initial rough estimates of the strength ratios of the $\alpha$ lines in the the H I Lyman, Balmer, Paschen and Brackett series.
 \end{itemize}
+
+The Boltzmann distribution is defined
+\begin{equation}
+\frac{n_{r,s}}{N_r} = \frac{g_{r,s}}{U_r} e^{-\chi_{r,s}/kT} 
+\end{equation}
+
+
 The partition function $U_r$ is define as
 \begin{equation}
  U_r = \sum_s g_{r,s} e^{-\chi_{r,s}/kT}
@@ -170,6 +177,7 @@ The Saha law reads
 \begin{equation}
  \frac{N_{r+1}}{N_r} = \frac{1}{N_e}\frac{2U_{r+1}}{U_r}\bigg(\frac{2\pi m_e kT}{h^2}\bigg)^{3/2} e^-{\chi_r/kT}.
 \end{equation}
+
 \begin{itemize}
  \item 
  Note in the first table that the partition functions computed from (2) are of order unity and barely sensitive to temperature.
@@ -190,6 +198,43 @@ Now it is time to reproduce Shadee's tables. This is done by using python routin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The modeling of \dots
 
+\subsection{Radiation through an isothermal layer}
+It can be shown that the total emergent radiation from a layer with optical thickness $\tau(x)$ and temperature $T(x)$ is:
+\begin{equation}\label{Radiation_general}
+\begin{aligned}
+ I_{\lambda} =& I_{\lambda}(0)e^{-\tau} + \int_0^\tau B_{\lambda}[T(x)]e^{-(\tau - \tau(x))}d\tau(x)
+\end{aligned}
+\end{equation}
+If one assumes that the layer is isothermal, this implies that the optical thickness and temperature is independent of position inside the layer. Inserting this into equation \ref{Radiation_general} gives the following
+
+\begin{equation*}
+\begin{aligned}
+I_{\lambda} =& I_{\lambda}(0)e^{-\tau} + \int_0^\tau B_{\lambda}[T(x)]e^{-(\tau - \tau(x)')}d\tau(x)'\\
+	    =& I_{\lambda}(0)e^{-\tau} + B_{\lambda}(T)e^{-\tau}\int_0^\tau e^{\tau'}d\tau'\\
+	    =& I_{\lambda}(0)e^{-\tau} + B_{\lambda}(T)e^{-\tau}(e^{\tau} - 1)\\
+\end{aligned}
+\end{equation*}
+
+\begin{equation}\label{Radiation_isothermal}
+ I_{\lambda} = I_{\lambda}(0)e^{-\tau} + B_{\lambda}(1 - e^{-\tau})
+\end{equation}
+
+\begin{figure}
+\includegraphics[width=.49\textwidth]{emergent_original.png}
+\caption{As the optical depth increases, the intensity converges to the intensity of the Source function B.}
+\label{emergent_original}
+\end{figure}
+
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{emergent_log.png}
+ \caption{The emergent intensity with a logarthimic scale.}
+ \label{emergent_log}
+\end{figure}
+Studying figures \ref{emergent_original} \& \ref{emergent_log} shows a few different things.
+If one first considers cases where $tau << 1$, the figures show that if $I_\lambda(0) = 0$, you get an exponential growth due to the source function B. And if $I_\lambda(0) > B_\lambda$ the intensity stays constant. This case corresponds to an ``optically thin'' medium. This is because whatever intensity that enters the medium passes straight through without being affected by the medium.
+
+
+If $Í_\lambda(0) = B_\lambda$ the intensity stays the same through the medium. If $I_\lambda(0) = 0$ you get an exponential increase in intensity converging on the intensity set by the source function. If $I_\lambda(0) > 0$ you get an exponetial decay converging again on the source function. And finally for cases where $\tau << 1$, $I_\lambda$ stays constant, unless the initial intensity was 0, since then the contriution by the source function, however small becomes significant.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions} \label{sec:conclusions}
