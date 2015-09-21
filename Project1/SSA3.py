@@ -109,9 +109,12 @@ plt.show()
 logtau0 = np.arange(-2,2.1,0.5)
 for element in logtau0:
     for i in range(len(u)):
-        tau = 10.**(logtau0) * (voigt(a,u[i]))
+        tau = 10.**(element) * (voigt(a,u[i]))
         intensity[i] = planck(Ts,wav)* np.exp(-tau) + planck(Tl,wav)*(1.-np.exp(-tau))
     plt.plot(u,intensity,label = r'$\log{(\tau_0)} = $' + np.str(element))
 
-plt.legend(log=3,fontsize =12)
+plt.legend(loc=3,fontsize =12)
+plt.xlabel('u')
+plt.ylabel('intensity')
+plt.title(r'Intensity as a function of u for different $\tau_0$')
 plt.show()

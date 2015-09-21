@@ -289,6 +289,17 @@ This can be approximated by taking the sum instead of the convolution giving
 For those using IDL to do calculations, the voigt function is ready for use through the appropriately named function voigt.
 Since I use python we instead have to use the fact that the voigt function is the real part of the Fadeeva function
 
+\subsection{Emergent line profiles}
+We now have both functions for intensity and for the distribution of the optical depth. If we now combine equation \ref{Radiation_isothermal} \& \ref{distribution} we should be able to compute and plot stellar spectral line profiles!
+To do this we use values that fit well with the solar photosphere and plot what it looks like in the visible spectrum.
+The values we will be using are $T_{surface} = 5700 K$, $T_{layer} = 4200 K$, $a = 0.01$, $\lambda = 5000 \AA$.
+We start by plotting the intensity against u for $\tau(0) = 1$. This results in figure \ref{spectral_tau1}
+\begin{figure}
+  \includegraphics[width=.49\textwidth]{emergent_line_orig.png}
+ \caption{The emergent intensity with a logarthimic scale.}
+ \label{spectral_tau1}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions} \label{sec:conclusions}

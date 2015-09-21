@@ -290,6 +290,24 @@ For those using IDL to do calculations, the voigt function is ready for use thro
 Since I use python we instead have to use the fact that the voigt function is the real part of the Fadeeva function
 
 \subsection{Emergent line profiles}
+We now have both functions for intensity and for the distribution of the optical depth. If we now combine equation \ref{Radiation_isothermal} \& \ref{distribution} we should be able to compute and plot stellar spectral line profiles!
+To do this we use values that fit well with the solar photosphere and plot what it looks like in the visible spectrum.
+The values we will be using are $T_{surface} = 5700 K$, $T_{layer} = 4200 K$, $a = 0.01$, $\lambda = 5000 \AA$.
+We start by plotting the intensity against u for $\tau(0) = 1$. This results in figure \ref{spectral_tau1}
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{emergent_line_orig.png}
+ \caption{As expected we see a spectral line.}
+ \label{spectral_tau1}
+\end{figure}
+We see that it works as expected.
+Next we study the behaviour of the line for $\tau(0)$ in the range $log \tau(0) = -2$ to $log \tau(0) = 2$.
+This results in figure \ref{spectral_logtau}
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{emergent_line_log.png}
+ \caption{Spectral lines for different choices of $\tau(0)$.}
+ \label{spectral_logtau} 
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions} \label{sec:conclusions}
