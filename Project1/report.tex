@@ -145,9 +145,17 @@ Basically one is given a template and told a long list of things that are useful
 \section{Saha-Boltzmann calibration of the Harvard sequence}   \label{sec:Saha}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Here we want to explain the spectral-type sequence that was studied in the two first parts of the last section (which we ignored).
-To start of we study figures 5 and 7 in the exercise text. Starting from the right of figure 5 one sees that the $H\beta$ line lies between $4762 \AA$ and $4954 \AA$. If one looks at figure 7 one sees that the only line between these two wavelengths is the Balmer $\beta$ line at $4861 \AA$. The Balmer $\beta$ line is the transition between $n = 4$ and $n = 2$. 
-Considering that the spectrum we're looking at in figure 5 ranges between $3900 \AA$ and $5000 \AA$, which is in the visual part of the spectrum, the rest of the lines corresponding to hydrogen should all be in the Balmer series as well. This means that none of the lines share the same upper level, and that they all share the same lower level, namely $n = 2$.
-This is the case for all of these named series. Sharing of the upper levels is a bit more complicated. If one looks at figure 7 one sees that Lyman $\alpha$ shares no upper level with anything. But Lyman $\beta$ shares the same upper level as Balmer $\alpha$. Figure 7 skips some of the transitions. But Lyman $\gamma$ shares upper level with Balmer $\beta$ and Paschen $\alpha$. It keeps going in this way for the rest of the transitions.
+To start of we study figures 5 and 7 in the exercise text. 
+Starting from the right of figure 5 one sees that the $H\beta$ line lies between $4762 \AA$ and $4954 \AA$. 
+If one looks at figure 7 one sees that the only line between these two wavelengths is the Balmer $\beta$ line at $4861 \AA$. The Balmer $\beta$ line is the transition between $n = 4$ and $n = 2$. 
+Considering that the spectrum we're looking at in figure 5 ranges between $3900 \AA$ and $5000 \AA$, which is in the visual part of the spectrum, the rest of the lines corresponding to hydrogen should all be in the Balmer series as well. 
+This means that none of the lines share the same upper level, and that they all share the same lower level, namely $n = 2$.
+This is the case for all of these named series. Sharing of the upper levels is a bit more complicated. 
+If one looks at figure 7 one sees that Lyman $\alpha$ shares no upper level with anything. 
+But Lyman $\beta$ shares the same upper level as Balmer $\alpha$. 
+Figure 7 skips some of the transitions. 
+But Lyman $\gamma$ shares upper level with Balmer $\beta$ and Paschen $\alpha$. 
+It keeps going in this way for the rest of the transitions.
 
 At this point Payne made the assumption that the strength of the absorption lines observed in stellar spectra scaled with the population density of the lower level of the corresponding transition. 
 This seems logical if one also assumes that most of the hydrogen was in the ground state to begin with.
@@ -196,7 +204,7 @@ Now it is time to reproduce Shadee's tables. This is done by using python routin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fraunhofer line strengths and the curve of growth}   \label{sec:Fraunhofer}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The modeling of \dots
+
 
 \subsection{Radiation through an isothermal layer}
 It can be shown that the total emergent radiation from a layer with optical thickness $\tau(x)$ and temperature $T(x)$ is:
@@ -231,11 +239,57 @@ I_{\lambda} =& I_{\lambda}(0)e^{-\tau} + \int_0^\tau B_{\lambda}[T(x)]e^{-(\tau 
  \label{emergent_log}
 \end{figure}
 Studying figures \ref{emergent_original} \& \ref{emergent_log} shows a few different things.
-If one first considers cases where $tau << 1$, the figures show that if $I_\lambda(0) = 0$, you get an exponential growth due to the source function B. And if $I_\lambda(0) > B_\lambda$ the intensity stays constant. This case corresponds to an ``optically thin'' medium. This is because whatever intensity that enters the medium passes straight through without being affected by the medium.
+If one first considers cases where $\tau << 1$, the figures show that if $I_\lambda(0) = 0$, you get an exponential growth due to the source function B. And if $I_\lambda(0) > B_\lambda$ the intensity stays close to constant. This case corresponds to an ``optically thin'' medium. This is because whatever intensity that enters the medium passes straight through without being affected by the medium.
 
-The opposite case where $\tau >> 1$ is called an ``optically'' thick medium, since all the incident radiation is absorbed before it is able to pass through, and is replaced by the radiation emitted by the medium itself. As seen in the plot, the emergent intensity becomes independent of optical depth for large $\tau$. Mathematically one can see it by looking at equation \ref{Radiation_isothermal} and letting $\tau \rightarrow \infty$. In physical terms one can picture it such that both the incident radiation and the radiation emitted by the medium is absorbed while it is passing through the medium, but since the medium replenishes the radiation it is emitting along the path through it, this radiation is refilled as one goes through the medium.
+The opposite case where $\tau >> 1$ is called an ``optically'' thick medium, since all the incident radiation is absorbed before it is able to pass through, and is replaced by the radiation emitted by the medium itself. As seen in the plot, the emergent intensity becomes independent of optical depth for large $\tau$. Mathematically this can be seen by looking at equation \ref{Radiation_isothermal} and letting $\tau \rightarrow \infty$. In physical terms one can picture it such that both the incident radiation and the radiation emitted by the medium is absorbed while it is passing through the medium, but since the medium replenishes the radiation it is emitting along the path through it, this radiation is refilled as one goes through the medium.
 
 From this it should be clear that optically thin mediums allow us to view radiation originating from the other side of the medium, while optically thick mediums absorb all of the incident radiation before it can pass through, thus blocking our view past them.
+
+\subsection{Spectral lines from a solar reversing layer}
+At this point we choose to use the Schuster-Schwarzschild model. Another name for this model is a reversing-layer model.
+This model works on the assumption that the continous radiation, without spectral lines, is emitted by the surface of the star, and this radiation then irradiates a seperate layer around the star.
+This layer is then hit by an intensity
+\begin{equation}
+ I_\lambda(0) = B_\lambda(T_{surface}).
+\end{equation}\label{Surface layer}
+This causes emission only at the wavelengths of spectral lines. 
+Next, ones assumes that the star is optically thick, so that the surfrace radiates with the solution of equation \ref{Radiation_isothermal} where $\tau << 1$, meaning $I_\lambda = B_\lambda(T_{surface})$. This does not mean that shell has to be optically thick. The line-causing atoms in the shell have their own temperature $T_{layer}$, giving a local production of radiation in the layer for the line-wavelength $B_\lambda(T_{layer})\Delta\tau(x)$. Combining equation \ref{Radiation_isothermal} \& \ref{Reversing layer} yields
+\begin{equation}
+ I_\lambda =B_\lambda(T_{surface})e^{-\tau_\lambda} + B_\lambda(T_{layer})(1 - e^{-\tau_\lambda})
+\end{equation}\label{Reversing layer}
+Note that the opaqueness $\tau$ in equation \ref{Reversing layer} has gotten an index for wavelength, since it depends on wavelength.
+
+\subsection{Voigt profile}
+In reality spectral lines are not infinitely sharp delta functions. This can be attributed to Doppler shifts and Coloumb interactions between neighbouring particles. (Even if one could get rid of those effects, you would still have the uncertainty principle spreading it out a little.)
+
+This broadening of the spectral line is described by the distribution
+\begin{equation}
+ \tau(u) = \tau(0)V(a,u)
+\end{equation}\label{distribution}
+where V is the Voigt function, and u describes the the wavelength separation from the center of the line such that
+\begin{equation}
+ u \equiv \Delta\lambda/\Delta\lambda_D
+\end{equation}
+where
+\begin{equation}
+ \Delta\lambda_D \equiv \frac{\lambda}{c} \sqrt{2kT/m}.
+\end{equation}
+Here m is the mass of the line-causing particles.
+The a parameter measures the the Coloumb disturbances. For stellar atomspheres a is usually somewhere in the range $0.01 - 0.5$. The definition of the Voigt function is
+\begin{equation}
+ V(a,u) = \frac{1}{\Delta\lambda_D\sqrt{\pi}}\frac{a}{\pi}\int_{-\infty}^{+\infty}\frac{-y^2}{(u-y)^2 + a^2}dy
+\end{equation}\label{Voigt}
+The Voigt profile represents the convolution(smearing) of a Gauss profile using a Lorentz profile. Because of this it has a Gaussian shape close to line center, and Lorentzian wings on the edges.
+
+This can be approximated by taking the sum instead of the convolution giving 
+\begin{equation}
+ V(a,u) = \frac{1}{\Delta\lambda_D\sqrt{\pi}} \bigg[e^{-u^2} + \frac{a}{\sqrt{\pi}u^2}\bigg]
+\end{equation}\label{Voigt_approx}
+
+For those using IDL to do calculations, the voigt function is ready for use through the appropriately named function voigt.
+Since I use python we instead have to use the fact that the voigt function is the real part of the Fadeeva function
+
+\subsection{Emergent line profiles}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions} \label{sec:conclusions}

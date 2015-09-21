@@ -13,12 +13,12 @@ c	= 2.99792e10	#Speed of light in cm/s
 elmass	= 9.109390e-28	#electron mass in grams
 
 #Part3
-"""
+
 #3.1 The Planck Law
 def planck(temp,wav):
 	B = 2.*h*c*c/(wav**5) / (np.exp( (h*c) / (wav*kerg*temp) ) - 1 )
 	return B
-
+"""
 #Planck function test ok
 #print planck(5000,5000e-8)
 
@@ -64,7 +64,7 @@ def voigt(a,u):
 u = np.arange(-10,10.1,0.1)
 a = np.array([0.001,0.01,0.1,1])
 vau = np.zeros((a.shape[0],u.shape[0]))
-
+"""
 plt.figure(0)
 for i in range(4):
     vau[i,:] = voigt(a[i],u[:])
@@ -85,4 +85,33 @@ plt.yscale('log')
 plt.legend(fontsize=12,loc=8)
 plt.xlabel('Partition function u',size=14)
 plt.ylabel('logarithmic voigt profile',size=12)
+plt.show()
+"""
+#3.3 Emergent line profiles
+Ts = 5700.	#Temperature of the surface of the star
+Tl = 4200.	#Temperature of the rversing layer
+a = 0.1		#Coloumb damping parameter
+wav = 5000e-8	#Wavelength in cm
+tau_0 = 1.	#reversing layer thickness at line center
+u = np.arange(-10,10,0.1)
+intensity = np.zeros(u.shape)
+
+for i in range(len(u)):
+    tau = tau_0*voigt(a,u[i])
+    intensity[i] = planck(Ts,wav)* np.exp(-tau) + planck(Tl,wav)*(1.-np.exp(-tau))
+
+plt.plot(u,intensity)
+plt.xlabel('u')
+plt.ylabel('intensity')
+plt.title('Intensity around center of spectral line')
+plt.show()
+
+logtau0 = np.arange(-2,2.1,0.5)
+for element in logtau0:
+    for i in range(len(u)):
+        tau = 10.**(logtau0) * (voigt(a,u[i]))
+        intensity[i] = planck(Ts,wav)* np.exp(-tau) + planck(Tl,wav)*(1.-np.exp(-tau))
+    plt.plot(u,intensity,label = r'$\log{(\tau_0)} = $' + np.str(element))
+
+plt.legend(log=3,fontsize =12)
 plt.show()
