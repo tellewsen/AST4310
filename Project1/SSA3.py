@@ -118,3 +118,57 @@ plt.xlabel('u')
 plt.ylabel('intensity')
 plt.title(r'Intensity as a function of u for different $\tau_0$')
 plt.show()
+
+for iwav in range(1,4):
+	wav=(iwav**2+1.)*1e-5
+	for element in logtau0:
+	    for i in range(len(u)):
+	        tau = 10.**(element) * (voigt(a,u[i]))
+	        intensity[i] = planck(Ts,wav)* np.exp(-tau) + planck(Tl,wav)*(1.-np.exp(-tau))
+	    intensity = intensity / intensity[0]
+	    plt.plot(u,intensity[:],linewidth=1.)
+plt.show()
+
+
+#3.4 Equivalent width of spectral lines
+def profile(a,tau0,u):
+    Ts = 5700
+    Tl = 4200
+    wav = 5000e-8
+    intensity = np.zeros(u.size)
+    for i in range(u.size):
+        tau = tau0 * voigt(a,u[i])
+        intensity[i] = planck(Ts,wav)*np.exp(-tau) + planck(Tl,wav)*(1.-np.exp(-tau))
+    return intensity
+
+
+#Checking the profile
+u = np.arange(-200,200.4,0.4)
+a = 0.1
+tau0 = 1.e2
+intensity = profile(a,tau0,u)
+
+plt.plot(u,intensity)
+plt.show()
+
+#relative
+reldepth = (intensity[0] - intensity)/intensity[0]
+plt.plot(u,reldepth)
+
+eqw = sum(reldepth*0.4)
+print eqw
+
+#3.5 The curve of growth
+tau0 = np.logspace(-2,4,61)
+eqw  = np.zeros(tau0.size)
+
+for i in range(61):
+    intensity = profile(a,tau0[i],u)
+    reldepth = (intensity[0] - intensity)/intensity[0]
+    eqw[i] = sum(reldepth)*0.4
+plt.plot(tau0,eqw)
+plt.xlabel(r'$\tau_0$',size=18)
+plt.ylabel(r'equivalent width $W_{\lambda}$',size=14)
+plt.xscale('log')
+plt.yscale('log')
+plt.show()
