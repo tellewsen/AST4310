@@ -104,7 +104,7 @@
   \begin{minipage}[t]{15cm}
         $^1$ Institute of theoretical astrophysics\\
 
-  {\bf Abstract.} We learned how to write nice reports \ldots 
+%  {\bf Abstract.} We learned how to write nice reports \ldots 
 
   \vspace*{2ex}
   \end{minipage}
@@ -124,22 +124,10 @@ The first part of this section deals with learning a little about how IDL functi
 You also make a fuction that adds all the numbers in an array together and gives you the result.
 This function already exists in IDL, and is called TOTAL, but we make our own function anyway.
 The function is called ADDUP, and looks exactly like the function written in the exercise text.
-The function has been tested, and it passes all the test I've tried throwing at it (except of course those it will clearly fail, like strings).
+The function has been tested, and it passes all the test I've tried throwing at it (except of course those it will clearly fail, like strings). Note however that I will not be using IDL for this project since I know python better than IDL.
 
 The second part of this section deals with LaTeX and gives instructions on how to write a good report.
 Basically one is given a template and told a long list of things that are useful to know when writing reports, and then you use this knowledge for the rest of the exercise.
-
-%% {fig:XX}
-%===========================================================================
-%\begin{figure}[hbtp]
-%  \centering
-%  \includegraphics[width=80mm]{XX}
-%  \caption[]{\label{fig:XX}
-%    Caption text \dots
-%  }
-%\end{figure}
-%===========================================================================
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Saha-Boltzmann calibration of the Harvard sequence}   \label{sec:Saha}
@@ -157,34 +145,38 @@ Figure 7 skips some of the transitions.
 But Lyman $\gamma$ shares upper level with Balmer $\beta$ and Paschen $\alpha$. 
 It keeps going in this way for the rest of the transitions.
 
-At this point Payne made the assumption that the strength of the absorption lines observed in stellar spectra scaled with the population density of the lower level of the corresponding transition. 
-This seems logical if one also assumes that most of the hydrogen was in the ground state to begin with.
+At this point Payne made the assumption that the strength of the absorption lines observed in stellar spectra scaled with the population density of the lower level of the corresponding transition. Assuming that most of the hydrogen is in the lower energy levels it is logical that most of the transitions must be going upwards in the levels, and thus they should scale with the population density of the lower levels. It turns out that this assumption assumption is not correct, but in general it is true that stellar absorption lines get stronger at larger lower-level population. We ignore this and continue with Payne's assumption anyway.
 
-It turns out that this assumption assumption is not correct, but in general it is true that stellar absorption lines get stronger at larger lower-level population. 
+If we assume that the above is true. We can give som rough estimates of the strength ratios of the $\alpha$ lines in the HI Lyman, Balmer, Paschen and Brackett series. We see from figure 7 in the exercise that Lyman $\alpha$ releases about $10 eV$, while Balmer releases about $2 eV$, Paschen $0.5eV$ and Brackett about $0.25 eV$. Considering that our assumption means more transitions from lower levels, the Lyman $\alpha$ line should be much stronger than the Balmer. And the Balmer should be much stronger than the Paschen and so forth. 
 
-We ignore this and continue with Payne's assumption anyway.
-
-\begin{itemize}
- \item 
-Use this expectation to give initial rough estimates of the strength ratios of the $\alpha$ lines in the the H I Lyman, Balmer, Paschen and Brackett series.
-\end{itemize}
+Next we need to define some functions:
 
 The Boltzmann distribution is defined
 \begin{equation}
 \frac{n_{r,s}}{N_r} = \frac{g_{r,s}}{U_r} e^{-\chi_{r,s}/kT} 
 \end{equation}
 
-
-The partition function $U_r$ is define as
+The partition function $U_r$ is defined as
 \begin{equation}
  U_r = \sum_s g_{r,s} e^{-\chi_{r,s}/kT}
 \end{equation}
-
 
 The Saha law reads
 \begin{equation}
  \frac{N_{r+1}}{N_r} = \frac{1}{N_e}\frac{2U_{r+1}}{U_r}\bigg(\frac{2\pi m_e kT}{h^2}\bigg)^{3/2} e^-{\chi_r/kT}.
 \end{equation}
+
+
+
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+
+
+
+
 
 \begin{itemize}
  \item 
@@ -384,7 +376,7 @@ To check the behaviour for different wavelengths we plot the results for $\lambd
 \end{itemize}
 
 Since some observed spectra are measured without absolute intensity calibration it useful to scale the spectrum to the local continuum intensity by plotting $I_\lambda/I_{cont}$. Plotting this for the same 3 wavelengths reults in figure \ref{emergent_line_scaled_different}.
-\begin{figure}
+\begin{figure}[hbtp]
  \includegraphics[width=.49\textwidth]{emergent_line_scaled_different.png}
  \caption{Spectral lines for different choices of $\tau(0)$.}
  \label{emergent_line_scaled_different} 
@@ -395,25 +387,42 @@ From the profile plots one can see that the growth of the absorption feature for
 \begin{equation}
  W_\lambda = \int \frac{I_{cont}-I(\lambda)}{I_{cont}}d\lambda.
 \end{equation}\label{eqw}
-To test this effectively we make a profile function that returns a Schuster-Schwarzschild profile, given $a$, $\tau$, and $u$.  Setting $a = 0.1$, $\tau(0) = 100$ and plotting this for $ u = [-200,200]$ returns figure \ref{eqw_ss}
-\begin{figure}
+To test this effectively we make a profile function that returns a Schuster-Schwarzschild profile, given $a$, $\tau$, and $u$.  Setting $a = 0.1$, $\tau(0) = 100$ and plotting this for $ u = [-200,200]$ returns figure \ref{eqw_ss}.
+\begin{figure}[hbtp]
  \includegraphics[width=.49\textwidth]{eqw_ss.png}
  \caption{Schuster-Schwarzschild profile.}
  \label{eqw_ss} 
 \end{figure}
 
 Next we compute the line depth in relative units(the integrand in equation \ref{eqw}. Plotting this versus u gives figure \ref{eqw_rel}.
-\begin{figure}
+\begin{figure}[hbtp]
  \includegraphics[width=.49\textwidth]{eqw_rel.png}
  \caption{Line depth in relative units.}
  \label{eqw_rel} 
 \end{figure}
 
-In this test case the we get an equivalent width of $7.53678532814$
+In this test case we get an equivalent width $W_\lambda = 7.5$.
 
 \subsection{The curve of growth}
+The point of the equivalent width was that it could be used to measure the number of atoms in the reversing layer. This should set the opaqueness $\tau(0)$ of the layer. The profile plots show that the profile growth is only linear with $\tau(0)$ for $\tau(0) <<1$. The curve of growth shows the full dependence; the growth of the line strength with the line-causing density.
 
+To study this we plot $\log W_\lambda$ against $\log \tau(0)$ in figure \ref{growth}.
 
+\begin{figure}[hbtp]
+ \includegraphics[width=.49\textwidth]{growth.png}
+ \caption{Curve of Growth.}
+ \label{growth} 
+\end{figure}
+\begin{itemize}
+ \item 
+ Explain what happens in the three different parts
+ \item 
+ The first part has slope 1:1 ,the third has slope 1:2 in this log-log plot. Why?
+ \item 
+ Which parameter controls the location of the onset of the third part? Give a rough estimate of its value for solar ironlines through comparison with figure 14 in the assignment.
+ \item 
+ Final: of which parameter should you raise the numerical value in order to produce emission lines instead of absorption lines? Change it accordingly and rerun your programs to produce emission profiles and an emission-line curve of growth. Avoid plotting negative $W_\lambda$ values logarithimically by plotting the absoulte value of equivalent width.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions} \label{sec:conclusions}

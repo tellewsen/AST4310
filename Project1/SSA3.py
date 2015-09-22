@@ -149,6 +149,7 @@ plt.show()
 """
 
 #3.4 Equivalent width of spectral lines
+
 def profile(a,tau0,u):
     Ts = 5700
     Tl = 4200
@@ -158,7 +159,7 @@ def profile(a,tau0,u):
         tau = tau0 * voigt(a,u[i])
         intensity[i] = planck(Ts,wav)*np.exp(-tau) + planck(Tl,wav)*(1.-np.exp(-tau))
     return intensity
-
+"""
 #Checking the profile
 u = np.arange(-200,200.4,0.4)
 a = 0.1
@@ -184,10 +185,12 @@ plt.show()
 eqw = sum(reldepth)*0.4
 print eqw
 """
+
 #3.5 The curve of growth
 tau0 = np.logspace(-2,4,61)
 eqw  = np.zeros(tau0.size)
-
+u = np.arange(-200,200.4,0.4)
+a = 0.1
 for i in range(61):
     intensity = profile(a,tau0[i],u)
     reldepth = (intensity[0] - intensity)/intensity[0]
@@ -197,5 +200,5 @@ plt.xlabel(r'$\tau_0$',size=18)
 plt.ylabel(r'equivalent width $W_{\lambda}$',size=14)
 plt.xscale('log')
 plt.yscale('log')
+plt.title('Curve of growth')
 plt.show()
-"""	
