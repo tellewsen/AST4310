@@ -197,32 +197,85 @@ With this in mind we compute the partition function $U_r$ for Schadeenium and pr
 \end{verbatim}
 Which is a perfect match to the values tabulated in the exercise text.
 
-We then make a Boltzmann function in the program and check that it functions properly by printing
+We then make a Boltzmann function in the program and check that it functions properly by printing the relative level population for $s = [0,10]$ for $T = 5000,10000,20000$. The output from the program is 
+\begin{verbatim}
+[  9.01815078e-01   8.85447148e-02   8.69376295e-03   8.53597128e-04
+   8.38104353e-05   8.22892772e-06   8.07957280e-07   7.93292867e-08
+   7.78894614e-09   7.64757688e-10   0.00000000e+00]
+[  6.86858856e-01   2.15223692e-01   6.74392378e-02   2.11317385e-02
+   6.62152166e-03   2.07481978e-03   6.50134114e-04   2.03716183e-04
+   6.38334190e-05   2.00018738e-05   0.00000000e+00]
+[ 0.44794223  0.25074559  0.1403604   0.07856984  0.04398121  0.02461946
+  0.01378129  0.00771438  0.0043183   0.00241726  0.        ]
+\end{verbatim}
+which matches the values given in the exercise text.
 
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+The next step is to make a Saha function and test that for $r = [1,6]$ for $T = 20000$ and $P_e} = 100$, and for $r = [1,6]$, with $T = 10000$ and $P_e = 100$. We print the results and get 
+\begin{verbatim}
+ 2.72775113242e-10
+0.000180278462885
+0.632005363273
+0.36781263824
+1.71975186581e-06
+----
+0.000477757567228
+0.94509484422
+0.0544273981268
+8.63969442555e-11
+1.56819249959e-29
+\end{verbatim}
+Which matches the values given in the exercise, cofirming that the function works as it should.
+(Note here that the code example in the exercise tells us to calculate the values for an electron pressure that is different from the one used in the table, so I've chosen to use the one corresponding to the table).
 
+\subsection{Payne curves for Schadeenium}
+If TE holds in a stellar atmosphere one may expect that the observed strength of a spectral line involving level (r, s) scales with the Saha-Boltzmann prediction for the lower level population $n_{r,s}$ — even if one doesn’t know how spectral lines are formed in detail. That was the underlying premise of Payne’s analysis. We follow it by plotting curves for various levels of the neutral and ionization stages of element E.
 
-
-
-
+To do this I write a function Sahabolt_E that evaluates $n_{r,s}/N$ for any level of E as a function of $T$ and $P_e$.
+Using the same value for electron pressure as before we inspect a few values. I check four different settings.
 \begin{itemize}
  \item 
- Note in the first table that the partition functions computed from (2) are of order unity and barely sensitive to temperature.
-\item
-In the second table, note the steep Boltzmann population decay with $\chi_{r,s}$ given by (1). It is less steep for higher temperature. The columns add up to unit y because the values in this table are scaled by $N_r$. They therefore depend on $U_r$, but the small variation between $U_1$ and $U_4$ in the first table produces a difference at two-digit significance only for $s = 1$ at $20 000 K$. The partition function $U_1$ of the neutral stage is the sum of only seven levels; the higher levels present in stages $r \ge 2$ contribute only marginally. The ground state always has the largest population.
-\item
-Inspect the third table, computed from (3). There are only two ionization stages significantly present per column. For T = 5000 K element E is predominantly neutral, for T = 10 000 K it is once ionized ($E^+$), for higher temperature stages $E^{2+}$ and $E^{3+}$ appear while $E$ and $E^+$ vanish.
-\item
-Explain from (1) and (3) why the Saha and Boltzmann distributions behave differently for increasing temperature.
-\item
-Speculate why ionization can fully deplete a stage even though excitation puts only a few atoms in levels below the ionization level. Hint: what parameter in the Saha distribution can cause equality between high-level and next-ion population at a given temperature?
+ $T = 5000$,$P_e = 1000$, $r = 1$, $s = [1,5]$
+ \item 
+ $T = 20000$,$P_e = 1000$, $r = 1$, $s = [1,5]$
+  \item 
+ $T = 10000$,$P_e = 1000$, $r = 2$, $s = [1,5]$
+  \item 
+ $T = 20000$,$P_e = 1000$, $r = 4$, $s = [1,5]$
 \end{itemize}
-\subsection{Saha-Boltzmann population of Shadeenium}
-Now it is time to reproduce Shadee's tables. This is done by using python routines to compute $U_r$ from (2) and $n_{r,s}/N_r$ from (1), and $N_r/N$ from (3) for element E. All computations are done using cgs units.
+The output from the program reads
+\begin{verbatim}
+ 0.817093536375
+0.0802263300862
+0.00787702233903
+0.000773405450093
+7.59368152695e-05
+----
+1.22187492385e-10
+6.83971553597e-11
+3.82868227344e-11
+2.14318970926e-11
+1.19969791218e-11
+----
+0.648954237872
+0.203346475021
+0.0637175728123
+0.0199655739529
+0.00625610998149
+----
+0.161921366802
+0.0906390716843
+0.0507372280636
+0.0284012872566
+0.0158982496407
+\end{verbatim}
+which matches with the values given in the exercise text, and confirms what we've already seen; that the lower levels within an ionization stage always have higher population due to the Boltzmann factor. Note also that the drop-off with s is less steep at higher temperature as it should be due to the Saha factor.
+
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+
 %See Fig.~\ref{fig:XX}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fraunhofer line strengths and the curve of growth}   \label{sec:Fraunhofer}

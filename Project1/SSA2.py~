@@ -130,12 +130,128 @@ def sahabolt_Ca(temp, elpress, ionstage, level):
 #Main part calling the functions to do things
 
 #Part2
+
+#Compute partition function for T=5000,10000,20000
 """
+for temp in [5000,10000,20000]:
+	print partfunc_E(temp)
+"""
+"""
+#Compute distribution for T=5000,
+distribution_5k = np.zeros(11)
+distribution_10k = np.zeros(11)
+distribution_20k = np.zeros(11)
+for s in range(1,11):
+	distribution_5k[s-1] = boltz_E(5000,1,s)
+	distribution_10k[s-1] = boltz_E(10000,1,s)
+	distribution_20k[s-1] = boltz_E(20000,1,s)
+print distribution_5k
+print distribution_10k
+print distribution_20k
+"""
+#Compute saha_E for different temp
+"""
+for r in range(1,6):
+	print saha_E(20000,1e3,r)
+print "----"
+for r in range(1,6):
+	print saha_E(10000,1e3,r)
+"""
+
+#Compute Saha_bolt_E for different temperatures
+"""
+for s in range(1,6):
+	print sahabolt_E(5000, 1e3, 1, s)
+print "----"
+for s in range(1,6):
+	print sahabolt_E(20000, 1e3, 1, s)
+print "----"
+for s in range(1,6):
+	print sahabolt_E(10000, 1e3, 2, s)
+print "----"
+for s in range(1,6):
+	print sahabolt_E(20000, 1e3, 4, s)
+"""
+
+
+#Plotting the population vs temperature for s=1
+
+temp = np.arange(0,30001,1000)
+#print temp
+pop = np.zeros((5,31))
+for T in np.arange(1,31):	
+	for r in np.arange(1,5):
+		pop[r,T] = sahabolt_E(temp[T],131.,r,1)
+labellst= ['ground stage','first ion stage','seconds ion stage','third ion stage']
+#print pop
+#ground state plot
+plt.figure(0)
+for i in range(1,5):
+	plt.plot(temp,pop[i,:],label=labellst[i-1])
+
+plt.xlabel('temperature',size=14)
+plt.ylabel('population',size=14)
+plt.yscale('log')
+plt.ylim([1e-3,1.1])
+plt.legend(loc='best')
+plt.title('Population vs Temperature for s=1')
+plt.show()
+
+#Plotting the population vs temperature for s=2
+"""
+temp = np.arange(0,30001,1000)
+#print temp
+pop = np.zeros((5,31))
+for T in np.arange(1,31):	
+	for r in np.arange(1,5):
+		pop[r,T] = sahabolt_E(temp[T],131.,r,2)
+labellst= ['ground stage','first ion stage','seconds ion stage','third ion stage']
+#print pop
+#ground state plot
+plt.figure(1)
+for i in range(1,5):
+	plt.plot(temp,pop[i,:],label=labellst[i-1])
+
+plt.xlabel('temperature',size=14)
+plt.ylabel('population',size=14)
+plt.yscale('log')
+plt.ylim([1e-3,1.1])
+plt.legend(loc='best')
+plt.title('Population vs Temperature for s=2')
+plt.show()
+
+#Plotting the population vs temperature for s=4
+temp = np.arange(0,30001,1000)
+#print temp
+pop = np.zeros((5,31))
+for T in np.arange(1,31):	
+	for r in np.arange(1,5):
+		pop[r,T] = sahabolt_E(temp[T],131.,r,4)
+labellst= ['ground stage','first ion stage','seconds ion stage','third ion stage']
+#print pop
+#ground state plot
+plt.figure(2)
+for i in range(1,5):
+	plt.plot(temp,pop[i,:],label=labellst[i-1])
+
+plt.xlabel('temperature',size=14)
+plt.ylabel('population',size=14)
+plt.yscale('log')
+plt.ylim([1e-3,1.1])
+plt.legend(loc='best')
+plt.title('Population vs Temperature for s=4')
+plt.show()
+"""
+
+
+
 #Printing hydrogen levels
+"""
 sahabolt_H(5000,1e2,1) this works as it should
 """
-"""
+
 #Solar Ca+K versus Ha:line strength
+"""
 temp = np.arange(1000,20001,100)
 CaH = np.zeros(temp.shape)
 Caabund = 2e-6
@@ -201,111 +317,4 @@ plt.xlabel(r'temperature $T/K$',size=14)
 plt.ylabel(r'neutral hydrogen fraction',size=14)
 plt.title('Fraction of neutral hydrogen in stellar photospheres')
 plt.show()
-"""
-"""
-#Plotting the population vs temperature for s=1
-temp = np.arange(0,30001,1000)
-#print temp
-pop = np.zeros((5,31))
-for T in np.arange(1,31):	
-	for r in np.arange(1,5):
-		pop[r,T] = sahabolt_E(temp[T],131.,r,1)
-labellst= ['ground stage','first ion stage','seconds ion stage','third ion stage']
-#print pop
-#ground state plot
-plt.figure(0)
-for i in range(1,5):
-	plt.plot(temp,pop[i,:],label=labellst[i-1])
-
-plt.xlabel('temperature',size=14)
-plt.ylabel('population',size=14)
-plt.yscale('log')
-plt.ylim([1e-3,1.1])
-plt.legend(loc='best')
-plt.title('Population vs Temperature for s=1')
-plt.show()
-
-#Plotting the population vs temperature for s=2
-temp = np.arange(0,30001,1000)
-#print temp
-pop = np.zeros((5,31))
-for T in np.arange(1,31):	
-	for r in np.arange(1,5):
-		pop[r,T] = sahabolt_E(temp[T],131.,r,2)
-labellst= ['ground stage','first ion stage','seconds ion stage','third ion stage']
-#print pop
-#ground state plot
-plt.figure(1)
-for i in range(1,5):
-	plt.plot(temp,pop[i,:],label=labellst[i-1])
-
-plt.xlabel('temperature',size=14)
-plt.ylabel('population',size=14)
-plt.yscale('log')
-plt.ylim([1e-3,1.1])
-plt.legend(loc='best')
-plt.title('Population vs Temperature for s=2')
-plt.show()
-
-#Plotting the population vs temperature for s=4
-temp = np.arange(0,30001,1000)
-#print temp
-pop = np.zeros((5,31))
-for T in np.arange(1,31):	
-	for r in np.arange(1,5):
-		pop[r,T] = sahabolt_E(temp[T],131.,r,4)
-labellst= ['ground stage','first ion stage','seconds ion stage','third ion stage']
-#print pop
-#ground state plot
-plt.figure(2)
-for i in range(1,5):
-	plt.plot(temp,pop[i,:],label=labellst[i-1])
-
-plt.xlabel('temperature',size=14)
-plt.ylabel('population',size=14)
-plt.yscale('log')
-plt.ylim([1e-3,1.1])
-plt.legend(loc='best')
-plt.title('Population vs Temperature for s=4')
-plt.show()
-"""
-
-#compute partition function for T=5000,10000,20000
-"""
-for temp in [5000,10000,20000]:
-	print partfunc_E(temp)
-"""
-"""
-#Compute distribution for T=5000,
-distribution_5k = np.zeros(11)
-distribution_10k = np.zeros(11)
-distribution_20k = np.zeros(11)
-for s in range(1,11):
-	distribution_5k[s-1] = boltz_E(5000,1,s)
-	distribution_10k[s-1] = boltz_E(10000,1,s)
-	distribution_20k[s-1] = boltz_E(20000,1,s)
-print distribution_5k
-print distribution_10k
-print distribution_20k
-"""
-
-for r in range(1,6):
-	print saha_E(20000,1e3,r)
-print "----"
-for r in range(1,6):
-	print saha_E(20000,1e1,r)
-
-"""
-#Compute 
-for s in range(1,6):
-	print sahabolt_E(5000, 1e3, 1, s)
-print "----"
-for s in range(1,6):
-	print sahabolt_E(20000, 1e3, 1, s)
-print "----"
-for s in range(1,6):
-	print sahabolt_E(10000, 1e3, 2, s)
-print "----"
-for s in range(1,6):
-	print sahabolt_E(20000, 1e3, 4, s)
 """
