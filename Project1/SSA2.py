@@ -270,6 +270,11 @@ plt.title('Population vs Temperature for s=4')
 plt.show()
 """
 
+#compute partition function for T=5000,10000,20000
+"""
+for temp in [5000,10000,20000]:
+	print partfunc_E(temp)
+"""
 """
 #Compute distribution for T=5000,
 distribution_5k = np.zeros(11)
@@ -282,16 +287,15 @@ for s in range(1,11):
 print distribution_5k
 print distribution_10k
 print distribution_20k
-
-#compute partition function for T=5000,10000,20000
-for temp in [5000,10000,20000]:
-	print partfunc_E(temp)
+"""
 
 for r in range(1,6):
 	print saha_E(20000,1e3,r)
 print "----"
 for r in range(1,6):
 	print saha_E(10000,1e3,r)
+
+"""
 #Compute 
 for s in range(1,6):
 	print sahabolt_E(5000, 1e3, 1, s)

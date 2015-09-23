@@ -147,29 +147,67 @@ It keeps going in this way for the rest of the transitions.
 
 At this point Payne made the assumption that the strength of the absorption lines observed in stellar spectra scaled with the population density of the lower level of the corresponding transition. Assuming that most of the hydrogen is in the lower energy levels it is logical that most of the transitions must be going upwards in the levels, and thus they should scale with the population density of the lower levels. It turns out that this assumption assumption is not correct, but in general it is true that stellar absorption lines get stronger at larger lower-level population. We ignore this and continue with Payne's assumption anyway.
 
-If we assume that the above is true. We can give som rough estimates of the strength ratios of the $\alpha$ lines in the HI Lyman, Balmer, Pashcne and Brackett series. We see from figure 7 in the exercise that Lyman $\alpha$ releases about $10 eV$, wh
+If we assume that the above is true. We can give som rough estimates of the strength ratios of the $\alpha$ lines in the HI Lyman, Balmer, Paschen and Brackett series. We see from figure 7 in the exercise that Lyman $\alpha$ releases about $10 eV$, while Balmer releases about $2 eV$, Paschen $0.5eV$ and Brackett about $0.25 eV$. Considering that our assumption means more transitions from lower levels, the Lyman $\alpha$ line should be much stronger than the Balmer. And the Balmer should be much stronger than the Paschen and so forth. 
 
-\begin{itemize}
- \item 
-Use this expectation to give initial rough estimates of the strength ratios of the $\alpha$ lines in the the H I Lyman, Balmer, Paschen and Brackett series.
-\end{itemize}
+Next we need to define some functions:
 
 The Boltzmann distribution is defined
 \begin{equation}
 \frac{n_{r,s}}{N_r} = \frac{g_{r,s}}{U_r} e^{-\chi_{r,s}/kT} 
-\end{equation}
+\end{equation}\label{Boltzmann}
 
-
-The partition function $U_r$ is define as
+The Partition function $U_r$ is defined as
 \begin{equation}
  U_r = \sum_s g_{r,s} e^{-\chi_{r,s}/kT}
-\end{equation}
-
+\end{equation}\label{Partition}
 
 The Saha law reads
 \begin{equation}
- \frac{N_{r+1}}{N_r} = \frac{1}{N_e}\frac{2U_{r+1}}{U_r}\bigg(\frac{2\pi m_e kT}{h^2}\bigg)^{3/2} e^-{\chi_r/kT}.
-\end{equation}
+ \frac{N_{r+1}}{N_r} = \frac{1}{N_e}\frac{2U_{r+1}}{U_r}\bigg(\frac{2\pi m_e kT}{h^2}\bigg)^{3/2} e^{-\chi_r/kT}.
+\end{equation}\label{Saha}
+
+We will use this to study a fictional element known as Schadeenium(E).
+Schadeenium has 
+\begin{itemize}
+\item
+ionization energies $\chi_1 = 7$ eV for neutral E, $\chi_2 = 16$eV for E$^+$, $\chi_3 = 31$eV for E$^2+$, $\chi_4 = 51$eV for E$^3+$. 
+\item
+excitation energies that increase incrementally by $1$ eV: $\chi_{r,s} \equiv s -1$ eV in each stage
+\item
+statistical weights $g_{r,s} \equiv 1$ for all levels (r,s)
+\end{itemize}
+
+Table 1 on page 12 of the exercise shows different values of the 3 functions for our element.
+When looking at this it is clear that the partition function is weakly dependent on temperature.
+In the table with calulcations for the boltzmann function we see a steep decline in the population for higher levels.
+The higher levels do fill up if one raises the temperature but the ground state always has the largest population.
+From this it is clear that the lower levels are the most important ones. For real atoms the energy difference between levels 1 and 2 are usually larger than for E, and thus their partition functions are often well approixmated by the statistical weight of the ground state.
+
+The reason for the difference in behaviour between the Saha and Boltzmann distributions is caused by the $(...)^{3/2}$ factor in front of the exponential in the Saha distribution. The Boltzmann distribution doesn't have this factor and thus it converges towards $g_{r,s}/U_r$ for hight T while Saha just keeps rising indefinitely.
+
+Raising the temperature thus causes the distribution between the energy levels to spread out, and even if we don't get a lot of electrons in the higher energy levels, the thermal energy is high enough to cause ionization from the lower levels to the next ionization stage.
+
+Thus we've found that when a gas is in thermal equilibrium we expect to find at most two ionization stages present. And for each ionization there is a steep decline in the population for each energy level.
+
+With this in mind we compute the partition function $U_r$ for Schadeenium and print the values for levels $r =[0,3]$.
+\begin{verbatim}
+[ 1.10887478  1.10887488  1.10887488  1.10887488]
+[ 1.45590319  1.45633511  1.45633513  1.45633513]
+[ 2.23243073  2.27133987  2.27155094  2.27155097]
+\end{verbatim}
+Which is a perfect match to the values tabulated in the exercise text.
+
+We then make a Boltzmann function in the program and check that it functions properly by printing
+
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+
+
+
+
 
 \begin{itemize}
  \item 
