@@ -306,7 +306,7 @@ plt.show()
 "Find at which temperature the hydrogen in stellar photospheres with P_e = 100 is about 50% ionized."
 for T in np.arange(7000,10001,100):
 	print T,sahabolt_H(T,1e2,1)
-temp = np.arange(6000,12001,1e2)
+temp = np.arange(6000,13001,1e2)
 nH = np.zeros(temp.shape)
 for i in range(len(temp)):
 	nH[i] = sahabolt_H(temp[i],1e2,1)

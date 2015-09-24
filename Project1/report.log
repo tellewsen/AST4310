@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.30)  24 SEP 2015 12:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.30)  24 SEP 2015 16:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1157,9 +1157,6 @@ File: pop_vs_t_for_s4.png Graphic file (type png)
 <use pop_vs_t_for_s4.png>
 Package pdftex.def Info: pop_vs_t_for_s4.png used on input line 245.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [2 <./pop_vs_t_for_s1.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -1233,162 +1230,194 @@ File: hydrogen_ionization.png Graphic file (type png)
 <use hydrogen_ionization.png>
 Package pdftex.def Info: hydrogen_ionization.png used on input line 288.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
- [3 <./pop_vs_t_for_s2.png> <./pop_vs_t_for_s4.png> <./CaHratio.png>]
-Underfull \hbox (badness 1810) in paragraph at lines 301--306
-\T1/txr/m/n/10 ING!!!!!! THIS IS WHERE YOU SHOULD CON-TINUE
- []
+ [3 <./pop_vs_t_for_s2.png> <./pop_vs_t_for_s4.png> <./CaHratio.png>] <radiatio
+n.png, id=124, 586.8324pt x 442.2924pt>
+File: radiation.png Graphic file (type png)
 
-<emergent_original.png, id=124, 586.8324pt x 442.2924pt>
+<use radiation.png>
+Package pdftex.def Info: radiation.png used on input line 303.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ <radiation_ylog.png, id=127, 586.8324pt x 442.2924pt>
+File: radiation_ylog.png Graphic file (type png)
+
+<use radiation_ylog.png>
+Package pdftex.def Info: radiation_ylog.png used on input line 309.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+<radiation_ylog_xlog.png, id=128, 586.8324pt x 442.2924pt>
+File: radiation_ylog_xlog.png Graphic file (type png)
+
+<use radiation_ylog_xlog.png>
+Package pdftex.def Info: radiation_ylog_xlog.png used on input line 314.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+<emergent_original.png, id=132, 586.8324pt x 442.2924pt>
 File: emergent_original.png Graphic file (type png)
 
 <use emergent_original.png>
-Package pdftex.def Info: emergent_original.png used on input line 331.
+Package pdftex.def Info: emergent_original.png used on input line 342.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<emergent_log.png, id=125, 586.8324pt x 442.2924pt>
+<emergent_log.png, id=133, 586.8324pt x 442.2924pt>
 File: emergent_log.png Graphic file (type png)
  <use emergent_log.png>
-Package pdftex.def Info: emergent_log.png used on input line 337.
+Package pdftex.def Info: emergent_log.png used on input line 348.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-[4 <./relpopchange.png> <./relpopchange2.png> <./hydrogen_ionization.png> <./em
-ergent_original.png>] <voigt_original.png, id=147, 586.8324pt x 442.2924pt>
+[4 <./relpopchange.png> <./relpopchange2.png> <./hydrogen_ionization.png> <./ra
+diation.png>]
+Underfull \vbox (badness 1112) has occurred while \output is active []
+
+ [5 <./radiation_ylog.png> <./radiation_ylog_xlog.png> <./emergent_original.png
+> <./emergent_log.png>] <voigt_original.png, id=170, 586.8324pt x 442.2924pt>
 File: voigt_original.png Graphic file (type png)
 
 <use voigt_original.png>
-Package pdftex.def Info: voigt_original.png used on input line 400.
+Package pdftex.def Info: voigt_original.png used on input line 411.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
- <voigt_ylog.png, id=149, 586.8324pt x 442.2924pt>
+ <voigt_ylog.png, id=172, 586.8324pt x 442.2924pt>
 File: voigt_ylog.png Graphic file (type png)
 
 <use voigt_ylog.png>
-Package pdftex.def Info: voigt_ylog.png used on input line 406.
+Package pdftex.def Info: voigt_ylog.png used on input line 417.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 419.
+LaTeX Warning: Command \r invalid in math mode on input line 430.
 
-<emergent_line_orig_5000.png, id=154, 586.8324pt x 442.2924pt>
+<emergent_line_orig_5000.png, id=177, 586.8324pt x 442.2924pt>
 File: emergent_line_orig_5000.png Graphic file (type png)
 
 <use emergent_line_orig_5000.png>
-Package pdftex.def Info: emergent_line_orig_5000.png used on input line 422.
+Package pdftex.def Info: emergent_line_orig_5000.png used on input line 433.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 423.
+LaTeX Warning: Command \r invalid in math mode on input line 434.
 
-[5 <./emergent_log.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 437--440
-[]\T1/txr/m/n/10 For which val-ues of $\OML/txmi/m/it/10 ^^\\OT1/txr/m/n/10 (0)
-$ \T1/txr/m/n/10 is the layer op-ti-cally
- []
-
-
-Underfull \hbox (badness 1275) in paragraph at lines 437--440
-\T1/txr/m/n/10 thin,respectively op-ti-cally thick, at line cen-ter? And at
- []
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 440.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 440.
-
-<emergent_line_log_2000.png, id=173, 586.8324pt x 442.2924pt>
-File: emergent_line_log_2000.png Graphic file (type png)
-
-<use emergent_line_log_2000.png>
-Package pdftex.def Info: emergent_line_log_2000.png used on input line 446.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-<emergent_line_orig.png, id=177, 586.8324pt x 442.2924pt>
-File: emergent_line_orig.png Graphic file (type png)
-
-<use emergent_line_orig.png>
-Package pdftex.def Info: emergent_line_orig.png used on input line 455.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-<emergent_line_log_5000.png, id=178, 586.8324pt x 442.2924pt>
+<emergent_line_log_5000.png, id=180, 586.8324pt x 442.2924pt>
 File: emergent_line_log_5000.png Graphic file (type png)
 
 <use emergent_line_log_5000.png>
-Package pdftex.def Info: emergent_line_log_5000.png used on input line 460.
+Package pdftex.def Info: emergent_line_log_5000.png used on input line 441.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<emergent_line_log_10000.png, id=179, 586.8324pt x 442.2924pt>
-File: emergent_line_log_10000.png Graphic file (type png)
 
-<use emergent_line_log_10000.png>
-Package pdftex.def Info: emergent_line_log_10000.png used on input line 465.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+LaTeX Warning: Command \r invalid in math mode on input line 442.
 
-Underfull \hbox (badness 10000) in paragraph at lines 480--483
+
+Underfull \hbox (badness 10000) in paragraph at lines 451--454
 []\T1/txr/m/n/10 For which val-ues of $\OML/txmi/m/it/10 ^^\\OT1/txr/m/n/10 (0)
 $ \T1/txr/m/n/10 is the layer op-ti-cally
  []
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 480--483
+Underfull \hbox (badness 1275) in paragraph at lines 451--454
+\T1/txr/m/n/10 thin,respectively op-ti-cally thick, at line cen-ter? And at
+ []
+
+[6 <./voigt_original.png> <./voigt_ylog.png>]
+
+LaTeX Warning: Command \r invalid in math mode on input line 454.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 454.
+
+<emergent_line_orig.png, id=201, 586.8324pt x 442.2924pt>
+File: emergent_line_orig.png Graphic file (type png)
+
+<use emergent_line_orig.png>
+Package pdftex.def Info: emergent_line_orig.png used on input line 462.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+<emergent_line_log_2000.png, id=202, 586.8324pt x 442.2924pt>
+File: emergent_line_log_2000.png Graphic file (type png)
+
+<use emergent_line_log_2000.png>
+Package pdftex.def Info: emergent_line_log_2000.png used on input line 467.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 468.
+
+<emergent_line_log_10000.png, id=203, 586.8324pt x 442.2924pt>
+File: emergent_line_log_10000.png Graphic file (type png)
+
+<use emergent_line_log_10000.png>
+Package pdftex.def Info: emergent_line_log_10000.png used on input line 472.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 473.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 487--490
+[]\T1/txr/m/n/10 For which val-ues of $\OML/txmi/m/it/10 ^^\\OT1/txr/m/n/10 (0)
+$ \T1/txr/m/n/10 is the layer op-ti-cally
+ []
+
+
+Underfull \hbox (badness 1275) in paragraph at lines 487--490
 \T1/txr/m/n/10 thin,respectively op-ti-cally thick, at line cen-ter? And at
  []
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 483.
+LaTeX Warning: Command \r invalid in math mode on input line 490.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 483.
+LaTeX Warning: Command \r invalid in math mode on input line 490.
 
-<emergent_line_scaled_different.png, id=181, 586.8324pt x 442.2924pt>
+<emergent_line_scaled_different.png, id=205, 586.8324pt x 442.2924pt>
 File: emergent_line_scaled_different.png Graphic file (type png)
 
 <use emergent_line_scaled_different.png>
 Package pdftex.def Info: emergent_line_scaled_different.png used on input line 
-488.
+495.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
- [6 <./voigt_original.png> <./voigt_ylog.png> <./emergent_line_orig_5000.png> <
-./emergent_line_log_2000.png>]
-<eqw_ss.png, id=197, 586.8324pt x 442.2924pt>
+
+<eqw_ss.png, id=207, 586.8324pt x 442.2924pt>
 File: eqw_ss.png Graphic file (type png)
  <use eqw_ss.png>
-Package pdftex.def Info: eqw_ss.png used on input line 500.
+Package pdftex.def Info: eqw_ss.png used on input line 507.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-<eqw_rel.png, id=200, 586.8324pt x 442.2924pt>
+ [7 <./emergent_line_orig_5000.png> <./emergent_line_log_5000.png> <./emergent_
+line_orig.png> <./emergent_line_log_2000.png>] <eqw_rel.png, id=224, 586.8324pt
+ x 442.2924pt>
 File: eqw_rel.png Graphic file (type png)
- <use eqw_rel.png>
-Package pdftex.def Info: eqw_rel.png used on input line 507.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<growth.png, id=202, 586.8324pt x 442.2924pt>
+<use eqw_rel.png>
+Package pdftex.def Info: eqw_rel.png used on input line 514.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ <growth.png, id=226, 586.8324pt x 442.2924pt>
 File: growth.png Graphic file (type png)
- <use growth.png>
-Package pdftex.def Info: growth.png used on input line 520.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
- [7 <./emergent_line_orig.png> <./emergent_line_log_5000.png> <./emergent_line_
-log_10000.png> <./emergent_line_scaled_different.png>] [8
 
- <./eqw_ss.png> <./eqw_rel.png> <./growth.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 549.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 549.
+<use growth.png>
+Package pdftex.def Info: growth.png used on input line 527.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ [8 <./emergent_line_log_10000.png> <./emergent_line_scaled_different.png> <./e
+qw_ss.png> <./eqw_rel.png>] [9
+
+ <./growth.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 556.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 556.
  (./report.aux
 * soulpos - computing points - it may take a few seconds *
 \openout3 = `report.upb'.
 
  (./report.upa))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 549.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 549.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 556.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 556.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 949426F370238C73B25F0D422343B935;1272.
+(rerunfilecheck)             Checksum: 86E258A310C97A8A29720C8452259AFE;1293.
  ) 
 Here is how much of TeX's memory you used:
- 12936 strings out of 495028
- 193571 string characters out of 6181497
- 310531 words of memory out of 5000000
- 15761 multiletter control sequences out of 15000+600000
- 76906 words of font info for 135 fonts, out of 8000000 for 9000
+ 12963 strings out of 495028
+ 194059 string characters out of 6181497
+ 310769 words of memory out of 5000000
+ 15779 multiletter control sequences out of 15000+600000
+ 78283 words of font info for 137 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
- 42i,10n,45p,1463b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,10n,45p,1463b,438s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type
@@ -1396,13 +1425,14 @@ t/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type
 fonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
-s/utmri8a.pfb>
-Output written on report.pdf (8 pages, 1039748 bytes).
+exmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
+imes/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pf
+b>
+Output written on report.pdf (9 pages, 1218182 bytes).
 PDF statistics:
- 274 PDF objects out of 1000 (max. 8388607)
- 211 compressed objects within 3 object streams
- 61 named destinations out of 1000 (max. 500000)
- 237 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 297 PDF objects out of 1000 (max. 8388607)
+ 226 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 252 words of extra memory for PDF output out of 10000 (max. 10000000)
 

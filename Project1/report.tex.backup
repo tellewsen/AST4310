@@ -114,7 +114,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}   \label{sec:Intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This is the first of three numerical exercises in the course on Radiative processes in astrophysics (AST4310) at the University of Oslo. In this exercise we are to follow the steps of Annie Cannon, Cecilia Payne, and Marcel Minnaert. By doing this we hope to learn about the use of spectral lines in astophysics. 
+This is the first of three numerical exercises in the course on Radiative processes in astrophysics (AST4310) at the University of Oslo. In this exercise we are to follow the steps of Annie Cannon, Cecilia Payne, and Marcel Minnaert. By doing this we hope to learn about the use of spectral lines in astophysics. I will be using cgs units for all calculations in this project.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -270,7 +270,7 @@ To prove this I rewrite the function for Schadeenium and use the ionization ener
 \end{figure}
 
 \subsection{Solar Ca$^+$K versus H$\alpha$: temperature sensitivity}
-The two lines also differ much in their temperature sensitivity in this formation regime. This can be shown by plotting the relative changes $(\Delta n_{Ca}/\Delta T))/n_{Ca}$ and $(\Delta n_H/n_H)$ for the two lower levels as function of temperature for a small change in temperature $\Delta T$. See figure \ref{relpopchange} for a plot of this. Studying the plot we see two dips, one for Ca$^+$K around $T = 5600$K, and one for H$\alpha$ around $T = 9500$K. From this we can also see that the left side of each dip has $\Delta n < 0$, while the right side has $\Delta n > 0$. To take a closer look at the dips we plot the variation with temperature of each population in relative units on top of the last figure, resulting in figure \ref{}
+The two lines also differ much in their temperature sensitivity in this formation regime. This can be shown by plotting the relative changes $(\Delta n_{Ca}/\Delta T))/n_{Ca}$ and $(\Delta n_H/n_H)$ for the two lower levels as function of temperature for a small change in temperature $\Delta T$. See figure \ref{relpopchange} for a plot of this. Studying the plot we see two dips, one for Ca$^+$K around $T = 5600$K, and one for H$\alpha$ around $T = 9500$K. From this we can also see that the left side of each dip has $\Delta n < 0$, while the right side has $\Delta n > 0$. To take a closer look at the dips we plot the variation with temperature of each population in relative units on top of the last figure, resulting in figure \ref{relpopchange2}. We see that the relative population for Calcium starts increasing from the start which we expect from its lower ionization energy. After a while all of the Calcium is ionized, and after a bit more we start ionizing the next level and thus the population of this level starts falling. The same mechanism works on hydrogen, but it doesnt fall as fast because of its higher ionization energy. From this it is clear that since the populations remain almost constant for some range of temperatures, the change in the population has to shrink drastically during this range, and that is exactly what we're seeing in the plot. (The dips are right below the tops of the other curves.)
 \begin{figure}
  \includegraphics[width=.49\textwidth]{relpopchange.png}
  \caption{Relative population change vs temperature.}
@@ -282,18 +282,39 @@ The two lines also differ much in their temperature sensitivity in this formatio
  \label{relpopchange2}
 \end{figure}
 
-
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-
-%See Fig.~\ref{fig:XX}.
+\subsection{Hot stars versus cool stars}
+Finally for this section we want to know what temperature corresponds to about $50\%$ ionization for stellar photospheres with $P_e = 10^2$. To find this we plot the neutral hydrogen fraction versus temperature and get figure \ref{hydrogen_ionization}, where it looks to be about $9200 K$.
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{hydrogen_ionization.png}
+ \caption{Neutral hydrogen fraction versus temperature.}
+ \label{hydrogen_ionization}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fraunhofer line strengths and the curve of growth}   \label{sec:Fraunhofer}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Planck law}
+The Planck law is the counterpart to the Saha and Boltzmann distributions for radiation. It specifies the radiation intensity emitted by a gas or body in thermal equilibrium. This is known as a black body. The function is defined
+\begin{equation}
+ B_\lambda(T) = \frac{2hc^2}{\lambda^5}\frac{1}{e^{hc/\lambda kT}-1}
+\end{equation}\label{Planck}
 
+We plot this for the visible spectrum for some temperatures in figure \ref{radiation}. We see that the top shifts to lower wavelengths for higher temperatures. We also see that the left side follows the Wien approximation, while the right side follow the Rayleigh-Jeans approximation.
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{radiation.png}
+ \caption{Planck function for the visible spectrum using different temperatures.}
+ \label{radiation}
+\end{figure}
+The same plot with a logarthmic scale on the y axis can be seen in figure \ref{radiation_ylog}, and the same plot with both axes logarithmic can be seen in figure \ref{radiation_ylog_xlog}. Here we can see even clearer that the Rayleigh-Jeans approximation is correct.
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{radiation_ylog.png}
+ \caption{Logarthimic y axis.}
+ \label{radiation_ylog}
+\end{figure}
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{radiation_ylog_xlog.png}
+ \caption{Both axes logarithmic.}
+ \label{radiation_ylog_xlog}
+\end{figure}
 
 \subsection{Radiation through an isothermal layer}
 It can be shown that the total emergent radiation from a layer with optical thickness $\tau(x)$ and temperature $T(x)$ is:
@@ -315,6 +336,7 @@ I_{\lambda} =& I_{\lambda}(0)e^{-\tau} + \int_0^\tau B_{\lambda}[T(x)]e^{-(\tau 
 \begin{equation}\label{Radiation_isothermal}
  I_{\lambda} = I_{\lambda}(0)e^{-\tau} + B_{\lambda}(1 - e^{-\tau})
 \end{equation}
+Now if we plot this function for $\tau = [0.01,10]$ with $B = 2$, and $I_{\lambda}(0) = [0,4]$ we get figure \ref{emergent_original}, and if we make the axes logarthimic we get figure \ref{emergent_log}.
 
 \begin{figure}
 \includegraphics[width=.49\textwidth]{emergent_original.png}
@@ -330,7 +352,7 @@ I_{\lambda} =& I_{\lambda}(0)e^{-\tau} + \int_0^\tau B_{\lambda}[T(x)]e^{-(\tau 
 Studying figures \ref{emergent_original} \& \ref{emergent_log} shows a few different things.
 If one first considers cases where $\tau << 1$, the figures show that if $I_\lambda(0) = 0$, you get an exponential growth due to the source function B. And if $I_\lambda(0) > B_\lambda$ the intensity stays close to constant. This case corresponds to an ``optically thin'' medium. This is because whatever intensity that enters the medium passes straight through without being affected by the medium.
 
-The opposite case where $\tau >> 1$ is called an ``optically'' thick medium, since all the incident radiation is absorbed before it is able to pass through, and is replaced by the radiation emitted by the medium itself. As seen in the plot, the emergent intensity becomes independent of optical depth for large $\tau$. Mathematically this can be seen by looking at equation \ref{Radiation_isothermal} and letting $\tau \rightarrow \infty$. In physical terms one can picture it such that both the incident radiation and the radiation emitted by the medium is absorbed while it is passing through the medium, but since the medium replenishes the radiation it is emitting along the path through it, this radiation is refilled as one goes through the medium.
+The opposite case where $\tau >> 1$ is called an ``optically'' thick medium, since all the incident radiation is absorbed before it is able to pass through, and is replaced by the radiation emitted by the medium itself. As seen in the plot, the emergent intensity becomes independent of optical depth for large $\tau$. Mathematically this can be seen by looking at equation \ref{Radiation_isothermal} and letting $\tau \rightarrow \infty$. In physical terms one can picture it such that both the incident radiation and the radiation emitted by the medium is absorbed while it is passing through the medium, but since the medium replenishes the radiation it is emitting along the path through it, this radiation is refilled as one goes through the medium,while the incident radiation ``runs out'' after some distance.
 
 From this it should be clear that optically thin mediums allow us to view radiation originating from the other side of the medium, while optically thick mediums absorb all of the incident radiation before it can pass through, thus blocking our view past them.
 
@@ -348,7 +370,7 @@ Next, ones assumes that the star is optically thick, so that the surfrace radiat
 \end{equation}\label{Reversing layer}
 Note that the opaqueness $\tau$ in equation \ref{Reversing layer} has gotten an index for wavelength, since it depends on wavelength.
 
-\subsection{Voigt profile}
+\subsubsection{Voigt function}
 In reality spectral lines are not infinitely sharp delta functions. This can be attributed to Doppler shifts and Coloumb interactions between neighbouring particles. (Even if one could get rid of those effects, you would still have the uncertainty principle spreading it out a little.)
 
 This broadening of the spectral line is described by the distribution
@@ -364,7 +386,7 @@ where
  \Delta\lambda_D \equiv \frac{\lambda}{c} \sqrt{2kT/m}.
 \end{equation}
 Here m is the mass of the line-causing particles.
-The a parameter measures the the Coloumb disturbances. For stellar atomspheres a is usually somewhere in the range $0.01 - 0.5$. The definition of the Voigt function is
+The $a$ parameter measures the Coloumb disturbances. For stellar atomspheres $a$ is usually somewhere in the range $[0.01,0.5]$. The definition of the Voigt function is
 \begin{equation}
  V(a,u) = \frac{1}{\Delta\lambda_D\sqrt{\pi}}\frac{a}{\pi}\int_{-\infty}^{+\infty}\frac{e^{-y^2}}{(u-y)^2 + a^2}dy
 \end{equation}\label{Voigt}
@@ -374,7 +396,7 @@ This can be approximated by taking the sum instead of the convolution giving
  V(a,u) = \frac{1}{\Delta\lambda_D\sqrt{\pi}} \bigg[e^{-u^2} + \frac{a}{\sqrt{\pi}u^2}\bigg]
 \end{equation}\label{Voigt_approx}
 
-For those using IDL to do calculations, the voigt function is ready for use through the appropriately named function voigt.
+For those using IDL to do calculations, the Voigt function is ready for use through the appropriately named function voigt.
 Since I use python we instead have to use the fact that the voigt function can be written
 \begin{equation}
  V(x;\sigma,\gamma) = \frac{Re[w(z)]}{\sigma \sqrt{2\pi}}
@@ -402,8 +424,8 @@ Using approximation \ref{Voigt_approx} it is clear that the the exponential term
 \]
 which gives the functions the same form on the wings just scaled by the factor $a$.
 
-\subsection{Emergent line profiles}
-We now have both functions for intensity and for the distribution of the optical depth. If we now combine equation \ref{Radiation_isothermal} \& \ref{distribution} we should be able to compute and plot stellar spectral line profiles!
+\subsubsection{Emergent line profiles}
+We now have both functions for intensity and for the distribution of the optical depth. By combining equation \ref{Radiation_isothermal} \& \ref{distribution} we should be able to compute and plot stellar spectral line profiles!
 To do this we use values that fit well with the solar photosphere and plot what it looks like in the visible spectrum.
 The values we will be using are $T_{surface} = 5700 K$, $T_{layer} = 4200 K$, $a = 0.01$, $\lambda = 5000 \AA$.
 We start by plotting the intensity against $u$ for $\tau(0) = 1$. This results in figure \ref{emergent_line_orig_5000}.
@@ -413,32 +435,18 @@ We start by plotting the intensity against $u$ for $\tau(0) = 1$. This results i
  \label{emergent_line_orig_5000}
 \end{figure}
 
-\begin{itemize}
- \item 
- Explain profile shapes for $\tau(0) << 1$.
- \item 
- Why is there a low-intensity saturation limit for $\tau >> 1$?
- \item 
- Why do the line wings develop only for very large $\tau(0)$?
- \item 
- Where do the wings end?
- \item 
- For which values of $\tau(0)$ is the layer optically thin,respectively optically thick, at line center?
- And at $u = 5$ ?
- \item
- Now study the dependence of these line profiles on wavelength by repeating the above for $\lambda = 2000 \AA$ (ultraviolet) and $\lambda = 10000 \AA$ (near infrared). What sets the top value $I_{cont}$ and the limit value reached at line center 	by $I(0)$? Check these values by computing them directly on the command line. What happens to these values at other wavelengths?
-\end{itemize}
-
 Next we study the behaviour of the line for $\tau(0)$ in the range $\log \tau(0) = [-2, 2]$.
-This results in figure \ref{emergent_line_log_2000}.
+This results in figure \ref{emergent_line_log_5000}. Studying this plot reveals that $\tau(0)<<1$ lose almost none of their intensity, just as expected for optically thin media. We also see the ``refilling'' behaviour of the source function which keeps the saturation above a minimum level. Note also the line wiwngs developing for large $\tau(0)$. This can be attributed to the fact that the intensity is dependent on $\tau$ which is dependent on $\tau(0)$ and $V(a,u)$. So the larger $\tau(0)$ is, the longer the exponential terms in equation \ref{Reversing layer} can reduce the intensity. In fact these ``wings'' don't really converge to the continuum until $u \rightarrow \pm \infty$. We can also see from this plot wether the medium is optically thin or thick by recalling that we separate the domains of thickness at the point where the emergent radiation has been reduced to a factor $1/e$ of its incident radiation. In this case we see from the plot that the incident radiation is about $2.5\times 10^14$ so anything below about $0.9\times 10^14$ is optically thick, while anything above is optically thin.
+Thus we see that from the plot that in this case we get an optically thick medium if $\log \tau(0)= 0$ or less. Strictly
+speaking the limit is somwhere between this and $\log \tau(0) = 0.5$ If we shift our view to the sides of the line center to e.g $ u = 5$ all of the plotted lines are well above the limit for optically thin.
 \begin{figure}
- \includegraphics[width=.49\textwidth]{emergent_line_log_2000.png}
- \caption{Spectral lines for different choices of $\tau(0)$.}
- \label{emergent_line_log_2000} 
+ \includegraphics[width=.49\textwidth]{emergent_line_log_5000.png}
+ \caption{Spectral lines for different choices of $\tau(0)$ at $\lambda = 5000 \AA$.}
+ \label{emergent_line_log_5000} 
 \end{figure}
-Looking at the spectral lines for different wavelengths reveal a difference in intensity. This can be seen in figure \ref{emergent_line_orig}.
 
-To check the behaviour for different wavelengths we plot the results for $\lambda = 5000$ \& $10000$ in figures  \ref{emergent_line_log_5000} $\&$ \ref{emergent_line_log_10000}.
+Looking at the spectral lines for different wavelengths reveal a difference in intensity. This can be seen in figure \ref{emergent_line_orig}.
+To check the behaviour for different wavelengths we plot the results for $\lambda = 2000$ \& $10000$ in figures  \ref{emergent_line_log_2000} $\&$ \ref{emergent_line_log_10000}.
 
 \begin{figure}
  \includegraphics[width=.49\textwidth]{emergent_line_orig.png}
@@ -446,13 +454,13 @@ To check the behaviour for different wavelengths we plot the results for $\lambd
  \label{emergent_line_orig}
 \end{figure}
 \begin{figure}
- \includegraphics[width=.49\textwidth]{emergent_line_log_5000.png}
- \caption{Spectral lines for different choices of $\tau(0)$.}
- \label{emergent_line_log_5000} 
+ \includegraphics[width=.49\textwidth]{emergent_line_log_2000.png}
+ \caption{Spectral lines for different choices of $\tau(0)$ at $\lambda = 2000 \AA$.}
+ \label{emergent_line_log_2000} 
 \end{figure}
 \begin{figure}
  \includegraphics[width=.49\textwidth]{emergent_line_log_10000.png}
- \caption{Spectral lines for different choices of $\tau(0)$.}
+ \caption{Spectral lines for different choices of $\tau(0)$ at $\lambda = 10000 \AA$.}
  \label{emergent_line_log_10000} 
 \end{figure}
 

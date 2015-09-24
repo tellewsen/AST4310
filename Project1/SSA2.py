@@ -302,7 +302,7 @@ plt.show()
 """
 
 #Hot stars vs cold stars
-
+"""
 "Find at which temperature the hydrogen in stellar photospheres with P_e = 100 is about 50% ionized."
 for T in np.arange(7000,10001,100):
 	print T,sahabolt_H(T,1e2,1)
@@ -316,4 +316,4 @@ plt.xlabel(r'temperature $T/K$',size=14)
 plt.ylabel(r'neutral hydrogen fraction',size=14)
 plt.title('Fraction of neutral hydrogen in stellar photospheres')
 plt.show()
-
+"""

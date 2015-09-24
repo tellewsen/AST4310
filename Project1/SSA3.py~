@@ -18,22 +18,24 @@ elmass	= 9.109390e-28	#electron mass in grams
 def planck(temp,wav):
 	B = 2.*h*c*c/(wav**5) / (np.exp( (h*c) / (wav*kerg*temp) ) - 1 )
 	return B
-"""
+
 #Planck function test ok
 #print planck(5000,5000e-8)
-
-wav = np.arange(1000,20801,200)
+"""
+wav = np.arange(1000,40001,200)
 b = np.zeros(wav.shape)
 
 plt.xlabel(r'wavelength $\lambda / \AA$',size=14)
 plt.ylabel(r'Planck function',size=14)
 plt.title('Radiation intensity emitted')
-for T in np.arange(5000,8001,200):
+plt.set_cmap('RdYlBu')
+for T in np.arange(5000,8001,500):
 	b[:] = planck(T,wav[:]*1e-8)
 	plt.plot(wav,b,'-')
+
 plt.yscale('log')
-#plt.xscale('log')
-plt.xlim(0,20800)
+plt.xscale('log')
+plt.xlim(0,40001)
 plt.show()
 """
 #3.2 Radiation through an isothermal layer
@@ -60,11 +62,11 @@ def voigt(a,u):
     "Calculates the voigt function for values u and a"
     z = u + 1.j*a
     return special.wofz(z).real
-
+"""
 u = np.arange(-10,10.1,0.1)
 a = np.array([0.001,0.01,0.1,1])
 vau = np.zeros((a.shape[0],u.shape[0]))
-"""
+
 plt.figure(0)
 for i in range(4):
     vau[i,:] = voigt(a[i],u[:])
@@ -73,7 +75,7 @@ plt.title('Voigt profile for different a values')
 plt.ylim(0,1)
 plt.xlim(-10,10)
 plt.legend(fontsize=12)
-plt.xlabel('Partition function u')
+plt.xlabel('u')
 plt.ylabel('voigt profile',size=12)
 
 plt.figure(1)
@@ -83,12 +85,12 @@ for i in range(4):
     plt.plot(u[:],vau[i,:],label = 'a = '+ np.str(a[i]))
 plt.yscale('log')
 plt.legend(fontsize=12,loc=8)
-plt.xlabel('Partition function u',size=14)
+plt.xlabel('u',size=14)
 plt.ylabel('logarithmic voigt profile',size=12)
 plt.show()
 """
 #3.3 Emergent line profiles
-"""
+
 Ts = 5700.	#Temperature of the surface of the star
 Tl = 4200.	#Temperature of the rversing layer
 a = 0.1		#Coloumb damping parameter
@@ -106,8 +108,8 @@ plt.xlabel('u')
 plt.ylabel('intensity')
 plt.title('Intensity around center of spectral line')
 plt.show()
-"""
-"""
+
+
 for iwav in range(1,4):
 	wav=(iwav**2+1.)*1e-5
 	for i in range(len(u)):
@@ -132,7 +134,7 @@ plt.xlabel('u')
 plt.ylabel('intensity')
 plt.title(r'Intensity as a function of u for different $\tau_0$')
 plt.show()
-"""
+
 """
 for iwav in range(1,4):
 	wav=(iwav**2+1.)*1e-5
@@ -187,6 +189,7 @@ print eqw
 """
 
 #3.5 The curve of growth
+"""
 tau0 = np.logspace(-2,4,61)
 eqw  = np.zeros(tau0.size)
 u = np.arange(-200,200.4,0.4)
@@ -200,4 +203,6 @@ plt.xlabel(r'$\tau_0$',size=18)
 plt.ylabel(r'equivalent width $W_{\lambda}$',size=14)
 plt.xscale('log')
 plt.yscale('log')
+plt.title('Curve of growth')
 plt.show()
+"""
