@@ -173,7 +173,7 @@ for s in range(1,6):
 	print sahabolt_E(20000, 1e3, 4, s)
 """
 #Plotting the population vs temperature for s=1 and P_e = 131
-
+"""
 temp = np.arange(0,30001,1000)
 #print temp
 pop = np.zeros((5,31))
@@ -194,7 +194,7 @@ plt.ylim([1e-3,1.1])
 plt.legend(loc='best')
 plt.title('Population vs Temperature for s=1')
 plt.show()
-
+"""
 #Plotting the population vs temperature for s=2
 """
 temp = np.arange(0,30001,1000)
@@ -217,8 +217,9 @@ plt.ylim([1e-3,1.1])
 plt.legend(loc='best')
 plt.title('Population vs Temperature for s=2')
 plt.show()
-
+"""
 #Plotting the population vs temperature for s=4
+"""
 temp = np.arange(0,30001,1000)
 #print temp
 pop = np.zeros((5,31))
@@ -240,9 +241,6 @@ plt.legend(loc='best')
 plt.title('Population vs Temperature for s=4')
 plt.show()
 """
-
-
-
 #Printing hydrogen levels
 """
 sahabolt_H(5000,1e2,1) this works as it should
@@ -253,7 +251,7 @@ sahabolt_H(5000,1e2,1) this works as it should
 temp = np.arange(1000,20001,100)
 CaH = np.zeros(temp.shape)
 Caabund = 2e-6
-for i in range(0,191):
+for i in range(0,len(temp)):
 	NCa = sahabolt_Ca(temp[i],1e2,2,1)
 	NH  = sahabolt_H(temp[i],1e2,2)
 	CaH[i] = NCa*Caabund/NH
@@ -263,11 +261,13 @@ plt.yscale('log')
 plt.xlabel(r'temperature $T / K$',size=14)
 plt.ylabel(r'Ca II K / H$\alpha$',size=14)
 plt.legend(fontsize=14)
+plt.title('Ca/H Ratio versus temperature')
 plt.show()
 print 'Ca/H ratio at 5000 K = ', CaH[np.argwhere(temp==5000)][0][0]
-"""
+
 """
 #solar Ca+K versus Ha: temperature sensitivity
+"""
 temp = np.arange(2000,12001,100)
 dNCadT = np.zeros(temp.shape)
 dNHdT = np.zeros(temp.shape)
@@ -281,8 +281,10 @@ for i in range(101):
 	dNHdT[i] = (NH-NH2)/(dT*NH)
 plt.figure(0)
 plt.plot(temp,np.abs(dNHdT),label=r'H')
-plt.plot(temp,np.abs(dNCadT),label=r'Ca$^+$K')
+plt.plot(temp,np.abs(dNCadT),ls='--',label=r'Ca$^+$K')
 plt.yscale('log')
+
+plt.title('Relative population changes')
 plt.ylim(1e-9,1e1)
 
 NCa = np.zeros(temp.shape)
@@ -290,22 +292,21 @@ NH = np.zeros(temp.shape)
 for i in range (101):
 	NCa[i] = sahabolt_Ca(temp[i],1e2,2,1)
 	NH[i] = sahabolt_H(temp[i],1e2,2)
-plt.plot(temp,NH/np.amax(NH), ls='--',label = 'rel. pop H')
+plt.plot(temp,NH/np.amax(NH), label = 'rel. pop H')
 plt.plot(temp,NCa/np.amax(NCa),ls='--',label = r'rel. pop Ca$^+$K')
-
 
 plt.xlabel(r'temperature $T/K$',size=14)
 plt.ylabel(r'$\left| \left( \Delta n(r,s) / \Delta T\right) /  n(r,s) \right|$',size=20)
-plt.legend(loc=4,fontsize=12)
-
+plt.legend(loc=4,fontsize=12)	
 plt.show()
 """
-"""
+
 #Hot stars vs cold stars
+
 "Find at which temperature the hydrogen in stellar photospheres with P_e = 100 is about 50% ionized."
-for T in np.arange(2000,20001,2000):
+for T in np.arange(7000,10001,100):
 	print T,sahabolt_H(T,1e2,1)
-temp = np.arange(6000,14001,1e2)
+temp = np.arange(6000,13001,1e2)
 nH = np.zeros(temp.shape)
 for i in range(len(temp)):
 	nH[i] = sahabolt_H(temp[i],1e2,1)
@@ -315,4 +316,4 @@ plt.xlabel(r'temperature $T/K$',size=14)
 plt.ylabel(r'neutral hydrogen fraction',size=14)
 plt.title('Fraction of neutral hydrogen in stellar photospheres')
 plt.show()
-"""
+

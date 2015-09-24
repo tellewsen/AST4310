@@ -216,7 +216,6 @@ which matches the values given in the exercise, cofirming that the function work
 
 \subsection{Payne curves for Schadeenium}
 If TE holds in a stellar atmosphere one may expect that the observed strength of a spectral line involving level (r, s) scales with the Saha-Boltzmann prediction for the lower level population $n_{r,s}$ — even if one doesn’t know how spectral lines are formed in detail. That was the underlying premise of Payne’s analysis. We follow it by plotting curves for various levels of the neutral and ionization stages of element E.
-
 To do this I write a function Sahabolt\_E that evaluates $n_{r,s}/N$ for any level of E as a function of $T$ and $P_e$.
 Using the same value for electron pressure as before we inspect a few values. I check four different settings.
 \begin{itemize}
@@ -227,7 +226,7 @@ Using the same value for electron pressure as before we inspect a few values. I 
 \end{itemize}
 I'll spare you the wall of text this time as well, and just state that the output from the program matches the values given in the exercise text, and confirms what we've already seen; that the lower levels within an ionization stage always have higher population due to the Boltzmann factor. Note also that the drop-off with s is less steep at higher temperature as it should be due to the Saha factor.
 
-Now we have all the tools nescessary to compute the ground-state populations $n_{r,1}/N$ for Payne's pressure ($P_e = 131$ dyne cm$^-2$) and a range of temperatures for each ion r,and plot them together in a Payne-like graph. The resulting plot from this can be seen in figure \ref{pop_vs_t_for_s1}
+Now we have all the tools nescessary to compute the ground-state populations $n_{r,1}/N$ for Payne's pressure ($P_e = 131$ dyne cm$^-2$) and a range of temperatures for each ion r,and plot them together in a Payne-like graph. The resulting plot from this can be seen in figure \ref{pop_vs_t_for_s1}. We see in the plot that the flanks on each side of the peaks is very steep. Mathematically this can be explained by the exponential terms in the product of the Saha and Boltzmann distributions. Physically one could argue that the uncertainty principle is at play here, so that even if the temperature isn't quite high enough to excite the electrons they still get excited to the next level. This way we get a steep but still gradual excitation to the next energy level instead of a straight cut off. Note that if the temperature goes to 0 the electrons would go to the ground stage, and if the temperature goes to infinity all the electrons would leave the ground stage. If ones looks closely one can see that the right side of the curves is less steep than the left side. The explanation for this can be found in the $(...)^{3/2}$ factor in the Saha distribution. Basically this term is fighting the exponentials.
 
 \begin{figure}
  \includegraphics[width=.49\textwidth]{pop_vs_t_for_s1.png}
@@ -235,17 +234,76 @@ Now we have all the tools nescessary to compute the ground-state populations $n_
  \label{pop_vs_t_for_s1}
 \end{figure}
 
+Figures for higher levels of s can be seen in figures \ref{pop_vs_t_for_s2} \& \ref{pop_vs_t_for_s4}.
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{pop_vs_t_for_s2.png}
+ \caption{Population as a function of temperature for $s = 4$.}
+ \label{pop_vs_t_for_s2}
+\end{figure}
 
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
-THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{pop_vs_t_for_s4.png}
+ \caption{Population as a function of temperature for $s = 4$.}
+ \label{pop_vs_t_for_s4}
+\end{figure}
 
-%See Fig.~\ref{fig:XX}.
+The change between the three figures is clear straight away. When looking at the ground state for the energy levels we see that the higher the temperature is, the lower the population gets. Studying the plots for higher energy levels we also see that the population moves to higher energy levels for higher ionization levels. 
+If one considers elements with lower ionization energies than E the curves should move towards the right, and become broader. This should become clear by considering the fact that with ionization energies, one would need lower thermal energy to ionize atoms. The edges should be sharper as well, since the fluctuations due to the uncertainty principle can have a bigger impact.
+Considering higher ionization energies gives us the opposite case with broader curves moved towards the left and becoming narrower.
+
+\subsection{Saha-Boltzmann population of hydrogen}
+Since we've made function for our fictional element it should be easy to transfer this to a real element, namely Hydrogen.
+To write the functions for Hydrogen we need to know a few things about it first. Hydrogen has ionization energy $\chi_1 = 13.598$ eV. The statistical weight $g_{r,s}$ and level energies $\chi_{r,s}$ of neutral hydrogen are given by
+\begin{equation*}
+g_{1,s} = 2s^2 ~,~ \chi_{1,s} = 13.598(1-1/s^2) ~\textmd{eV}
+\end{equation*}
+while the single ion stage(protons only) has $U_2 = g_{2,1} = 1$.
+Implementing this worked nicely and i was able to reproduce the values in the exercise text.
+\subsection{Solar Ca$^+$K versus H$\alpha$: line strength}
+Studying the spectrum of the sun reveals that the $Ca^+ K$ line is much stronger than the $H\alpha$ line. Even if the ratio between Calcium and hydrogen abundance in the sun is $2*10^6$, and the temperature in the photsphere and chromosphere is $4000-6000$ K, the lower ionization energy for Calcium has the potential to excite many more electrons than the Hydrogen.
+
+To prove this I rewrite the function for Schadeenium and use the ionization energies for Calcium instead. We then plot the ratio between the two lines as a function of temperature. See figure \ref{CaHratio}. Looking at the plot reveals that lower temperature gives higher strength to Calcium. Which makes sense considering the above. As the temperature increases we get enough energy to ionize more and more hydrogen, which makes that stronger than Calcium, since levels 2 and above for Calcium need more energy than the first one for hydrogen. Printing out the ratio at $T = 5000$K gives a ratio of $7643$. This doesn't match the value given in the exercise text perfectly but it is close enough to be considered correct.
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{CaHratio.png}
+ \caption{Calcium hydrogen ratio as a function of temperature.}
+ \label{CaHratio}
+\end{figure}
+
+\subsection{Solar Ca$^+$K versus H$\alpha$: temperature sensitivity}
+The two lines also differ much in their temperature sensitivity in this formation regime. This can be shown by plotting the relative changes $(\Delta n_{Ca}/\Delta T))/n_{Ca}$ and $(\Delta n_H/n_H)$ for the two lower levels as function of temperature for a small change in temperature $\Delta T$. See figure \ref{relpopchange} for a plot of this. Studying the plot we see two dips, one for Ca$^+$K around $T = 5600$K, and one for H$\alpha$ around $T = 9500$K. From this we can also see that the left side of each dip has $\Delta n < 0$, while the right side has $\Delta n > 0$. To take a closer look at the dips we plot the variation with temperature of each population in relative units on top of the last figure, resulting in figure \ref{relpopchange2}. We see that the relative population for Calcium starts increasing from the start which we expect from its lower ionization energy. After a while all of the Calcium is ionized, and after a bit more we start ionizing the next level and thus the population of this level starts falling. The same mechanism works on hydrogen, but it doesnt fall as fast because of its higher ionization energy. From this it is clear that since the populations remain almost constant for some range of temperatures, the change in the population has to shrink drastically during this range, and that is exactly what we're seeing in the plot. (The dips are right below the tops of the other curves.)
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{relpopchange.png}
+ \caption{Relative population change vs temperature.}
+ \label{relpopchange}
+\end{figure}
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{relpopchange2.png}
+ \caption{Relative population change vs temperature in relative units.}
+ \label{relpopchange2}
+\end{figure}
+
+\subsection{Hot stars versus cool stars}
+Finally for this section we want to know what temperature corresponds to about $50\%$ ionization for stellar photospheres with $P_e = 10^2$. To find this we plot the neutral hydrogen fraction versus temperature and get figure \ref{hydrogen_ionization}, where it looks to be about $9200 K$.
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{hydrogen_ionization.png}
+ \caption{Neutral hydrogen fraction versus temperature.}
+ \label{hydrogen_ionization}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fraunhofer line strengths and the curve of growth}   \label{sec:Fraunhofer}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Planck law}
+The Plankc law is the counterpart to the Saha and Boltzmann distributions for radiation. It specifies the radiation intensity emitted by a gas or body in thermal equilibrium. This is known as a black body. The function is defined
+\begin{equation}
+ B_\lambda(T) = \frac{2hc^2}{\lambda^5}\frac{1}{e^{hc/\lambda kT}-1}
+\end{equation}\label{Planck}
+
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
+
 
 
 \subsection{Radiation through an isothermal layer}

@@ -196,21 +196,8 @@ With this in mind we compute the partition function $U_r$ for Schadeenium and pr
 [ 2.23243073  2.27133987  2.27155094  2.27155097]
 \end{verbatim}
 Which is a perfect match to the values tabulated in the exercise text.
-
-We then make a Boltzmann function in the program and check that it functions properly by printing the relative level population for $s = [0,10]$ for $T = 5000,10000,20000$. The output from the program is 
-\begin{verbatim}
-[  9.01815078e-01   8.85447148e-02   8.69376295e-03   8.53597128e-04
-   8.38104353e-05   8.22892772e-06   8.07957280e-07   7.93292867e-08
-   7.78894614e-09   7.64757688e-10   0.00000000e+00]
-[  6.86858856e-01   2.15223692e-01   6.74392378e-02   2.11317385e-02
-   6.62152166e-03   2.07481978e-03   6.50134114e-04   2.03716183e-04
-   6.38334190e-05   2.00018738e-05   0.00000000e+00]
-[ 0.44794223  0.25074559  0.1403604   0.07856984  0.04398121  0.02461946
-  0.01378129  0.00771438  0.0043183   0.00241726  0.        ]
-\end{verbatim}
-which matches the values given in the exercise text.
-
-The next step is to make a Saha function and test that for $r = [1,6]$ for $T = 20000$ and $P_e} = 100$, and for $r = [1,6]$, with $T = 10000$ and $P_e = 100$. We print the results and get 
+We then make a Boltzmann function in the program and check that it functions properly by printing the relative level population for $s = [0,10]$ for $T = 5000,10000,20000$. I'll spare you the wall of text, and just state that the output from the program matches the values given in the exercise text.
+The next step is to make a Saha function and test that for $r = [1,6]$ for $T = 20000$ and $P_e = 100$, and for $r = [1,6]$, with $T = 10000$ and $P_e = 100$. We print the results and get 
 \begin{verbatim}
  2.72775113242e-10
 0.000180278462885
@@ -224,51 +211,77 @@ The next step is to make a Saha function and test that for $r = [1,6]$ for $T = 
 8.63969442555e-11
 1.56819249959e-29
 \end{verbatim}
-Which matches the values given in the exercise, cofirming that the function works as it should.
+which matches the values given in the exercise, cofirming that the function works as it should.
 (Note here that the code example in the exercise tells us to calculate the values for an electron pressure that is different from the one used in the table, so I've chosen to use the one corresponding to the table).
 
 \subsection{Payne curves for Schadeenium}
 If TE holds in a stellar atmosphere one may expect that the observed strength of a spectral line involving level (r, s) scales with the Saha-Boltzmann prediction for the lower level population $n_{r,s}$ — even if one doesn’t know how spectral lines are formed in detail. That was the underlying premise of Payne’s analysis. We follow it by plotting curves for various levels of the neutral and ionization stages of element E.
-
-To do this I write a function Sahabolt_E that evaluates $n_{r,s}/N$ for any level of E as a function of $T$ and $P_e$.
+To do this I write a function Sahabolt\_E that evaluates $n_{r,s}/N$ for any level of E as a function of $T$ and $P_e$.
 Using the same value for electron pressure as before we inspect a few values. I check four different settings.
 \begin{itemize}
- \item 
- $T = 5000$,$P_e = 1000$, $r = 1$, $s = [1,5]$
- \item 
- $T = 20000$,$P_e = 1000$, $r = 1$, $s = [1,5]$
-  \item 
- $T = 10000$,$P_e = 1000$, $r = 2$, $s = [1,5]$
-  \item 
- $T = 20000$,$P_e = 1000$, $r = 4$, $s = [1,5]$
+ \item $T = 5000~$~,$P_e = 1000$, $r = 1$, $s = [1,5]$
+ \item $T = 20000$,$P_e = 1000$, $r = 1$, $s = [1,5]$
+ \item $T = 10000$,$P_e = 1000$, $r = 2$, $s = [1,5]$
+ \item $T = 20000$,$P_e = 1000$, $r = 4$, $s = [1,5]$
 \end{itemize}
-The output from the program reads
-\begin{verbatim}
- 0.817093536375
-0.0802263300862
-0.00787702233903
-0.000773405450093
-7.59368152695e-05
-----
-1.22187492385e-10
-6.83971553597e-11
-3.82868227344e-11
-2.14318970926e-11
-1.19969791218e-11
-----
-0.648954237872
-0.203346475021
-0.0637175728123
-0.0199655739529
-0.00625610998149
-----
-0.161921366802
-0.0906390716843
-0.0507372280636
-0.0284012872566
-0.0158982496407
-\end{verbatim}
-which matches with the values given in the exercise text, and confirms what we've already seen; that the lower levels within an ionization stage always have higher population due to the Boltzmann factor. Note also that the drop-off with s is less steep at higher temperature as it should be due to the Saha factor.
+I'll spare you the wall of text this time as well, and just state that the output from the program matches the values given in the exercise text, and confirms what we've already seen; that the lower levels within an ionization stage always have higher population due to the Boltzmann factor. Note also that the drop-off with s is less steep at higher temperature as it should be due to the Saha factor.
+
+Now we have all the tools nescessary to compute the ground-state populations $n_{r,1}/N$ for Payne's pressure ($P_e = 131$ dyne cm$^-2$) and a range of temperatures for each ion r,and plot them together in a Payne-like graph. The resulting plot from this can be seen in figure \ref{pop_vs_t_for_s1}. We see in the plot that the flanks on each side of the peaks is very steep. Mathematically this can be explained by the exponential terms in the product of the Saha and Boltzmann distributions. Physically one could argue that the uncertainty principle is at play here, so that even if the temperature isn't quite high enough to excite the electrons they still get excited to the next level. This way we get a steep but still gradual excitation to the next energy level instead of a straight cut off. Note that if the temperature goes to 0 the electrons would go to the ground stage, and if the temperature goes to infinity all the electrons would leave the ground stage. If ones looks closely one can see that the right side of the curves is less steep than the left side. The explanation for this can be found in the $(...)^{3/2}$ factor in the Saha distribution. Basically this term is fighting the exponentials.
+
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{pop_vs_t_for_s1.png}
+ \caption{Population as a function of temperature for $s = 1$.}
+ \label{pop_vs_t_for_s1}
+\end{figure}
+
+Figures for higher levels of s can be seen in figures \ref{pop_vs_t_for_s2} \& \ref{pop_vs_t_for_s4}.
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{pop_vs_t_for_s2.png}
+ \caption{Population as a function of temperature for $s = 4$.}
+ \label{pop_vs_t_for_s2}
+\end{figure}
+
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{pop_vs_t_for_s4.png}
+ \caption{Population as a function of temperature for $s = 4$.}
+ \label{pop_vs_t_for_s4}
+\end{figure}
+
+The change between the three figures is clear straight away. When looking at the ground state for the energy levels we see that the higher the temperature is, the lower the population gets. Studying the plots for higher energy levels we also see that the population moves to higher energy levels for higher ionization levels. 
+If one considers elements with lower ionization energies than E the curves should move towards the right, and become broader. This should become clear by considering the fact that with ionization energies, one would need lower thermal energy to ionize atoms. The edges should be sharper as well, since the fluctuations due to the uncertainty principle can have a bigger impact.
+Considering higher ionization energies gives us the opposite case with broader curves moved towards the left and becoming narrower.
+
+\subsection{Saha-Boltzmann population of hydrogen}
+Since we've made function for our fictional element it should be easy to transfer this to a real element, namely Hydrogen.
+To write the functions for Hydrogen we need to know a few things about it first. Hydrogen has ionization energy $\chi_1 = 13.598$ eV. The statistical weight $g_{r,s}$ and level energies $\chi_{r,s}$ of neutral hydrogen are given by
+\begin{equation*}
+g_{1,s} = 2s^2 ~,~ \chi_{1,s} = 13.598(1-1/s^2) ~\textmd{eV}
+\end{equation*}
+while the single ion stage(protons only) has $U_2 = g_{2,1} = 1$.
+Implementing this worked nicely and i was able to reproduce the values in the exercise text.
+\subsection{Solar Ca$^+$K versus H$\alpha$: line strength}
+Studying the spectrum of the sun reveals that the $Ca^+ K$ line is much stronger than the $H\alpha$ line. Even if the ratio between Calcium and hydrogen abundance in the sun is $2*10^6$, and the temperature in the photsphere and chromosphere is $4000-6000$ K, the lower ionization energy for Calcium has the potential to excite many more electrons than the Hydrogen.
+
+To prove this I rewrite the function for Schadeenium and use the ionization energies for Calcium instead. We then plot the ratio between the two lines as a function of temperature. See figure \ref{CaHratio}. Looking at the plot reveals that lower temperature gives higher strength to Calcium. Which makes sense considering the above. As the temperature increases we get enough energy to ionize more and more hydrogen, which makes that stronger than Calcium, since levels 2 and above for Calcium need more energy than the first one for hydrogen. Printing out the ratio at $T = 5000$K gives a ratio of $7643$. This doesn't match the value given in the exercise text perfectly but it is close enough to be considered correct.
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{CaHratio.png}
+ \caption{Calcium hydrogen ratio as a function of temperature.}
+ \label{CaHratio}
+\end{figure}
+
+\subsection{Solar Ca$^+$K versus H$\alpha$: temperature sensitivity}
+The two lines also differ much in their temperature sensitivity in this formation regime. This can be shown by plotting the relative changes $(\Delta n_{Ca}/\Delta T))/n_{Ca}$ and $(\Delta n_H/n_H)$ for the two lower levels as function of temperature for a small change in temperature $\Delta T$. See figure \ref{relpopchange} for a plot of this. Studying the plot we see two dips, one for Ca$^+$K around $T = 5600$K, and one for H$\alpha$ around $T = 9500$K. From this we can also see that the left side of each dip has $\Delta n < 0$, while the right side has $\Delta n > 0$. To take a closer look at the dips we plot the variation with temperature of each population in relative units on top of the last figure, resulting in figure \ref{}
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{relpopchange.png}
+ \caption{Relative population change vs temperature.}
+ \label{relpopchange}
+\end{figure}
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{relpopchange2.png}
+ \caption{Relative population change vs temperature in relative units.}
+ \label{relpopchange2}
+\end{figure}
+
 
 THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
 THIS IS WHERE YOU SHOULD CONTINUE WRITING!!!!!!
