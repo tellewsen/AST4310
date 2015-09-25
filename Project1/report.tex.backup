@@ -145,16 +145,15 @@ Figure 7 skips some of the transitions.
 But Lyman $\gamma$ shares upper level with Balmer $\beta$ and Paschen $\alpha$. 
 It keeps going in this way for the rest of the transitions.
 
-At this point Payne made the assumption that the strength of the absorption lines observed in stellar spectra scaled with the population density of the lower level of the corresponding transition. Assuming that most of the hydrogen is in the lower energy levels it is logical that most of the transitions must be going upwards in the levels, and thus they should scale with the population density of the lower levels. It turns out that this assumption assumption is not correct, but in general it is true that stellar absorption lines get stronger at larger lower-level population. We ignore this and continue with Payne's assumption anyway.
-
-If we assume that the above is true. We can give som rough estimates of the strength ratios of the $\alpha$ lines in the HI Lyman, Balmer, Paschen and Brackett series. We see from figure 7 in the exercise that Lyman $\alpha$ releases about $10 eV$, while Balmer releases about $2 eV$, Paschen $0.5eV$ and Brackett about $0.25 eV$. Considering that our assumption means more transitions from lower levels, the Lyman $\alpha$ line should be much stronger than the Balmer. And the Balmer should be much stronger than the Paschen and so forth. 
-
-Next we need to define some functions:
+At this point Payne made the assumption that the strength of the absorption lines observed in stellar spectra scaled with the population density of the lower level of the corresponding transition. Assuming that most of the hydrogen is in the lower energy levels it is logical that most of the transitions must be going upwards in the levels, and thus they should scale with the population density of the lower levels. It turns out that this assumption assumption is not correct, but in general it is true that stellar absorption lines get stronger at larger lower-level population. We ignore this and continue with Payne's assumption anyway. For the next part we will need the Boltzmann distribution.
 
 The Boltzmann distribution is defined
 \begin{equation}
-\frac{n_{r,s}}{N_r} = \frac{g_{r,s}}{U_r} e^{-\chi_{r,s}/kT} 
+\frac{n_{r,s}}{N_r} = \frac{g_{r,s}}{U_r} e^{-\chi_{r,s}/kT}.
 \end{equation}\label{Boltzmann}
+If we assume that the above is true. We can give som rough estimates of the strength ratios of the $\alpha$ lines in the HI Lyman, Balmer, Paschen and Brackett series. 
+
+Next we need to define some functions:
 
 The Partition function $U_r$ is defined as
 \begin{equation}
@@ -436,9 +435,9 @@ We start by plotting the intensity against $u$ for $\tau(0) = 1$. This results i
 \end{figure}
 
 Next we study the behaviour of the line for $\tau(0)$ in the range $\log \tau(0) = [-2, 2]$.
-This results in figure \ref{emergent_line_log_5000}. Studying this plot reveals that $\tau(0)<<1$ lose almost none of their intensity, just as expected for optically thin media. We also see the ``refilling'' behaviour of the source function which keeps the saturation above a minimum level. Note also the line wiwngs developing for large $\tau(0)$. This can be attributed to the fact that the intensity is dependent on $\tau$ which is dependent on $\tau(0)$ and $V(a,u)$. So the larger $\tau(0)$ is, the longer the exponential terms in equation \ref{Reversing layer} can reduce the intensity. In fact these ``wings'' don't really converge to the continuum until $u \rightarrow \pm \infty$. We can also see from this plot wether the medium is optically thin or thick by recalling that we separate the domains of thickness at the point where the emergent radiation has been reduced to a factor $1/e$ of its incident radiation. In this case we see from the plot that the incident radiation is about $2.5\times 10^14$ so anything below about $0.9\times 10^14$ is optically thick, while anything above is optically thin.
+This results in figure \ref{emergent_line_log_5000}. Studying this plot reveals that $\tau(0)<<1$ lose almost none of their intensity, just as expected for optically thin media. We also see the ``refilling'' behaviour of the source function which keeps the saturation above a minimum level. Note also the line wiwngs developing for large $\tau(0)$. This can be attributed to the fact that the intensity is dependent on $\tau$ which is dependent on $\tau(0)$ and $V(a,u)$. So the larger $\tau(0)$ is, the longer the exponential terms in equation \ref{Reversing layer} can reduce the intensity. In fact these ``wings'' don't really converge to the continuum until $u \rightarrow \pm \infty$. We can also see from this plot wether the medium is optically thin or thick by recalling that we separate the domains of thickness at the point where the emergent radiation has been reduced to a factor $1/e$ of its incident radiation. In this case we see from the plot that the incident radiation is about $2.5\times 10^{14}$ so anything below about $0.9\times 10^14$ is optically thick, while anything above is optically thin.
 Thus we see that from the plot that in this case we get an optically thick medium if $\log \tau(0)= 0$ or less. Strictly
-speaking the limit is somwhere between this and $\log \tau(0) = 0.5$ If we shift our view to the sides of the line center to e.g $ u = 5$ all of the plotted lines are well above the limit for optically thin.
+speaking the limit is somwhere between this and $\log \tau(0) = 0.5$. If we shift our view to the sides of the line center to e.g $ u = 5$ all of the plotted lines are well above the limit for optically thin.
 \begin{figure}
  \includegraphics[width=.49\textwidth]{emergent_line_log_5000.png}
  \caption{Spectral lines for different choices of $\tau(0)$ at $\lambda = 5000 \AA$.}
@@ -464,43 +463,53 @@ To check the behaviour for different wavelengths we plot the results for $\lambd
  \label{emergent_line_log_10000} 
 \end{figure}
 
-\begin{itemize}
- \item 
- Explain profile shapes for $\tau(0) << 1$.
- \item 
- Why is there a low-intensity saturation limit for $\tau >> 1$?
- \item 
- Why do the line wings develop only for very large $\tau(0)$?
- \item 
- Where do the wings end?
- \item 
- For which values of $\tau(0)$ is the layer optically thin,respectively optically thick, at line center?
- And at $u = 5$ ?
- \item
- Now study the dependence of these line profiles on wavelength by repeating the above for $\lambda = 2000 \AA$ (ultraviolet) and $\lambda = 10000 \AA$ (near infrared). What sets the top value $I_{cont}$ and the limit value reached at line center 	by $I(0)$? Chek these values by computing them directly on the command line. What happens to these values at other wavelengths?
-\end{itemize}
-
-Since some observed spectra are measured without absolute intensity calibration it useful to scale the spectrum to the local continuum intensity by plotting $I_\lambda/I_{cont}$. Plotting this for the same 3 wavelengths reults in figure \ref{emergent_line_scaled_different}.
+For the two other wavelengths we see the same behaviour as we did for $\lambda = 5000 \AA$. The shapes are the same, while the intensity of the continuum changes. The lower limit also moves. For $\lambda = 2000 \AA$ we end up with a separation between optically thin and thick at roughly the same place as for $\lambda = 5000 \AA$. However, for $\lambda = 10000 \AA$ the intensity reaches the lower limit before it can be reduced to the point where we say the medium is optically thick. This would indicate that the medium is optically thin at very high wavelengths. To find the value of the continuum we look at the equation for the emergent intensity (eq. \ref{Reversing layer}). To look at the continuum we set $\tau \rightarrow 0$, since the continuum should have no optical depth. This gives 
+\begin{equation}
+I_{cont}  = B_\lambda(T_{surface})
+\end{equation}
+so the intensity of the continuum is defined by the surface temperature.
+While if we let $\tau \rightarrow \infty$ we get the lower limit
+\begin{equation}
+I_{min}  = B_\lambda(T_{layer})
+\end{equation}
+We check these values by printing them to the commandline in our function. The results of this can be found in table \ref{I_Cont}. Calculating them from the Planck function gives the same answers.
+\begin{table}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+\hline
+$\lambda$ & $I_{cont}$ & $I_{center}$\\
+\hline
+2000 & $1.23\times 10^{13}$ & $1.36\times 10^{11}$\\
+\hline
+5000 & $2.46\times 10^{14}$ & $4.04\times 10^{13}$\\
+\hline
+10000 & $1.04\times 10^{14}$ & $4.00\times 10^{13}$\\
+\hline
+\end{tabular}\label{I_Cont}
+\caption{Intensity of the continuum}
+\end{center}
+\end{table}
+Since some observed spectra are measured without absolute intensity calibration it is useful to scale the spectrum to the local continuum intensity by plotting $I_\lambda/I_{cont}$. Plotting this for the same 3 wavelengths reults in figure \ref{emergent_line_scaled_different}.
 \begin{figure}[hbtp]
  \includegraphics[width=.49\textwidth]{emergent_line_scaled_different.png}
  \caption{Spectral lines for different choices of $\tau(0)$.}
  \label{emergent_line_scaled_different} 
 \end{figure}
-
+Here we see clearly that the wavelength of the radiation is crucial to whether or not the medium is optically thin or thick.
 \subsection{The equivalent width of spectral lines}
 From the profile plots one can see that the growth of the absorption feature for increasing $\tau(0)$is faster for small $\tau(0)$ than for larger $\tau(0)$. Because of this, Minnaert and his coworkers introduced the equivalent width $W_\lambda$ as a line-strength parameter to measure this effect. It measures the integrated line depression in the normalized spectrum
 \begin{equation}
  W_\lambda = \int \frac{I_{cont}-I(\lambda)}{I_{cont}}d\lambda.
 \end{equation}\label{eqw}
 To test this effectively we make a profile function that returns a Schuster-Schwarzschild profile, given $a$, $\tau$, and $u$.  Setting $a = 0.1$, $\tau(0) = 100$ and plotting this for $ u = [-200,200]$ returns figure \ref{eqw_ss}.
-\begin{figure}[hbtp]
+\begin{figure}
  \includegraphics[width=.49\textwidth]{eqw_ss.png}
  \caption{Schuster-Schwarzschild profile.}
  \label{eqw_ss} 
 \end{figure}
 
 Next we compute the line depth in relative units(the integrand in equation \ref{eqw}. Plotting this versus u gives figure \ref{eqw_rel}.
-\begin{figure}[hbtp]
+\begin{figure}
  \includegraphics[width=.49\textwidth]{eqw_rel.png}
  \caption{Line depth in relative units.}
  \label{eqw_rel} 

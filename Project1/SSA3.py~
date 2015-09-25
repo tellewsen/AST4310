@@ -20,7 +20,8 @@ def planck(temp,wav):
 	return B
 
 #Planck function test ok
-#print planck(5000,5000e-8)
+print planck(4200,10000e-8)
+
 """
 wav = np.arange(1000,40001,200)
 b = np.zeros(wav.shape)
@@ -92,13 +93,14 @@ plt.show()
 #3.3 Emergent line profiles
 
 Ts = 5700.	#Temperature of the surface of the star
-Tl = 4200.	#Temperature of the rversing layer
+Tl = 4200.	#Temperature of the reversing layer
 a = 0.1		#Coloumb damping parameter
 wav = 10000e-8	#Wavelength in cm
 tau_0 = 1.	#reversing layer thickness at line center
 u = np.arange(-10,10,0.1)
 intensity = np.zeros(u.shape)
 
+"""
 for i in range(len(u)):
     tau = tau_0*voigt(a,u[i])
     intensity[i] = planck(Ts,wav)* np.exp(-tau) + planck(Tl,wav)*(1.-np.exp(-tau))
@@ -108,27 +110,33 @@ plt.xlabel('u')
 plt.ylabel('intensity')
 plt.title('Intensity around center of spectral line')
 plt.show()
-
-
+"""
+"""
 for iwav in range(1,4):
 	wav=(iwav**2+1.)*1e-5
 	for i in range(len(u)):
 	    tau = tau_0*voigt(a,u[i])
 	    intensity[i] = planck(Ts,wav)* np.exp(-tau) + planck(Tl,wav)*(1.-np.exp(-tau))
 	plt.plot(u,intensity,label=r'$\lambda = $' + (np.str(int(wav*1e8)))+ r'$\AA$')
+
 plt.legend()
 plt.xlabel('u')
 plt.ylabel('intensity')
 plt.title('Intensity around center of spectral line')
 plt.show()
+"""
 
 logtau0 = np.arange(-2,2.1,0.5)
+
 for element in logtau0:
     for i in range(len(u)):
         tau = 10.**(element) * (voigt(a,u[i]))
         intensity[i] = planck(Ts,wav)* np.exp(-tau) + planck(Tl,wav)*(1.-np.exp(-tau))
     plt.plot(u,intensity,label = r'$\log{(\tau_0)} = $' + np.str(element))
 
+    
+    print 'I_cont = '+np.str(intensity[0])
+    print 'I_center = ' + np.str(min(intensity))
 plt.legend(loc=3,fontsize =12)
 plt.xlabel('u')
 plt.ylabel('intensity')

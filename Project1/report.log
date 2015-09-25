@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.30)  24 SEP 2015 16:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.30)  25 SEP 2015 11:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1299,99 +1299,76 @@ LaTeX Warning: Command \r invalid in math mode on input line 434.
 File: emergent_line_log_5000.png Graphic file (type png)
 
 <use emergent_line_log_5000.png>
-Package pdftex.def Info: emergent_line_log_5000.png used on input line 441.
+Package pdftex.def Info: emergent_line_log_5000.png used on input line 443.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 442.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 451--454
-[]\T1/txr/m/n/10 For which val-ues of $\OML/txmi/m/it/10 ^^\\OT1/txr/m/n/10 (0)
-$ \T1/txr/m/n/10 is the layer op-ti-cally
- []
-
-
-Underfull \hbox (badness 1275) in paragraph at lines 451--454
-\T1/txr/m/n/10 thin,respectively op-ti-cally thick, at line cen-ter? And at
- []
+LaTeX Warning: Command \r invalid in math mode on input line 444.
 
 [6 <./voigt_original.png> <./voigt_ylog.png>]
-
-LaTeX Warning: Command \r invalid in math mode on input line 454.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 454.
-
 <emergent_line_orig.png, id=201, 586.8324pt x 442.2924pt>
 File: emergent_line_orig.png Graphic file (type png)
 
 <use emergent_line_orig.png>
-Package pdftex.def Info: emergent_line_orig.png used on input line 462.
+Package pdftex.def Info: emergent_line_orig.png used on input line 452.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 <emergent_line_log_2000.png, id=202, 586.8324pt x 442.2924pt>
 File: emergent_line_log_2000.png Graphic file (type png)
 
 <use emergent_line_log_2000.png>
-Package pdftex.def Info: emergent_line_log_2000.png used on input line 467.
+Package pdftex.def Info: emergent_line_log_2000.png used on input line 457.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 468.
+LaTeX Warning: Command \r invalid in math mode on input line 458.
 
 <emergent_line_log_10000.png, id=203, 586.8324pt x 442.2924pt>
 File: emergent_line_log_10000.png Graphic file (type png)
 
 <use emergent_line_log_10000.png>
-Package pdftex.def Info: emergent_line_log_10000.png used on input line 472.
+Package pdftex.def Info: emergent_line_log_10000.png used on input line 462.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 473.
+LaTeX Warning: Command \r invalid in math mode on input line 463.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 487--490
-[]\T1/txr/m/n/10 For which val-ues of $\OML/txmi/m/it/10 ^^\\OT1/txr/m/n/10 (0)
-$ \T1/txr/m/n/10 is the layer op-ti-cally
- []
+LaTeX Warning: Command \r invalid in math mode on input line 467.
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 487--490
-\T1/txr/m/n/10 thin,respectively op-ti-cally thick, at line cen-ter? And at
- []
+LaTeX Warning: Command \r invalid in math mode on input line 467.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 490.
+LaTeX Warning: Command \r invalid in math mode on input line 467.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 490.
+LaTeX Warning: Command \r invalid in math mode on input line 467.
 
-<emergent_line_scaled_different.png, id=205, 586.8324pt x 442.2924pt>
+<emergent_line_scaled_different.png, id=207, 586.8324pt x 442.2924pt>
 File: emergent_line_scaled_different.png Graphic file (type png)
 
 <use emergent_line_scaled_different.png>
 Package pdftex.def Info: emergent_line_scaled_different.png used on input line 
 495.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-<eqw_ss.png, id=207, 586.8324pt x 442.2924pt>
+ [7 <./emergent_line_orig_5000.png> <./emergent_line_log_5000.png> <./emergent_
+line_orig.png> <./emergent_line_log_2000.png>] <eqw_ss.png, id=225, 586.8324pt 
+x 442.2924pt>
 File: eqw_ss.png Graphic file (type png)
  <use eqw_ss.png>
 Package pdftex.def Info: eqw_ss.png used on input line 507.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
- [7 <./emergent_line_orig_5000.png> <./emergent_line_log_5000.png> <./emergent_
-line_orig.png> <./emergent_line_log_2000.png>] <eqw_rel.png, id=224, 586.8324pt
- x 442.2924pt>
-File: eqw_rel.png Graphic file (type png)
 
-<use eqw_rel.png>
+<eqw_rel.png, id=228, 586.8324pt x 442.2924pt>
+File: eqw_rel.png Graphic file (type png)
+ <use eqw_rel.png>
 Package pdftex.def Info: eqw_rel.png used on input line 514.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
- <growth.png, id=226, 586.8324pt x 442.2924pt>
-File: growth.png Graphic file (type png)
 
-<use growth.png>
+<growth.png, id=230, 586.8324pt x 442.2924pt>
+File: growth.png Graphic file (type png)
+ <use growth.png>
 Package pdftex.def Info: growth.png used on input line 527.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
  [8 <./emergent_line_log_10000.png> <./emergent_line_scaled_different.png> <./e
@@ -1411,13 +1388,13 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 86E258A310C97A8A29720C8452259AFE;1293.
  ) 
 Here is how much of TeX's memory you used:
- 12963 strings out of 495028
- 194059 string characters out of 6181497
- 310769 words of memory out of 5000000
- 15779 multiletter control sequences out of 15000+600000
+ 12968 strings out of 495028
+ 194108 string characters out of 6181497
+ 310822 words of memory out of 5000000
+ 15781 multiletter control sequences out of 15000+600000
  78283 words of font info for 137 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
- 42i,10n,45p,1463b,438s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,11n,45p,1463b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type
@@ -1429,10 +1406,10 @@ exmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pf
 b>
-Output written on report.pdf (9 pages, 1218182 bytes).
+Output written on report.pdf (9 pages, 1219964 bytes).
 PDF statistics:
- 297 PDF objects out of 1000 (max. 8388607)
- 226 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
+ 303 PDF objects out of 1000 (max. 8388607)
+ 232 compressed objects within 3 object streams
+ 68 named destinations out of 1000 (max. 500000)
  252 words of extra memory for PDF output out of 10000 (max. 10000000)
 
