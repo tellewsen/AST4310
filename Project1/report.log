@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.30)  25 SEP 2015 11:26
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.30)  25 SEP 2015 17:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1046,55 +1046,48 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@uldp=\dimen136
 \SOUL@ulht=\dimen137
 ))
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 112.
+LaTeX Font Info:    Try loading font information for T1+txss on input line 116.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
-File: ot1txr.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Try loading font information for U+txsya on input line 112.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsya.fd
-File: utxsya.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Try loading font information for U+txsyb on input line 112.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyb.fd
-File: utxsyb.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Try loading font information for U+txmia on input line 112.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
-File: utxmia.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 112.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
-File: utxsyc.fd 2000/12/15 v3.1
-)
-Underfull \hbox (badness 10000) in paragraph at lines 112--112
-
- []
-
-LaTeX Font Info:    Try loading font information for T1+txss on input line 115.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txss.fd
 File: t1txss.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `T1/txss/m/n' will be
-(Font)              scaled to size 10.40245pt on input line 115.
+(Font)              scaled to size 10.40245pt on input line 116.
 LaTeX Font Info:    Font shape `T1/txss/bx/n' will be
-(Font)              scaled to size 10.40245pt on input line 115.
+(Font)              scaled to size 10.40245pt on input line 116.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 116.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 137.
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
+File: ot1txr.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Try loading font information for U+txsya on input line 116.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 137.
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsya.fd
+File: utxsya.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Try loading font information for U+txsyb on input line 116.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyb.fd
+File: utxsyb.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Try loading font information for U+txmia on input line 116.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
+File: utxmia.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 116.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
+File: utxsyc.fd 2000/12/15 v3.1
+)
+
+LaTeX Warning: Command \r invalid in math mode on input line 138.
 
 
 LaTeX Warning: Command \r invalid in math mode on input line 138.
@@ -1103,7 +1096,10 @@ LaTeX Warning: Command \r invalid in math mode on input line 138.
 LaTeX Warning: Command \r invalid in math mode on input line 139.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 139.
+LaTeX Warning: Command \r invalid in math mode on input line 140.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 140.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
@@ -1111,157 +1107,160 @@ LaTeX Warning: Command \r invalid in math mode on input line 139.
 
 
 ]
-LaTeX Font Info:    Try loading font information for T1+txtt on input line 193.
+LaTeX Font Info:    Try loading font information for T1+txtt on input line 212.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
-Overfull \hbox (1.17445pt too wide) in paragraph at lines 194--194
+Overfull \hbox (1.17445pt too wide) in paragraph at lines 213--213
 []\T1/txtt/m/n/10 [ 1.10887478  1.10887488  1.10887488  1.10887488] 
  []
 
 
-Overfull \hbox (1.17445pt too wide) in paragraph at lines 195--195
+Overfull \hbox (1.17445pt too wide) in paragraph at lines 214--214
 []\T1/txtt/m/n/10 [ 1.45590319  1.45633511  1.45633513  1.45633513][] 
  []
 
 
-Overfull \hbox (1.17445pt too wide) in paragraph at lines 196--196
+Overfull \hbox (1.17445pt too wide) in paragraph at lines 215--215
 []\T1/txtt/m/n/10 [ 2.23243073  2.27133987  2.27155094  2.27155097][] 
  []
 
 LaTeX Font Info:    Font shape `T1/txss/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 217.
+(Font)              scaled to size 9.49997pt on input line 236.
 LaTeX Font Info:    Font shape `T1/txss/m/it' in size <10> not available
-(Font)              Font shape `T1/txss/m/sl' tried instead on input line 217.
+(Font)              Font shape `T1/txss/m/sl' tried instead on input line 236.
 LaTeX Font Info:    Font shape `T1/txss/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 217.
-<pop_vs_t_for_s1.png, id=89, 586.8324pt x 442.2924pt>
+(Font)              scaled to size 9.49997pt on input line 236.
+<pop_vs_t_for_s1.png, id=96, 586.8324pt x 442.2924pt>
 File: pop_vs_t_for_s1.png Graphic file (type png)
 
 <use pop_vs_t_for_s1.png>
-Package pdftex.def Info: pop_vs_t_for_s1.png used on input line 232.
+Package pdftex.def Info: pop_vs_t_for_s1.png used on input line 251.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<pop_vs_t_for_s2.png, id=93, 586.8324pt x 442.2924pt>
+<pop_vs_t_for_s2.png, id=100, 586.8324pt x 442.2924pt>
 File: pop_vs_t_for_s2.png Graphic file (type png)
 
 <use pop_vs_t_for_s2.png>
-Package pdftex.def Info: pop_vs_t_for_s2.png used on input line 239.
+Package pdftex.def Info: pop_vs_t_for_s2.png used on input line 258.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<pop_vs_t_for_s4.png, id=94, 586.8324pt x 442.2924pt>
+<pop_vs_t_for_s4.png, id=101, 586.8324pt x 442.2924pt>
 File: pop_vs_t_for_s4.png Graphic file (type png)
 
 <use pop_vs_t_for_s4.png>
-Package pdftex.def Info: pop_vs_t_for_s4.png used on input line 245.
+Package pdftex.def Info: pop_vs_t_for_s4.png used on input line 264.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [2 <./pop_vs_t_for_s1.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 262.
+(hyperref)                removing `math shift' on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 262.
+(hyperref)                removing `superscript' on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 262.
+(hyperref)                removing `math shift' on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 262.
+(hyperref)                removing `math shift' on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\alpha' on input line 262.
+(hyperref)                removing `\alpha' on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 262.
+(hyperref)                removing `math shift' on input line 281.
 
-<CaHratio.png, id=106, 586.8324pt x 442.2924pt>
+<CaHratio.png, id=113, 586.8324pt x 442.2924pt>
 File: CaHratio.png Graphic file (type png)
  <use CaHratio.png>
-Package pdftex.def Info: CaHratio.png used on input line 267.
+Package pdftex.def Info: CaHratio.png used on input line 286.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 272.
+(hyperref)                removing `math shift' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 272.
+(hyperref)                removing `superscript' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 272.
+(hyperref)                removing `math shift' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 272.
+(hyperref)                removing `math shift' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\alpha' on input line 272.
+(hyperref)                removing `\alpha' on input line 291.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 272.
+(hyperref)                removing `math shift' on input line 291.
 
-<relpopchange.png, id=109, 586.8324pt x 442.2924pt>
+<relpopchange.png, id=116, 586.8324pt x 442.2924pt>
 File: relpopchange.png Graphic file (type png)
  <use relpopchange.png>
-Package pdftex.def Info: relpopchange.png used on input line 275.
+Package pdftex.def Info: relpopchange.png used on input line 294.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<relpopchange2.png, id=110, 586.8324pt x 442.2924pt>
+<relpopchange2.png, id=117, 586.8324pt x 442.2924pt>
 File: relpopchange2.png Graphic file (type png)
  <use relpopchange2.png>
-Package pdftex.def Info: relpopchange2.png used on input line 280.
+Package pdftex.def Info: relpopchange2.png used on input line 299.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<hydrogen_ionization.png, id=112, 586.8324pt x 442.2924pt>
+<hydrogen_ionization.png, id=119, 586.8324pt x 442.2924pt>
 File: hydrogen_ionization.png Graphic file (type png)
 
 <use hydrogen_ionization.png>
-Package pdftex.def Info: hydrogen_ionization.png used on input line 288.
+Package pdftex.def Info: hydrogen_ionization.png used on input line 307.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
  [3 <./pop_vs_t_for_s2.png> <./pop_vs_t_for_s4.png> <./CaHratio.png>] <radiatio
-n.png, id=124, 586.8324pt x 442.2924pt>
+n.png, id=131, 586.8324pt x 442.2924pt>
 File: radiation.png Graphic file (type png)
 
 <use radiation.png>
-Package pdftex.def Info: radiation.png used on input line 303.
+Package pdftex.def Info: radiation.png used on input line 322.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
- <radiation_ylog.png, id=127, 586.8324pt x 442.2924pt>
+ <radiation_ylog.png, id=134, 586.8324pt x 442.2924pt>
 File: radiation_ylog.png Graphic file (type png)
 
 <use radiation_ylog.png>
-Package pdftex.def Info: radiation_ylog.png used on input line 309.
+Package pdftex.def Info: radiation_ylog.png used on input line 328.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<radiation_ylog_xlog.png, id=128, 586.8324pt x 442.2924pt>
+<radiation_ylog_xlog.png, id=135, 586.8324pt x 442.2924pt>
 File: radiation_ylog_xlog.png Graphic file (type png)
 
 <use radiation_ylog_xlog.png>
-Package pdftex.def Info: radiation_ylog_xlog.png used on input line 314.
+Package pdftex.def Info: radiation_ylog_xlog.png used on input line 333.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<emergent_original.png, id=132, 586.8324pt x 442.2924pt>
+<emergent_original.png, id=139, 586.8324pt x 442.2924pt>
 File: emergent_original.png Graphic file (type png)
 
 <use emergent_original.png>
-Package pdftex.def Info: emergent_original.png used on input line 342.
+Package pdftex.def Info: emergent_original.png used on input line 361.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<emergent_log.png, id=133, 586.8324pt x 442.2924pt>
+<emergent_log.png, id=140, 586.8324pt x 442.2924pt>
 File: emergent_log.png Graphic file (type png)
  <use emergent_log.png>
-Package pdftex.def Info: emergent_log.png used on input line 348.
+Package pdftex.def Info: emergent_log.png used on input line 367.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 [4 <./relpopchange.png> <./relpopchange2.png> <./hydrogen_ionization.png> <./ra
@@ -1269,132 +1268,156 @@ diation.png>]
 Underfull \vbox (badness 1112) has occurred while \output is active []
 
  [5 <./radiation_ylog.png> <./radiation_ylog_xlog.png> <./emergent_original.png
-> <./emergent_log.png>] <voigt_original.png, id=170, 586.8324pt x 442.2924pt>
+> <./emergent_log.png>] <voigt_original.png, id=177, 586.8324pt x 442.2924pt>
 File: voigt_original.png Graphic file (type png)
 
 <use voigt_original.png>
-Package pdftex.def Info: voigt_original.png used on input line 411.
+Package pdftex.def Info: voigt_original.png used on input line 430.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
- <voigt_ylog.png, id=172, 586.8324pt x 442.2924pt>
+ <voigt_ylog.png, id=179, 586.8324pt x 442.2924pt>
 File: voigt_ylog.png Graphic file (type png)
 
 <use voigt_ylog.png>
-Package pdftex.def Info: voigt_ylog.png used on input line 417.
+Package pdftex.def Info: voigt_ylog.png used on input line 436.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 430.
+LaTeX Warning: Command \r invalid in math mode on input line 449.
 
-<emergent_line_orig_5000.png, id=177, 586.8324pt x 442.2924pt>
+<emergent_line_orig_5000.png, id=184, 586.8324pt x 442.2924pt>
 File: emergent_line_orig_5000.png Graphic file (type png)
 
 <use emergent_line_orig_5000.png>
-Package pdftex.def Info: emergent_line_orig_5000.png used on input line 433.
+Package pdftex.def Info: emergent_line_orig_5000.png used on input line 452.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 434.
+LaTeX Warning: Command \r invalid in math mode on input line 453.
 
-<emergent_line_log_5000.png, id=180, 586.8324pt x 442.2924pt>
+<emergent_line_log_5000.png, id=187, 586.8324pt x 442.2924pt>
 File: emergent_line_log_5000.png Graphic file (type png)
 
 <use emergent_line_log_5000.png>
-Package pdftex.def Info: emergent_line_log_5000.png used on input line 443.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 444.
-
-[6 <./voigt_original.png> <./voigt_ylog.png>]
-<emergent_line_orig.png, id=201, 586.8324pt x 442.2924pt>
-File: emergent_line_orig.png Graphic file (type png)
-
-<use emergent_line_orig.png>
-Package pdftex.def Info: emergent_line_orig.png used on input line 452.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-<emergent_line_log_2000.png, id=202, 586.8324pt x 442.2924pt>
-File: emergent_line_log_2000.png Graphic file (type png)
-
-<use emergent_line_log_2000.png>
-Package pdftex.def Info: emergent_line_log_2000.png used on input line 457.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 458.
-
-<emergent_line_log_10000.png, id=203, 586.8324pt x 442.2924pt>
-File: emergent_line_log_10000.png Graphic file (type png)
-
-<use emergent_line_log_10000.png>
-Package pdftex.def Info: emergent_line_log_10000.png used on input line 462.
+Package pdftex.def Info: emergent_line_log_5000.png used on input line 462.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 
 LaTeX Warning: Command \r invalid in math mode on input line 463.
 
+[6 <./voigt_original.png> <./voigt_ylog.png>]
+<emergent_line_orig.png, id=208, 586.8324pt x 442.2924pt>
+File: emergent_line_orig.png Graphic file (type png)
 
-LaTeX Warning: Command \r invalid in math mode on input line 467.
+<use emergent_line_orig.png>
+Package pdftex.def Info: emergent_line_orig.png used on input line 471.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+<emergent_line_log_2000.png, id=209, 586.8324pt x 442.2924pt>
+File: emergent_line_log_2000.png Graphic file (type png)
+
+<use emergent_line_log_2000.png>
+Package pdftex.def Info: emergent_line_log_2000.png used on input line 476.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 467.
+LaTeX Warning: Command \r invalid in math mode on input line 477.
+
+<emergent_line_log_10000.png, id=210, 586.8324pt x 442.2924pt>
+File: emergent_line_log_10000.png Graphic file (type png)
+
+<use emergent_line_log_10000.png>
+Package pdftex.def Info: emergent_line_log_10000.png used on input line 481.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 467.
+LaTeX Warning: Command \r invalid in math mode on input line 482.
 
 
-LaTeX Warning: Command \r invalid in math mode on input line 467.
+LaTeX Warning: Command \r invalid in math mode on input line 486.
 
-<emergent_line_scaled_different.png, id=207, 586.8324pt x 442.2924pt>
+
+LaTeX Warning: Command \r invalid in math mode on input line 486.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 486.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 486.
+
+<emergent_line_scaled_different.png, id=214, 586.8324pt x 442.2924pt>
 File: emergent_line_scaled_different.png Graphic file (type png)
 
 <use emergent_line_scaled_different.png>
 Package pdftex.def Info: emergent_line_scaled_different.png used on input line 
-495.
+514.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
  [7 <./emergent_line_orig_5000.png> <./emergent_line_log_5000.png> <./emergent_
-line_orig.png> <./emergent_line_log_2000.png>] <eqw_ss.png, id=225, 586.8324pt 
+line_orig.png> <./emergent_line_log_2000.png>] <eqw_ss.png, id=231, 586.8324pt 
 x 442.2924pt>
 File: eqw_ss.png Graphic file (type png)
  <use eqw_ss.png>
-Package pdftex.def Info: eqw_ss.png used on input line 507.
+Package pdftex.def Info: eqw_ss.png used on input line 526.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<eqw_rel.png, id=228, 586.8324pt x 442.2924pt>
+<eqw_rel.png, id=234, 586.8324pt x 442.2924pt>
 File: eqw_rel.png Graphic file (type png)
  <use eqw_rel.png>
-Package pdftex.def Info: eqw_rel.png used on input line 514.
+Package pdftex.def Info: eqw_rel.png used on input line 533.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<growth.png, id=230, 586.8324pt x 442.2924pt>
+<growth.png, id=236, 586.8324pt x 442.2924pt>
 File: growth.png Graphic file (type png)
  <use growth.png>
-Package pdftex.def Info: growth.png used on input line 527.
+Package pdftex.def Info: growth.png used on input line 544.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+<growth_a10.png, id=239, 586.8324pt x 442.2924pt>
+File: growth_a10.png Graphic file (type png)
+ <use growth_a10.png>
+Package pdftex.def Info: growth_a10.png used on input line 551.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 555.
+
+<emission5000.png, id=242, 586.8324pt x 442.2924pt>
+File: emission5000.png Graphic file (type png)
+ <use emission5000.png>
+Package pdftex.def Info: emission5000.png used on input line 557.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 558.
+
+<emission_growth.png, id=243, 586.8324pt x 442.2924pt>
+File: emission_growth.png Graphic file (type png)
+
+<use emission_growth.png>
+Package pdftex.def Info: emission_growth.png used on input line 562.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
  [8 <./emergent_line_log_10000.png> <./emergent_line_scaled_different.png> <./e
-qw_ss.png> <./eqw_rel.png>] [9
-
- <./growth.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 556.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 556.
+qw_ss.png> <./eqw_rel.png>] [9 <./growth.png> <./growth_a10.png> <./emission500
+0.png> <./emission_growth.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 585.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 585.
  (./report.aux
 * soulpos - computing points - it may take a few seconds *
 \openout3 = `report.upb'.
 
  (./report.upa))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 556.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 556.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 585.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 585.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 86E258A310C97A8A29720C8452259AFE;1293.
+(rerunfilecheck)             Checksum: DE4586671B744AC67C5403E64D996EB0;1339.
  ) 
 Here is how much of TeX's memory you used:
- 12968 strings out of 495028
- 194108 string characters out of 6181497
- 310822 words of memory out of 5000000
- 15781 multiletter control sequences out of 15000+600000
- 78283 words of font info for 137 fonts, out of 8000000 for 9000
+ 12971 strings out of 495028
+ 194225 string characters out of 6181497
+ 313100 words of memory out of 5000000
+ 15780 multiletter control sequences out of 15000+600000
+ 65599 words of font info for 111 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
- 42i,11n,45p,1463b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,11n,45p,1463b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type
@@ -1406,10 +1429,10 @@ exmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pf
 b>
-Output written on report.pdf (9 pages, 1219964 bytes).
+Output written on report.pdf (9 pages, 1341138 bytes).
 PDF statistics:
- 303 PDF objects out of 1000 (max. 8388607)
- 232 compressed objects within 3 object streams
- 68 named destinations out of 1000 (max. 500000)
- 252 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 325 PDF objects out of 1000 (max. 8388607)
+ 248 compressed objects within 3 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 275 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -92,10 +92,10 @@ plt.show()
 """
 #3.3 Emergent line profiles
 
-Ts = 5700.	#Temperature of the surface of the star
-Tl = 4200.	#Temperature of the reversing layer
-a = 0.1		#Coloumb damping parameter
-wav = 10000e-8	#Wavelength in cm
+Ts = 4200.	#Temperature of the surface of the star
+Tl = 5700.	#Temperature of the reversing layer
+a  = 0.01	#Coloumb damping parameter
+wav = 5000e-8	#Wavelength in cm
 tau_0 = 1.	#reversing layer thickness at line center
 u = np.arange(-10,10,0.1)
 intensity = np.zeros(u.shape)
@@ -132,17 +132,17 @@ for element in logtau0:
     for i in range(len(u)):
         tau = 10.**(element) * (voigt(a,u[i]))
         intensity[i] = planck(Ts,wav)* np.exp(-tau) + planck(Tl,wav)*(1.-np.exp(-tau))
-    plt.plot(u,intensity,label = r'$\log{(\tau_0)} = $' + np.str(element))
+    #plt.plot(u,intensity,label = r'$\log{(\tau_0)} = $' + np.str(element))
 
     
-    print 'I_cont = '+np.str(intensity[0])
-    print 'I_center = ' + np.str(min(intensity))
-plt.legend(loc=3,fontsize =12)
+    #print 'I_cont = '+np.str(intensity[0])
+    #print 'I_center = ' + np.str(min(intensity))
+"""plt.legend(loc=3,fontsize =12)
 plt.xlabel('u')
 plt.ylabel('intensity')
 plt.title(r'Intensity as a function of u for different $\tau_0$')
 plt.show()
-
+"""
 """
 for iwav in range(1,4):
 	wav=(iwav**2+1.)*1e-5
@@ -161,9 +161,9 @@ plt.show()
 #3.4 Equivalent width of spectral lines
 
 def profile(a,tau0,u):
-    Ts = 5700
-    Tl = 4200
-    wav = 5000e-8
+    #Ts = 5700
+    #Tl = 4200
+    #wav = 5000e-8
     intensity = np.zeros(u.size)
     for i in range(u.size):
         tau = tau0 * voigt(a,u[i])
@@ -197,20 +197,19 @@ print eqw
 """
 
 #3.5 The curve of growth
-"""
+
 tau0 = np.logspace(-2,4,61)
 eqw  = np.zeros(tau0.size)
 u = np.arange(-200,200.4,0.4)
-a = 0.1
 for i in range(61):
     intensity = profile(a,tau0[i],u)
     reldepth = (intensity[0] - intensity)/intensity[0]
     eqw[i] = sum(reldepth)*0.4
-plt.plot(tau0,eqw)
+plt.plot(tau0,abs(eqw))
 plt.xlabel(r'$\tau_0$',size=18)
 plt.ylabel(r'equivalent width $W_{\lambda}$',size=14)
 plt.xscale('log')
 plt.yscale('log')
 plt.title('Curve of growth')
 plt.show()
-"""
+

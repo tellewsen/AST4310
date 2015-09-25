@@ -1,13 +1,13 @@
-This is BibTeX, Version 0.99d (TeX Live 2014)
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: report.aux
 I couldn't open style file aa-note.bst
----line 21 of file report.aux
+---line 103 of file report.aux
  : \bibstyle{aa-note
  :                  }
 I'm skipping whatever remains of this command
 I couldn't open database file XXX.bib
----line 22 of file report.aux
+---line 104 of file report.aux
  : \bibdata{XXX
  :             }
 I'm skipping whatever remains of this command

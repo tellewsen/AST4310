@@ -100,14 +100,15 @@
 \vspace*{4ex}
 \begin{center}
   {\Large \bf Stellar Spectra A. Basic Line Formation}\\[4ex]       
-  {\large \bf Andreas Ellewsen$^{1}$}\\[4ex]
-  \begin{minipage}[t]{15cm}
-        $^1$ Institute of theoretical astrophysics\\
+  {\large \bf Andreas Ellewsen}\\[4ex]
+  %{\large \bf Andreas Ellewsen$^{1}$}\\[4ex]
+  %\begin{minipage}[t]{15cm}
+  %      $^1$ Institute of theoretical astrophysics\\
 
 %  {\bf Abstract.} We learned how to write nice reports \ldots 
 
-  \vspace*{2ex}
-  \end{minipage}
+  %\vspace*{2ex}
+  %\end{minipage}
 \end{center}
 }] 
 
@@ -165,7 +166,30 @@ The Saha law reads
 \end{equation}\label{Saha}
 
 If we assume that the above is true. We can give som rough estimates of the strength ratios of the $\alpha$ lines in the HI Lyman, Balmer, Paschen and Brackett series. 
-
+By looking at ratios we dont have to calculate the partition function $U_1$. We also know that neutral hydrogen has $g_{1,s} =2s^2$ and $\chi_{1,s} = 13.598(1-1/s^2)$
+\begin{equation}
+  \frac{n_{1,s}}{N_1} = \frac{2s^2}{U_1} e^{-13.598(1-1/s^2)/kT} 
+\end{equation}
+Assuming that the strength of the lines scales with the population density of the lower level we calculate this for $s = 1 - 4$ and get the results in table \ref{alpha_ratio}.
+\begin{table}
+\begin{center}
+ \begin{tabular}{|c|c|}
+ \hline
+ s & $n_{1,s}U_1/N_1 $\\
+ \hline
+ 1 & $2$\\
+ \hline
+ 2 & $4.20\times10^{-10}$\\
+ \hline
+ 3 & $1.18\times10^{-11}$\\
+ \hline
+ 4 & $4.53\times10^{-12}$\\
+ \hline
+ \end{tabular}
+ \caption{It is clear that the strength of the Lyman $\alpha$ line is enormous compared to the other $\alpha$ lines.}
+\label{alpha_ratio}
+ \end{center}
+ \end{table}
 We will also use these functions to study a fictional element known as Schadeenium(E).
 Schadeenium has 
 \begin{itemize}
@@ -176,19 +200,14 @@ excitation energies that increase incrementally by $1$ eV: $\chi_{r,s} \equiv s 
 \item
 statistical weights $g_{r,s} \equiv 1$ for all levels (r,s)
 \end{itemize}
-
 Table 1 on page 12 of the exercise shows different values of the 3 functions for our element.
 When looking at this it is clear that the partition function is weakly dependent on temperature.
 In the table with calulcations for the boltzmann function we see a steep decline in the population for higher levels.
 The higher levels do fill up if one raises the temperature but the ground state always has the largest population.
 From this it is clear that the lower levels are the most important ones. For real atoms the energy difference between levels 1 and 2 are usually larger than for E, and thus their partition functions are often well approixmated by the statistical weight of the ground state.
-
 The reason for the difference in behaviour between the Saha and Boltzmann distributions is caused by the $(...)^{3/2}$ factor in front of the exponential in the Saha distribution. The Boltzmann distribution doesn't have this factor and thus it converges towards $g_{r,s}/U_r$ for hight T while Saha just keeps rising indefinitely.
-
 Raising the temperature thus causes the distribution between the energy levels to spread out, and even if we don't get a lot of electrons in the higher energy levels, the thermal energy is high enough to cause ionization from the lower levels to the next ionization stage.
-
 Thus we've found that when a gas is in thermal equilibrium we expect to find at most two ionization stages present. And for each ionization there is a steep decline in the population for each energy level.
-
 With this in mind we compute the partition function $U_r$ for Schadeenium and print the values for levels $r =[0,3]$.
 \begin{verbatim}
 [ 1.10887478  1.10887488  1.10887488  1.10887488]
@@ -520,37 +539,47 @@ In this test case we get an equivalent width $W_\lambda = 7.5$.
 
 \subsection{The curve of growth}
 The point of the equivalent width was that it could be used to measure the number of atoms in the reversing layer. This should set the opaqueness $\tau(0)$ of the layer. The profile plots show that the profile growth is only linear with $\tau(0)$ for $\tau(0) <<1$. The curve of growth shows the full dependence; the growth of the line strength with the line-causing density.
-
 To study this we plot $\log W_\lambda$ against $\log \tau(0)$ in figure \ref{growth}.
-
-\begin{figure}[hbtp]
+\begin{figure}
  \includegraphics[width=.49\textwidth]{growth.png}
  \caption{Curve of Growth.}
  \label{growth} 
 \end{figure}
-\begin{itemize}
- \item 
- Explain what happens in the three different parts
- \item 
- The first part has slope 1:1 ,the third has slope 1:2 in this log-log plot. Why?
- \item 
- Which parameter controls the location of the onset of the third part? Give a rough estimate of its value for solar ironlines through comparison with figure 14 in the assignment.
- \item 
- Final: of which parameter should you raise the numerical value in order to produce emission lines instead of absorption lines? Change it accordingly and rerun your programs to produce emission profiles and an emission-line curve of growth. Avoid plotting negative $W_\lambda$ values logarithimically by plotting the absoulte value of equivalent width.
-\end{itemize}
+Studying the curve of growth is easier if we also look at the corresponding emergent line profiles(see fig. \ref{emergent_line_log_5000}.) For the first part of the growth curve has slope 1:1, here we are in the $\tau << 1$ regime, and we see the emission growth curves becoming larer and larger gauss curves. This continues until we reach the minimum saturation limit where $\tau \approx 1$, where the growth stagnates. This we see in the growth curve in the middle part. After a while we enter the $\tau >> 1$ regime, where the wings of the spectral lines start developing, and thus the slop of the growth function increases as well. However, the growth isn't as rapid here as it was for the $\tau << 1$ regime so we only get a slope of 1:2.
+To change the onset of the last part we can change the Couloumb damping parameter $a$. Running the calculation again with $a = 10$ proves this, as can be seen in figure \ref{growth_a10}. Since it is clear that this parameter controls the growth curve, we can use it to estimate its value for solar ironlines by comparing the curves we get from the program to figure 14 in the exercise text. Numerous tests with different $a$ values puts it somewhere in the range $a = [0.01, 0.1]$.
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{growth_a10.png}
+ \caption{Curve of Growth with $a = 10$.}
+ \label{growth_a10} 
+\end{figure}
+So far we've only looked at absorption lines. To produce emission lines we need to change either the temperature of the surface or the temperature of the reversing layer. I choose to change the temperature of the reversing layer to $T_{layer} = 9200$K. Plotting the lines for $\lambda = 5000 \AA$ results in figure \ref{emission5000}.And if we also plot the growth curve for this setup we get figure \ref{emission_growth}. We see that the growth curves look nearly identical, which is expected since the curves are almost mirror images of each other for the spectral lines.
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{emission5000.png}
+ \caption{Emission lines at $\lambda = 5000 \AA$.}
+ \label{emission5000} 
+\end{figure}
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{emission_growth.png}
+ \caption{Growth curve for emission lines.}
+ \label{emission_growth} 
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions} \label{sec:conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-insert conclusions
+In this project we've seen how the Saha and Boltzmann distributions control the ionization and energy levels of elements. We tried using this to study Ca$^+$K and H$\alpha$ lines. We saw that even though there is a lot less Calcium in the sun, the Ca$^+$K lines was much stronger because of its lower ionization energy.
+We also saw how the Planck function in combination with the Voigt profile can be used to model spectral lines. This was achieved by using a reversing layer model, where the temperatures of the surface of the sun and the reversing layer controlled whether or not we got absorption or emission lines. With this we were also able to create growth curves, which in turn could be used to approximate the Coloumb damping parameter for solar iron lines by comparing with measurements.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{acknowledgements}
-\end{acknowledgements}
+%\begin{acknowledgements}
+%\end{acknowledgements}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% references
-\bibliographystyle{aa-note} %% aa.bst but adding links and notes to references
-%%\raggedright              %% only for adsaa with dvips, not for pdflatex
+\section{References}
+Rutten, R. J.: 1991, The Generation and Transportation of Radiation, Sterrekundig Instuut Utrecht, The Netherlands
+
+%\bibliographystyle{aa-note} %% aa.bst but adding links and notes to references
+%\raggedright              %% only for adsaa with dvips, not for pdflatex
 %\bibliography{XXX}          %% XXX.bib = your Bibtex entries copied from ADS
 
 \end{document}
