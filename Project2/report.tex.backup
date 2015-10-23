@@ -157,13 +157,6 @@ Next we plot the column mass against height. See figure \ref{colm_height}. Note 
 % \end{figure}
 
 The next quantity to look at is gas density. Gas density is plottes against height in figure \ref{gdens_height}.
-
-% \begin{figure}
-%  \includegraphics[width=.49\textwidth]{gdens_height.png}
-%  \caption{Gas density against height with the point where $\rho = \rho_0/e$ marked with a line.}
-%  \label{colm_height_log} 
-% \end{figure}
-
 We want to know the pressure scale height $H_\rho$ in  
 \begin{equation}
  \rho \approx \rho(0)exp(-h/H_{\rho})
@@ -175,9 +168,6 @@ This can be found from the definition
 \end{equation}
 where $k$ is boltzmanns constant, T is temperature in K, M is the mean molecular weight, and g is surface gravity.
 If one assumes that most of the molecules in the photosphere is hydrogen we can set $M=m_H$. Inserting the values for the deep photosphere ($h = -100$) then gives a scale height of $H_\rho = 196.3$ km. This is not realistic. Assuming that the photosphere only contains helium gives a scale height $H_\rho = 49.3 km$. The real number is somewhere between these two, and thus when ones find the mean molecular weight as a function of height later, one should recalculate this number.
-
-Another way to do this is to just mark the point where the density has fallen to $1/e$ of its original value. In figure \ref{gdens_height} this is marked with a line. The point the two lines cross gives $H_\rho \approx 150 $km.
-
 
 The next step is to compute the gas pressure and plot it against height. We also overplot the product $(n_H + n_e)kT$. See figure \ref{gas_height}. There is some difference between the curves. Plotting the ratio between the curves shows this clearly (figure \ref{gas_height_ratio}). Note however that the sun does not only contain hydrogen. Because of this we must include the hydrogen number density in the ideal gas law. By doing this we obtain figure \ref{gas_height_hel} which shows a curve that seems to be overlapping perfectly. Plotting the ratio between the two curves shows that it deviates only slightly at the fourth decimal place. See figure \ref{gas_height_hel_ratio}. From this we can conclude that the ideal gas law is a very good approximation.
 
@@ -205,19 +195,7 @@ The next step is to compute the gas pressure and plot it against height. We also
 %  \label{gas_height_ratio_hel} 
 % \end{figure}
 
-With that done we want to look at the total hydrogen density. We also include the elcectron density, proton density, and the density of the elctrons that do not result from hydrogen ionization. This is plotted against height in figure \ref{densities_height}. 
-% \begin{figure}
-%  \includegraphics[width=.49\textwidth]{densities_height.png}
-%  \caption{Figure shows densities for a number of quantities against height.}
-%  \label{densities_height} 
-% \end{figure}
-
-
-
-
-
-
-
+With that done we want to look at the total hydrogen density. Plotting this against height 
 
 
 %\begin{acknowledgements}
