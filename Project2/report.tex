@@ -205,14 +205,32 @@ The next step is to compute the gas pressure and plot it against height. We also
 %  \label{gas_height_ratio_hel} 
 % \end{figure}
 
-With that done we want to look at the total hydrogen density. We also include the elcectron density, proton density, and the density of the elctrons that do not result from hydrogen ionization. This is plotted against height in figure \ref{densities_height}. 
+With that done we want to look at the total hydrogen density. We should also include the electron density, proton density, and the density of the electrons that do not result from hydrogen ionization. The electron density, proton density and electron density can be read out of the FALC model. To find the density of the electrons not from ionized hydrogen we need to assume that all of the protons come from ionized hydrogen. This would indicate that $n_H - n_p$ equals the number of neutral hydrogen atoms. And since each neutral hydrogen has one electron this would be the number of electrons still bound to hydrogen, e.g those not from ionized hydrogen. The density of these should then be
+\begin{equation}
+ n_{be} = (n_H - n_p).
+\end{equation}
+This is plotted against height in figure \ref{densities_height}. 
 % \begin{figure}
 %  \includegraphics[width=.49\textwidth]{densities_height.png}
 %  \caption{Figure shows densities for a number of quantities against height.}
 %  \label{densities_height} 
 % \end{figure}
 
+From the graph we see that the number density of protons is a little above 0 for very low heights. This indicates that the hydrogen gets ionized at this height. As the height increases this goes to zero indicating that the hydrogen remains neutral when height increases. Because of this it is only logical that the electron density goes to zero as well, and that the density of the elctrons not from ionized hydrogen approaches the density of the hydrogen (since nearly all of the hydrogen is neutral hydrogen). Figure \ref{densities_height_log} shows the same with a logarithmic
+% \begin{figure}
+%  \includegraphics[width=.49\textwidth]{densities_height_log.png}
+%  \caption{Figure shows densities for a number of quantities against height with logarithmic y-axis.}
+%  \label{densities_height_log} 
+% \end{figure}
 
+As the height increases the number density of everything approaches zero, which makes sense since we are looking at the atmosphere of the sun. At some point the should be vacuum.
+
+With that done plot the ionization fraction of hydrogen against height. See figure \ref{hyd_ion}. Note the logarithmic scale.
+% \begin{figure}
+%  \includegraphics[width=.49\textwidth]{hyd_ion.png}
+%  \caption{Figure shows the ionization fraction of hydrogen depending on height in kilometers.}
+%  \label{hyd_ion} 
+% \end{figure}
 
 
 

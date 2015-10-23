@@ -103,6 +103,7 @@ plt.ylabel(r'Column mass [g cm$^{-2}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
 #plt.show()
 """
+"""
 #Scale height
 rhodive = dens[-1]/np.exp(1)
 #rhodive = dens[np.where(h==0)][0]/np.exp(1)
@@ -120,7 +121,7 @@ plt.ylabel(r'Gas density $\rho$ [g cm$^{-3}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
 plt.legend(['Gas density',r'$\rho/e$'])
 plt.show()
-
+"""
 #Compute gas pressure and plot against height
 pgas = pgasptot*ptot #Gas pressure
 idealgas = (nhyd + nel)*kerg*temp
@@ -174,33 +175,36 @@ plt.xlabel(r'Height [km]',size=14)
 #proton density, and density of electrons not from
 #hydrogen ionization.
 """
-rho_e = nel*m_e	#elecron density
-rho_p = nprot*m_p #proton density
-"""
+#rho_e = nel*m_e	#electron density
+#rho_p = nprot*m_p #proton density
+n_eb = (nhyd - nprot)
+
 plt.figure(12)
-plt.plot(h,rho_H) #hydrogen vs h
-plt.plot(h,rho_e) #electron vs h
-plt.plot(h,rho_p) #proton vs h
-#plt.plot(h,rho_nie) #ratio curves
-#plt.legend([r'\rho_H',r'\rho_e',r'\rho_p',r'\rho_{nie}'])
-plt.legend([r'$\rho_H$',r'$\rho_e$',r'$\rho_p$'])
+plt.plot(h,nhyd) #hydrogen vs h
+plt.plot(h,nel) #electron vs h
+plt.plot(h,nprot) #proton vs h
+plt.plot(h,n_eb) #bound electron vs h
+plt.legend([r'$n_H$',r'$n_e$',r'$n_p$',r'$n_{be}$'])
 plt.title(r'Select densities vs height')
-plt.ylabel(r'\rho [g cm$^{-3}$]',size=14)
+plt.ylabel(r'Number density [cm$^{-3}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
-#plt.show()
-"""
+plt.yscale('log')	
+plt.show()
+
 #Plot ioniaztion fraction of hydrogen
 #logarithimically against height
-"""
-hyd_ion = 
+
+hyd_ion = nprot/nhyd
 
 plt.figure(13)
-plt.plot(hyd_ion,h)
-plt.title(r'Ioniaztion fraction of hydrogen vs height')
+plt.plot(h,hyd_ion)
+plt.title(r'Ionization fraction of hydrogen vs height')
 plt.ylabel(r'Ionization fraction',size=14)
 plt.xlabel(r'Height [km]',size=14)
+plt.yscale('log')
+plt.ylim([0,1.1])
+plt.xlim([-100,2220])
 plt.show()
-"""
 
 #Write code to read earth.dat
 earth = np.loadtxt('earth.dat',unpack=True)
@@ -332,10 +336,11 @@ plt.ylabel(r'Distributions [erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]')
 print 'I_lambda_c = %e'%np.max(I_lambda_c) #check okay
 
 #Convert distributions into values per frequency
-F_nu 	= F_lambda 	/c* (wavelength*1e-4)**2 *1e4 
-F_nu_c 	= F_lambda_c 	/c* (wavelength*1e-4)**2 *1e4
-I_nu 	= I_lambda 	/c* (wavelength*1e-4)**2 *1e4
-I_nu_c 	= I_lambda_c 	/c* (wavelength*1e-4)**2 *1e4
+conversionfactor = 1./c* (wavelength*1e-4)**2 *1e4
+F_nu 	= F_lambda 	*conversionfactor
+F_nu_c 	= F_lambda_c 	*conversionfactor
+I_nu 	= I_lambda 	*conversionfactor
+I_nu_c 	= I_lambda_c 	*conversionfactor
 
 frequency = c/(wavelength*1e-4)
 """
