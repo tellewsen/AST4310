@@ -116,8 +116,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In this exercise we study the radial stratification of the solar atmosphere by using the FALC model by Fontela et al. (1993)
 
+\subsection{FALC temperature stratification}
+The first thing to do is import the data from the modelfiles, and take a look at how temperature varies with height.
+This can be seen in figure \ref{temp_height}
+% \begin{figure}
+%  \includegraphics[width=.49\textwidth]{temp_height.png}
+%  \caption{Plot of temperature against column height.}
+%  \label{temp_height} 
+% \end{figure}
+
+
 \subsection{FALC density stratification}
-The first thing to do is import the data from the modelfiles and make figures of some key quantities.
 I start by plotting the total pressure $p_{total}$ against colmn mass $m$. See figures \ref{ptotal} and \ref{ptotal_log}.
 We see that they scale linearly. From this we can conclude that we can write 
 \begin{equation}
@@ -174,10 +183,9 @@ This can be found from the definition
  H_\rho = \frac{kT}{M g}
 \end{equation}
 where $k$ is boltzmanns constant, T is temperature in K, M is the mean molecular weight, and g is surface gravity.
-If one assumes that most of the molecules in the photosphere is hydrogen we can set $M=m_H$. Inserting the values for the deep photosphere ($h = -100$) then gives a scale height of $H_\rho = 196.3$ km. This is not realistic. Assuming that the photosphere only contains helium gives a scale height $H_\rho = 49.3 km$. The real number is somewhere between these two, and thus when ones find the mean molecular weight as a function of height later, one should recalculate this number.
+If one assumes that most of the molecules in the photosphere is hydrogen we can set $M=m_H$. Inserting the values for the deep photosphere ($h = -100$) then gives a scale height of $H_\rho = 196.3$ km. This is not realistic. Assuming that the photosphere only contains helium gives a scale height $H_\rho = 49.3 km$. The real number is somewhere between these two, but since we don't know the mean molecular weight this method doesn't really work in this case.
 
 Another way to do this is to just mark the point where the density has fallen to $1/e$ of its original value. In figure \ref{gdens_height} this is marked with a line. The point the two lines cross gives $H_\rho \approx 150 $km.
-
 
 The next step is to compute the gas pressure and plot it against height. We also overplot the product $(n_H + n_e)kT$. See figure \ref{gas_height}. There is some difference between the curves. Plotting the ratio between the curves shows this clearly (figure \ref{gas_height_ratio}). Note however that the sun does not only contain hydrogen. Because of this we must include the hydrogen number density in the ideal gas law. By doing this we obtain figure \ref{gas_height_hel} which shows a curve that seems to be overlapping perfectly. Plotting the ratio between the two curves shows that it deviates only slightly at the fourth decimal place. See figure \ref{gas_height_hel_ratio}. From this we can conclude that the ideal gas law is a very good approximation.
 
@@ -223,14 +231,123 @@ From the graph we see that the number density of protons is a little above 0 for
 %  \label{densities_height_log} 
 % \end{figure}
 
-As the height increases the number density of everything approaches zero, which makes sense since we are looking at the atmosphere of the sun. At some point the should be vacuum.
+As the height increases the number density of everything approaches zero, which makes sense since we are looking at the atmosphere of the sun. At some point we should approach vacuum which has almost zero density.
 
-With that done plot the ionization fraction of hydrogen against height. See figure \ref{hyd_ion}. Note the logarithmic scale.
+With that done we plot the ionization fraction of hydrogen against height. 
+The ionization fraction of hydrogen fraction is simply
+\begin{equation}
+ n_{HII} = \frac{n_p}{n_H}
+\end{equation}
+
+See figure \ref{hyd_ion}. Note the logarithmic scale.
 % \begin{figure}
 %  \includegraphics[width=.49\textwidth]{hyd_ion.png}
 %  \caption{Figure shows the ionization fraction of hydrogen depending on height in kilometers.}
 %  \label{hyd_ion} 
 % \end{figure}
+There is a clear resemblence to the temperature plot (see figure \ref{temp_height}).
+XXXXXXXXXXXXXXXXXXXXXXXXX EXPLAIN WHY THAT IS AND WHY IT IS TILTED XXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+
+The next thing one should do is compare the photon density to the particle density.
+If one assumes thermodynamic equilibrium the photon density $N_{phot}$ in photons per cm$^3$ is given by
+\begin{equation}
+ N_{phot} \approx 20T^3
+\end{equation}
+
+XXXXXXXXXXXXXXXXXXXXXXXXX EXPLAIN WHY THIS IS XXXXXXXXXXXXXXXXXXXXXXXXX.
+Calculating this value for the deep photosphere ($h = -100$) gives a photon density $N_{phot} = 1.66\times10^{13}$ cm$^{-3}$. In comparison the hydrogen density at the same location is $N_H = 1.35\times10^{17}$ cm$^{-3}$. 
+Unfortunately we can not assume thermodynamic equilibrium higher up in the atmosphere. The equation for the photon density there instead becomes
+\begin{equation}
+ N_{phot} = 20T_{eff}^3/2\pi
+\end{equation}
+where $T_{eff} = 5770$K is the effective solar temperature.
+Calculating this for the highest point in our data gives $N_{phot} = 6.11\times 10^{11}$ cm$^{-3}$. The density of hydrogen a
+t the same point is $N_H = 5.58\times 10^9$. At this height there are more photons than hydrogen atoms. Note that the hydrogen density dropped by 8 orders of magnitude, while the photon density dropped only 2.
+The medium at this high altitude is insensitive to the photons because XXXXXXXXXXXXXXXXXXXXXXXXX EXPLAIN WHY XXXXXXXXXXXXXXXXXXXXXXXXX.
+
+\subsection{Comparison with the earth's atmosphere}
+There have been done similar measurements of the earths atmosphere. The values used in this report are from Allen 1976. 
+The first thing to do is to make plots of everything in the table. See figures \ref{temp_earth}, \ref{pressure_earth}, \ref{particle_dens_earth}, and \ref{gas_dens_earth}.
+
+% \begin{figure}
+%  \includegraphics[width=.49\textwidth]{temp_earth.png}
+%  \caption{Plot of the temperature as a function of height above the surface on earth.}
+%  \label{temp_earth} 
+% \end{figure}
+
+% \begin{figure}
+%  \includegraphics[width=.49\textwidth]{pressure_earth.png}
+%  \caption{The figures shows the pressure as function of height on earth.}
+%  \label{pressure_earth} 
+% \end{figure}
+
+% \begin{figure}
+%  \includegraphics[width=.49\textwidth]{particle_dens_earth.png}
+%  \caption{Particle density against height.}
+%  \label{particle_dens_earth} 
+% \end{figure}
+
+% \begin{figure}
+%  \includegraphics[width=.49\textwidth]{gas_dens_earth.png}
+%  \caption{Plot of the gas density as a function of height on earth.}
+%  \label{gas_dens_earth} 
+% \end{figure}
+
+Taking a closer look at pressure and density reveals that if one normalizes each to their respective maximums and then plot them together we get a graph that is very close to identical.
+XXXXXXXXXXXXXXXXXXXXXXXXX COMMENT WHY THEY LOOK THE SAME XXXXXXXXXXXXXXXXXXXXXXXXX
+
+Next we plot the mean molecular weight $\mu_E \equiv \overline{m}/m_H$ against height. See figure \ref{mu_E}. We see that it decreases at higher altitudes. This is caused by XXXXXXXXXXXXXXXXXXXXXXXXX EXPLAIN WHY XXXXXXXXXXXXXXXXXXXXXXXXX.
+% \begin{figure}
+%  \includegraphics[width=.49\textwidth]{mu_E.png}
+%  \caption{Mean molecular weight versus height on earth.}
+%  \label{mu_E} 
+% \end{figure}
+
+We should also se what the density scale height is in the lower atmosphere. Like for the sun we can do this two different ways. Either by using the equation for the scale height
+\begin{equation}
+ H_\rho = \frac{kT}{Mg}
+\end{equation}
+where everything means the same as before. The difference is that in this case we actually know the mean molecular weight. Inserting values gives $H_\rho = 8.54$ km at the surface of earth. Approximating with the same method as earlier gives $H_\rho \approx 9.5$ km. In this case I would trust the first one more since we know the values we use in the equation to a good precision. Note that the scale height on earth is more than 10 times smaller than on the sun. This is of course caused by the large difference in surface gravity and temperature.
+
+Comparing the rest of the quantities for the sun and earth at the surface shows many differences.
+\begin{table}
+\begin{tabular}{|c|c|c|}
+\hline
+&Sun & Earth\\
+\hline
+$\rho$ &$2.77\times 10^{-7}$g cm$^{-3}$ &$1.23\times 10^{-3}$g cm$^{-3}$\\
+\hline
+N &$1.30\times10^{17}$cm$^{-3}$ &$2.57\times10^{19}$cm$^{-3}$ \\
+\hline
+P &$1.21\times10^{5}$dyn cm$^{-3}$ &$1.02\times10^{6}$dyn cm$^{-3}$ \\
+\hline
+T &$6520$K &$288$K\\
+\hline
+\end{tabular}
+\caption{Table with different values for the earth and the sun}
+\end{table}
+Note especially that the ratio between particle density at the surface of earth to the surface of the sun is almost 200.
+
+If we now calculate the column mass for the surface of earth we find that it is $1044$g cm$^{-2}$. For the sun the column mass on the surface was $4.404$g cm$^{-2}$.
+
+If we now calculate the photon density reaching earth from the sun
+\begin{equation}
+ N_phot = \pi \frac{R^2}{D^2}N_{phot}^{top}
+\end{equation}
+where $N_{phot}^{top}$ is the photon density we found earlier at the top of the solar atmosphere.
+
+Inserting values into this equation gives $N_phot = 4.16\times10^{7}$cm$^{-3}$ reaching us from the sun.
+While if we calculate the thermal photon density from the earth atmosphere we get $N_{phot}^{earth} = 4.78\times 10^8$cm$^{-3}$. Which means that there are almost more than 10 times more photons coming from the earth atmosphere on the surface of earth than we receive from the sun. Calculating the ratio of the received photons and the particle density in the air gives a ratio of $1.6\times 10^{-12}$. So the photon density is smaller by 12 orders of magnitude.
+
+
+
+
+
+
+
+
 
 
 

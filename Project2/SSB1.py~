@@ -15,8 +15,9 @@ m_e	= 9.109390E-28	#Electron mass in grams
 m_H     = 1.67352E-24   #Hydrogen mass in grams
 m_He    = 3.98*m_H 	#Helium mass in grams
 m_p     = 1.67262E-24	#Proton mass in grams
-
-
+m_u	= 1.660538e-24	#Atomic mass unit in grams
+R_sun   = 696300	#Radius sun in km
+D_sun   = 1.496e8 	#Distance sun-earth in km
 #Part 1
 #Read in falc data and arrange in arrays
 falc = np.loadtxt('falc.dat',unpack=True)
@@ -32,6 +33,7 @@ ptot     = np.array(falc[8,:])
 pgasptot = np.array(falc[9,:])
 dens     = np.array(falc[10,:])
 """
+#1.1
 #Plot falc model
 plt.figure(0)
 plt.plot(h,temp)
@@ -47,6 +49,7 @@ plt.plot(colm,ptot)
 plt.title(r'$P_{total}$ vs column mass m')
 plt.ylabel(r'$P_{total}$ [dyn cm$^{-2}$]',size=14)
 plt.xlabel(r'Column mass m [$g cm^{-2}$]',size=14)
+
 #logarithimically
 plt.figure(2)
 plt.plot(colm,ptot)
@@ -103,12 +106,13 @@ plt.ylabel(r'Column mass [g cm$^{-2}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
 #plt.show()
 """
-"""
+
 #Scale height
 rhodive = dens[-1]/np.exp(1)
 #rhodive = dens[np.where(h==0)][0]/np.exp(1)
 rhoe = np.zeros(np.size(h))
 rhoe.fill(rhodive)
+"""
 #Plot gas density vs height
 plt.figure(7)
 plt.plot(h,dens)
@@ -178,7 +182,7 @@ plt.xlabel(r'Height [km]',size=14)
 #rho_e = nel*m_e	#electron density
 #rho_p = nprot*m_p #proton density
 n_eb = (nhyd - nprot)
-
+"""
 plt.figure(12)
 plt.plot(h,nhyd) #hydrogen vs h
 plt.plot(h,nel) #electron vs h
@@ -190,12 +194,12 @@ plt.ylabel(r'Number density [cm$^{-3}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
 plt.yscale('log')
 plt.show()
-
+"""
 #Plot ioniaztion fraction of hydrogen
 #logarithimically against height
 
 hyd_ion = nprot/nhyd
-
+"""
 plt.figure(13)
 plt.plot(h,hyd_ion)
 plt.title(r'Ionization fraction of hydrogen vs height')
@@ -205,6 +209,16 @@ plt.yscale('log')
 plt.ylim([0,1.1])
 plt.xlim([-100,2220])
 plt.show()
+"""
+#Photon density
+N_phot = 20*temp**3
+
+print 'N_phot for deep photosphere = ',N_phot[np.where(h==np.min(h))][0]
+print 'N_H for deep photosphere    = ',nhyd[np.where(h==np.min(h))][0]
+Teff = 5770.
+N_phot_high = 20.*Teff**3/(2.*np.pi)
+print 'N_phot for highest point sun = %e'%N_phot_high
+print 'N_H for highest point sun    = %e'%nhyd[np.where(h==np.max(h))][0]
 
 #Write code to read earth.dat
 earth = np.loadtxt('earth.dat',unpack=True)
@@ -234,7 +248,7 @@ plt.plot(eh,elogdens) #ratio curves
 plt.title(r'Gas density vs height logarithmic')
 plt.ylabel(r'log $\rho$ [g cm$^{-3}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
-#plt.show()
+plt.show()
 
 plt.figure(17)
 plt.plot(eh,elogN) #ratio curves
@@ -246,11 +260,19 @@ plt.xlabel(r'Height [km]',size=14)
 #Plot pressure and density stratifications
 #together in normalized units in one graph
 
-edens = 10.**elogdens #convert from log to actual
 eN = 10.**elogN	#Convert from log to actual
+edens = 10.**elogdens #convert from log to actual
+
+edense = np.zeros(np.size(eh))
+edense.fill(edens[np.where(eh==0)][0]/np.exp(1))
+
+plt.figure(17)
+plt.plot(eh,edens)
+plt.plot(eh,edense)
+plt.show()
 """
 plt.figure(18)
-plt.plot(eh,edens/np.max(edens)) #This probably needs a fix
+plt.plot(eh,edens/np.max(edens))
 plt.plot(eh,eN/np.max(eN))
 plt.yscale('log') #plot on logscale
 plt.legend([r'$\rho/\rho_{max}$','$N/N_{max}$'])
@@ -260,7 +282,7 @@ plt.xlabel(r'Height [km]')
 #plt.show()
 """
 #Plot mean molecular weight vs height
-my_E = 10.**(elogdens)/(10.**(elogN)*m_H) #mean molecular weight
+my_E = edens/(eN*m_H) #mean molecular weight
 
 """
 plt.figure(19)
@@ -271,14 +293,16 @@ plt.xlabel(r'Height [km]')
 plt.show()
 """
 #Estimate density scale height of lower terrestrial atmosphere
-eH_p = -eh[2] / np.log(edens[2]/edens[np.where(eh==0)][0])
-print 'Scale height H_p low earth atmosphere =  ',eH_p,' km'
+g_E = 980.665 #cm s^-2
+eH_p = kJoule*etemp/((my_E*m_u*1e-3)*(g_E*1e-2))*1e-3
+print 'Scale height H_p low earth atmosphere =  ',eH_p[0],' km'
 
 #Compare terrestrial parameter values to solar
 print '------------------'
 print 'All values calculated at h = 0'
-print 'Matter density earth = ',dens[np.where(h==0)][0]
-print 'Matter density sun   = ',edens[np.where(eh==0)][0]
+
+print 'Matter density sun   = ',dens[np.where(h==0)][0]
+print 'Matter density earth = ',edens[np.where(eh==0)][0]
 
 N = (nhyd + nhel + nel)
 print 'Particle density sun   = ',N[np.where(h==0)][0]
@@ -302,8 +326,13 @@ print 'Column mass earth surface = ', ecolm
 print 'Column mass sun surface = ', colm[np.where(h==0)][0]
 
 #Compare N_phot to particle density in the air on earth
-#N_phot = 
-#print 'Ratio photons and particles earth atmosphere = ',N_phot/eN
+N_phot_sun = np.pi*R_sun**2/D_sun**2*N_phot_high
+N_phot_earth = 20*etemp[np.where(eh==np.max(eh))][0]**3
+print 'Photons from sun: %e'%N_phot_sun
+print 'Photons from earth:%e'%N_phot_earth
+print 'Particle density surface of earth: %e'%eN[np.where(eh==0)][0]
+print 'Ratio photons from sun and particles earth atmosphere = ',N_phot_sun/eN[np.where(eh==0)][0]
+print 'Ratio photons from sun and photons from earth atmosphere = ',N_phot_sun/N_phot_earth
 
 
 #Part 2 Observed solar continua
