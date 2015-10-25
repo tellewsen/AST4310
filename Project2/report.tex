@@ -334,23 +334,57 @@ If we now calculate the column mass for the surface of earth we find that it is 
 
 If we now calculate the photon density reaching earth from the sun
 \begin{equation}
- N_phot = \pi \frac{R^2}{D^2}N_{phot}^{top}
+ N_{phot} = \pi \frac{R^2}{D^2}N_{phot}^{top}
 \end{equation}
-where $N_{phot}^{top}$ is the photon density we found earlier at the top of the solar atmosphere.
+where $N_{phot}^{top}$ is the photon density we found earlier at the top of the solar atmosphere, we find that $N_{phot} = 4.16\times10^{7}$cm$^{-3}$ reaching us from the sun.
+While if we calculate the thermal photon density from the earth atmosphere we get $N_{phot}^{earth} = 4.78\times 10^8$cm$^{-3}$. Which means that there are more than 10 times more photons coming from the earth atmosphere on the surface of earth than we receive from the sun. Calculating the ratio of the received photons and the particle density in the air gives a ratio of $1.6\times 10^{-12}$. So the photon density is smaller by 12 orders of magnitude.
 
-Inserting values into this equation gives $N_phot = 4.16\times10^{7}$cm$^{-3}$ reaching us from the sun.
-While if we calculate the thermal photon density from the earth atmosphere we get $N_{phot}^{earth} = 4.78\times 10^8$cm$^{-3}$. Which means that there are almost more than 10 times more photons coming from the earth atmosphere on the surface of earth than we receive from the sun. Calculating the ratio of the received photons and the particle density in the air gives a ratio of $1.6\times 10^{-12}$. So the photon density is smaller by 12 orders of magnitude.
+XXXXXXXXXXXXXXXXXXXXXXXXX COMMENT XXXXXXXXXXXXXXXXXXXXXXXXX.
+
+\section{Continous spectrum from the solar atmosphere}
+In this section we want to look at the formation of the solar continuum. We concentrate on the visible and near-infrared parts of the spectrum.
+\subsection{Observed solar continua}
+We will be using the table provided by Allen (1976) for this part. It specifies the continuum radiation emitted by the sun in the wavelength range $\lambda = 0.2 - 5\mu$m. This table specifies four different quantities as a function of wavelength. The quantites are radially emergent intensity and the astrophysical flux in the solar continuum with, and without, smoothed lines.
+
+The four quantites are plotted in figure \ref{disitrib}.
+% \begin{figure}
+%  \includegraphics[width=.49\textwidth]{disitrib.png}
+%  \caption{The four disitributions.}
+%  \label{distrib} 
+% \end{figure}
+XXXXXXXXXXXXXXXXXXXXXXXXX EXPLAIN WHY THEY SHARE THE SAME UNITS AND THEIR DIFFERENCES   XXXXXXXXXXXXXXXXXXXXXXXXX
+
+Next we convert the distributions into values per frequency bandwitch $\Delta \nu = 1$ Hz, and plot them against wavelength. (See figure \ref{disitrib_freq}).
+% \begin{figure}
+%  \includegraphics[width=.49\textwidth]{disitrib_freq.png}
+%  \caption{The four disitributions converted to frequency.}
+%  \label{distrib_freq} 
+% \end{figure}
+
+We should try to approximate the intensity of the continuum with a planck fit.
+Figure \ref{planckfit} has the planck function with 3 different tempetatures in the same plot as the solar continuum intensity. 
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{planckfit.png}
+ \caption{The solar continuum with three attempts to fit a planck function to it.}
+ \label{planckfit} 
+\end{figure}
+The same can also be done for the ones converted to frequency (See figure \ref{planckfit_freq}).
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{planckfit_freq.png}
+ \caption{The solar continuum with three attempts to fit a planck function to it.}
+ \label{planckfit_freq} 
+\end{figure}
+Comparing the two it is clear that something in the range 6200-6400 K is as good as we will get. I will go with 6300 K.
 
 
-
-
-
-
-
-
-
-
-
+Inverting the planck function and inserting the solar continuum produces figure \ref{planck_invert}
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{planck_invert.png}
+ \caption{Brightness temperature of the solar continuum.}
+ \label{planck_invert} 
+\end{figure}
+We see that it peaks at $\lambda \approx 1.6 \mu$m.
+This is in the short-wavelength infrared region of the spectrum. There is also a peak around $0.4 \mu$m. This corresponds to violet in the visual spectrum. So in other words; the light we see receieve from the sun should be slightly more violet in color than the others. Whether increasing the brightness temperature from 6100K to 6500K results in something we can actually see is another question (Note that this could not be seen while inside the earth atmosphere because scattering changes the spectrum one receives considerably). Nevertheless the peak in the infrared region is even higher than the violet one. That peak is also a wider one.
 
 
 
@@ -361,7 +395,7 @@ While if we calculate the thermal photon density from the earth atmosphere we ge
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% references
 \section{References}
-Rutten, R. J.: 1991, The Generation and Transportation of Radiation, Sterrekundig Instuut Utrecht, The Netherlands
+Rutten, R. J.: 1991, The Generation and Transportation of Radiation, Sterrekundig Instituut Utrecht, The Netherlands
 
 %\bibliographystyle{aa-note} %% aa.bst but adding links and notes to references
 %\raggedright              %% only for adsaa with dvips, not for pdflatex

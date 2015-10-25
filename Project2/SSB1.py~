@@ -265,11 +265,12 @@ edens = 10.**elogdens #convert from log to actual
 
 edense = np.zeros(np.size(eh))
 edense.fill(edens[np.where(eh==0)][0]/np.exp(1))
-
+"""
 plt.figure(17)
 plt.plot(eh,edens)
 plt.plot(eh,edense)
 plt.show()
+"""
 """
 plt.figure(18)
 plt.plot(eh,edens/np.max(edens))
@@ -327,7 +328,7 @@ print 'Column mass sun surface = ', colm[np.where(h==0)][0]
 
 #Compare N_phot to particle density in the air on earth
 N_phot_sun = np.pi*R_sun**2/D_sun**2*N_phot_high
-N_phot_earth = 20*etemp[np.where(eh==np.max(eh))][0]**3
+N_phot_earth = 20*etemp[np.where(eh==0)][0]**3
 print 'Photons from sun: %e'%N_phot_sun
 print 'Photons from earth:%e'%N_phot_earth
 print 'Particle density surface of earth: %e'%eN[np.where(eh==0)][0]
@@ -341,10 +342,10 @@ print 'Ratio photons from sun and photons from earth atmosphere = ',N_phot_sun/N
 solspect = np.loadtxt('solspect.dat',unpack=True)
 wavelength = solspect[0,:]
 
-F_lambda = solspect[1,:]
-F_lambda_c = solspect[2,:]
-I_lambda = solspect[3,:]
-I_lambda_c = solspect[4,:]
+F_lambda = solspect[1,:]#*1e10
+F_lambda_c = solspect[2,:]#*1e10
+I_lambda = solspect[3,:]#*1e10
+I_lambda_c = solspect[4,:]#*1e10
 
 #Plot the four distributions in one fig
 #over the range wavelength = 0-2 micro meter.
@@ -382,6 +383,7 @@ plt.title('The four spectral distributions')
 plt.legend([r'$F_\nu$',r'$F_\nu^c$',r'$I_\nu$',r'$I_\nu^c$'])
 plt.xlabel(r'Wavelength $\lambda$ [$\mu m$]')
 plt.ylabel(r'Distribtuions [erg cm$^{-2}$s$^{-1}$ster$^{-1}$Hz$^{-1}$]')
+plt.xlim([0,2])
 #plt.show()
 """
 print 'Peak I_nu_c = %e'%np.max(I_nu_c)
@@ -394,14 +396,62 @@ def planck(temp,wav):
 	h	= 6.62607E-27	#Planck constant in erg s
 	B = 2.*h*c*c/((wav*1e-4)**5) / (np.exp( (h*c) / ((wav*1e-4)*kerg*temp) ) - 1 )
 	return B*1e-14 #1e-14 coverts to same units as in tables
+
+def planck_nu(temp,wav):
+	'''This function takes in wavelength in micrometers and temperature in K.
+	and returns the planck function with units [1e10 erg/cm^2/s/micrometer/steradian]'''
+	h	= 6.62607E-27	#Planck constant in erg s
+	B = 2.*h*c*c/((wav*1e-4)**5) / (np.exp( (h*c) / ((wav*1e-4)*kerg*temp) ) - 1 )
+	return B*1e-14*conversionfactor #1e-14 coverts to same units as in tables
+
+
+planckfit1 = planck(6200,wavelength) 
+planckfit2 = planck(6300,wavelength) 
+planckfit3 = planck(6400,wavelength)
 """
-planckfit = planck(6450,wavelength) 
 plt.figure(22)
 plt.plot(wavelength,I_lambda_c)
-plt.plot(wavelength,planckfit)
+plt.plot(wavelength,planckfit1)
+plt.plot(wavelength,planckfit2)
+plt.plot(wavelength,planckfit3)
+plt.xlim([0,2])
 plt.title(r'Observed intensity of continuum vs Planck fit')
 plt.ylabel(r'Intensity [$10^{10}$ erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]')
 plt.xlabel(r'Wavelength $\lambda$ [$\mu m$]')
-plt.legend([r'$I_\lambda^c$',r'$B_\lambda(6450)$'])
+plt.legend([r'$I_\lambda^c$',r'$B_\lambda(6200)$',r'$B_\lambda(6300)$',r'$B_\lambda(6400)$'])
+#plt.show()
+"""
+#planckfit for frequency
+planckfit4 = planck_nu(6200,wavelength)*1e15 #1e15 changes units on y axis.
+planckfit5 = planck_nu(6300,wavelength)*1e15 #note the change from 10^10
+planckfit6 = planck_nu(6400,wavelength)*1e15 #to 10^-5.
+"""
+plt.figure(23)
+plt.plot(wavelength,I_nu_c*1e15)
+plt.plot(wavelength,planckfit4)
+plt.plot(wavelength,planckfit5)
+plt.plot(wavelength,planckfit6)
+plt.xlim([0,2])
+plt.title(r'Observed intensity of continuum vs Planck fit')
+plt.ylabel(r'Intensity [$10^{-5}$ erg cm$^{-2}$s$^{-1}$ster$^{-1}$Hz$^{-1}$]')
+plt.xlabel(r'Wavelength $\lambda$ [$\mu m$]')
+plt.legend([r'$I_\nu^c$',r'$B_\nu(6200)$',r'$B_\nu(6300)$',r'$B_\nu(6400)$'])
 plt.show()
 """
+#Invert planckfunction
+
+def planck_invert(I,wavelength):
+	'''Takes in intensity in units 10^10 erg cm^-2 s^-1 ster^-1 
+	\mu m^-1, and wavelength in units \mu m, and returns brightness 
+	temperatre T_b '''
+
+	h	= 6.62607E-27	#Planck constant in erg s
+	T_b = h*c/(wavelength*1e-4*kerg) *1./ np.log((2.*h*c*c)/(I*1e14*(wavelength*1e-4)**5) +1.)
+	return T_b
+
+T_b  = planck_invert(I_lambda_c,wavelength)#Brightness temperature solar continuum
+plt.plot(wavelength,T_b)
+plt.title(r'Brightness temperature vs wavelength')
+plt.ylabel(r'Brightness temperature $T_b$[K] ')
+plt.xlabel(r'Wavelength [$\mu$m]')
+plt.show()
