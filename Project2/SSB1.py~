@@ -450,8 +450,77 @@ def planck_invert(I,wavelength):
 	return T_b
 
 T_b  = planck_invert(I_lambda_c,wavelength)#Brightness temperature solar continuum
+"""
+plt.figure(24)
 plt.plot(wavelength,T_b)
-plt.title(r'Brightness temperature vs wavelength')
+plt.title(r'Brightness temperature vs wavelength for the solar continuum')
 plt.ylabel(r'Brightness temperature $T_b$[K] ')
 plt.xlabel(r'Wavelength [$\mu$m]')
+plt.show()
+"""
+
+#2.2 Continuous extinction
+def exthmin(wav,temp,eldens):
+	"""
+	in: 	wav = wavelength [Angstrom] (float or fltarr)
+		temp = temperature [K]
+		eldens = electron density [electrons cm-3]
+	
+	out: 	H-minus bf+ff extinction [cm^2 per neutral hydrogen atom]
+		assuming LTE ionization H/H-min
+	"""
+
+	h = 6.626076E-27   #Planck constant (erg s) 
+	theta = 5040. / temp
+	elpress = eldens*kerg*temp
+	sigmabf = ( 1.99654 -1.18267E-5*wav +2.64243E-6*wav**2 
+	-4.40524E-10*wav**3+3.23992E-14*wav**4 -1.39568E-18*wav**5 
+	+2.78701E-23*wav**6 )
+
+	sigmabf *= 1e-18	
+	for i in range(np.size(wav)-1):
+		if sigmabf[i] >= 16444:
+			sigmabf[i] = 0
+
+	graysaha=4.158E-10*elpress*theta**2.5*10.**(0.754*theta)
+	kappabf=sigmabf*graysaha
+	kappabf=kappabf*(1.-np.exp(-h*c/(wav*1E-8*kerg*temp)))
+
+	lwav=np.log10(wav)
+
+	f0 = -2.2763 -1.6850*lwav +0.76661*lwav**2 -0.0533464*lwav**3
+	f1 = 15.2827 -9.2846*lwav +1.99381*lwav**2 -0.142631*lwav**3
+	f2 = ( -197.789 +190.266*lwav -67.9775*lwav**2 +10.6913*lwav**3 -0.625151*lwav**4 )
+
+	ltheta=np.log10(theta)
+	kappaff = 1E-26*elpress*10**(f0+f1*ltheta+f2*ltheta**2)
+	
+	return kappaff + kappabf
+
+wav = np.linspace(3000,19000, 1000)
+FALCexthmin = exthmin(wav,temp[np.where(h==0)][0],nel[np.where(h==0)][0])
+print temp[np.where(h==0)][0]
+print nel[np.where(h==0)][0]
+print r'Maximum of exhtmin = %e at wavelength = %s angstrom$'%(np.max(FALCexthmin),
+wav[np.where(FALCexthmin == np.max(FALCexthmin))][0]) 
+
+plt.figure(25)
+plt.title(r'H-minus bound-free + free-free extinction per H atom')
+plt.plot(wav*1e-4,FALCexthmin*1e26/(nel[np.where(h==0)][0]*kerg*temp[np.where(h==0)][0]))	#Note the 10^-24 i units
+plt.ylabel(r'$\kappa /P_e [10^{-26}$cm$^2$/dyn cm$^{-2}$]',size=14)
+plt.xlabel(r'Wavelength [$\mu$m]')
+plt.xlim([0,2])
+plt.ylim([0,5])
+#plt.xscale('log')
+#plt.yscale('log')
+#plt.show()
+
+#Plot variation of H^- exctinction with height for wav = 0.5 \mu m
+exthmin05 = exthmin(5000,temp,nel)
+plt.figure(26)
+plt.plot(h,exthmin05*(nhyd - nprot)*1e26)
+plt.title(r'H-minus bf+ff extinction at $\lambda = 0.5 \mu m$')
+plt.ylabel(r'log $(\kappa)$ [cm$^{-1}$]',size=14)
+plt.xlabel(r'Wavelength [$\mu$m]')
+plt.yscale('log')
 plt.show()
