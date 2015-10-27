@@ -392,7 +392,17 @@ Now we aim to reproduce figure 5 in the project text. We are provided with a fun
  \caption{H$^-$ extinction for FALC parameters at surface of solar atmosphere, normalized with the electron pressure $P_e =n_e kT$.}
  \label{extinction} 
 \end{figure}
+Note that the H$^-$ extinction is not hydrogenic, this is caused by XXXXXXXXXXXXXXXXXXXXXXXXX EXPLAIN XXXXXXXXXXXXXXXXXXXXXXXXX.
 
+We can actually make this resemble the plot for brightness temperature against wavelength by XXXXXXXXXXXXXXXXXXXXXXXXX EXPLAIN WHAT YOU DO  AND WHY IT WORKS XXXXXXXXXXXXXXXXXXXXXXXXX.
+
+It would be interesting to study how the extinction behaves at different hights.
+To do this we use the values from the FALC model, and look at insert values corresponding to every height in the data at $\lambda = 0.5 \mu$m. The results can be seen in figure \ref{falc_extinc}. Note that the units have changed since the last plot. This is because we are now looking at extinction $\alpha_\lambda(H^-)$ measured per cm path length instead of per H atom. To get this we multiplied the result obtained from the function creating polynomial fits with the number density of neutral hydrogen atoms ($n_{neutral H} \approx n_H(h) - n_p(h)$. Note that the y-axis is on a log scale so that one can see the behaviour of the function.
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{falc_extinc.png}
+ \caption{H$^-$ extinction for FALC parameters for $\lambda = 0.5\mu$m in solar atmosphere per centimeter path length.}
+ \label{falc_extinc} 
+\end{figure}
 
 
 %\begin{acknowledgements}

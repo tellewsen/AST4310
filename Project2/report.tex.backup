@@ -386,13 +386,18 @@ Inverting the planck function and inserting the solar continuum produces figure 
 We see that it peaks at $\lambda \approx 1.6 \mu$m.
 This is in the short-wavelength infrared region of the spectrum. There is also a peak around $0.4 \mu$m. This corresponds to violet in the visual spectrum. So in other words; the light we see receieve from the sun should be slightly more violet in color than the others. Whether increasing the brightness temperature from 6100K to 6500K results in something we can actually see is another question (Note that this could not be seen while inside the earth atmosphere because scattering changes the spectrum one receives considerably). Nevertheless the peak in the infrared region is even higher than the violet one. That peak is also a wider one which would indicate that more energy is transported through infrared radiation than visible light.
 \subsection{Continuous extinction}
-Now we aim to reproduce figure 5 in the project text. We are provided with a function that evaluates polynomial fits for H$^-$ extiction that are given on page 135 ff of Gray (1992). This function delivers the total H$^-$ extinction in units of cm$^2$ per neutral hydrogen atom. Plotting the values corresponding to the electron density and temperature at the surface of the solar atmosphere results in figure \ref{extinction}
+Now we aim to reproduce figure 5 in the project text. We are provided with a function that evaluates polynomial fits for H$^-$ extiction that are given on page 135 ff of Gray (1992). This function delivers the total H$^-$ extinction in units of cm$^2$ per neutral hydrogen atom. Plotting the values corresponding to the electron density and temperature at the surface of the solar atmosphere results in figure \ref{extinction}. The function works as it should, and we get a nice curve corresponding with Gray's version in the project text.
 \begin{figure}
  \includegraphics[width=.49\textwidth]{extinction.png}
  \caption{H$^-$ extinction for FALC parameters at surface of solar atmosphere, normalized with the electron pressure $P_e =n_e kT$.}
  \label{extinction} 
 \end{figure}
+Note that the H$^-$ extinction is not hydrogenic, this is caused by XXXXXXXXXXXXXXXXXXXXXXXXX EXPLAIN XXXXXXXXXXXXXXXXXXXXXXXXX.
 
+We can actually make this resemble the plot for brightness temperature against wavelength by XXXXXXXXXXXXXXXXXXXXXXXXX EXPLAIN WHAT YOU DO  AND WHY IT WORKS XXXXXXXXXXXXXXXXXXXXXXXXX.
+
+It would be interesting to study how the extinction behaves at different hights.
+To do this we use the values from the FALC model, and look at insert values corresponding to every height in the data at $\lambda = 0.5 \mu$m
 
 
 %\begin{acknowledgements}
