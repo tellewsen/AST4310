@@ -2,7 +2,7 @@
 import numpy as np # numerical package
 import matplotlib.pyplot as plt # plotting package
 from matplotlib import rc 
-rc('font',**{'family':'serif'}) # This is for Latex writing
+rc('font',**{'family':'serif','size':12}) # This is for Latex writing
 
 
 # Definition of constants and variables
@@ -32,29 +32,31 @@ nel      = np.array(falc[7,:])
 ptot     = np.array(falc[8,:])
 pgasptot = np.array(falc[9,:])
 dens     = np.array(falc[10,:])
-"""
+
 #1.1
 #Plot falc model
+"""
 plt.figure(0)
 plt.plot(h,temp)
 plt.ylim([3000,10000])
 plt.title(r'FALC Model')
 plt.xlabel(r'Height [km]',size=14)
 plt.ylabel(r'Temperature [K]',size=14)
-
+"""
 #1.2
 #Plot total pressure vs column mass linearly
+"""
 plt.figure(1)
-plt.plot(colm,ptot)
+plt.plot(colm,ptot*1e-4)
 plt.title(r'$P_{total}$ vs column mass m')
-plt.ylabel(r'$P_{total}$ [dyn cm$^{-2}$]',size=14)
+plt.ylabel(r'$P_{total}$ [$10^4$dyn cm$^{-2}$]',size=14)
 plt.xlabel(r'Column mass m [$g cm^{-2}$]',size=14)
 
 #logarithimically
 plt.figure(2)
 plt.plot(colm,ptot)
 plt.title(r'$P_{total}$ vs column mass m logarithmically')
-plt.ylabel(r'$P_{total}$ [dyn cm$^{-2}$]',size=14)
+plt.ylabel(r'log$P_{total}$ [dyn cm$^{-2}$]',size=14)
 plt.xlabel(r'Column mass m [g cm$^{-2}$]',size=14)
 plt.yscale('log')
 #plt.xscale('log')
@@ -84,17 +86,19 @@ plt.xlabel(r'Height [km]',size=14)
 #Metal fraction
 metalfraction = 1. - np.average((rho_H+rho_He)/dens)
 print 'Metalfraction = ',metalfraction
-"""
+
 #Plot column mass vs height
+"""
 plt.figure(5)
 plt.plot(h,colm)
 #plt.legend([])
-plt.title(r'Column mass vs height')
+plt.title(r'Colmn mass vs height')
 #plt.ylim([0,1.1])
-plt.ylabel(r'Column mass [g cm$^{-2}$]',size=14)
+plt.ylabel(r'm [g cm$^{-2}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
 #plt.show()
-
+"""
+"""
 #Logarithmic
 plt.figure(6)
 plt.plot(h,colm)
@@ -102,18 +106,18 @@ plt.plot(h,colm)
 plt.title(r'Column mass vs height logarithmic')
 #plt.ylim([0,1.1])
 plt.yscale('log')
-plt.ylabel(r'Column mass [g cm$^{-2}$]',size=14)
+plt.ylabel(r'log(m) [g cm$^{-2}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
-#plt.show()
+plt.show()
 """
 
 #Scale height
 rhodive = dens[-1]/np.exp(1)
-#rhodive = dens[np.where(h==0)][0]/np.exp(1)
 rhoe = np.zeros(np.size(h))
 rhoe.fill(rhodive)
-"""
+
 #Plot gas density vs height
+"""
 plt.figure(7)
 plt.plot(h,dens)
 plt.plot(h,rhoe)
@@ -129,56 +133,60 @@ plt.show()
 #Compute gas pressure and plot against height
 pgas = pgasptot*ptot #Gas pressure
 idealgas = (nhyd + nel)*kerg*temp
-"""
+
 #Overplot product (nhyd + nel)kT
+"""
 plt.figure(8)
-plt.plot(h,pgas) #from falc
-plt.plot(h,idealgas) #from idealgas law
+plt.plot(h,pgas*1e-4) #from falc
+plt.plot(h,idealgas*1e-4) #from idealgas law
 plt.legend(['Falc','Ideal gas'])
 plt.title(r'Gas pressure vs height')
 #plt.ylim([0,1.1])
 #plt.yscale('log')
-plt.ylabel(r'Gas pressure $P_{gas}$ [dyn cm$^{-2}$]',size=14)
+plt.ylabel(r'Gas pressure $P_{gas}$ [$10^4$ dyn cm$^{-2}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
 #plt.show()
-
+"""
 #Plot ratio between curves
+"""
 plt.figure(9)
 plt.plot(h,pgas/idealgas) #ratio curves
 plt.title(r'Ratio gas pressure from falc and ideal gas law')
 plt.ylabel(r'Gas pressure $P_{gas}$ [dyn cm$^{-2}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
-plt.show()
+#plt.show()
 """
-
 #Add n_helium and plot again
 idealgas_hel = (nhyd + nel+ nhel)*kerg*temp
-"""
+
 #Overplot product (nhyd + nel + nhel)kT
+"""
 plt.figure(10)
-plt.plot(h,pgas) #from falc
-plt.plot(h,idealgas_hel) #from idealgas with helium
+plt.plot(h,pgas*1e-4) #from falc
+plt.plot(h,idealgas_hel*1e-4) #from idealgas with helium
 plt.legend(['Falc','Ideal gas with helium'])
 plt.title(r'Gas pressure vs height')
 #plt.ylim([0,1.1])
 #plt.yscale('log')
-plt.ylabel(r'$P_{gas}$ [dyn cm$^{-2}$]',size=14)
+plt.ylabel(r'$P_{gas}$ [$10^4$ dyn cm$^{-2}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
 #plt.show()
-
+"""
 #Plot ratio between curves
+"""
 plt.figure(11)
 plt.plot(h,pgas/idealgas_hel) #ratio curves
 plt.title(r'Ratio gas pressure from falc and ideal gas law')
 plt.ylabel(r'Ratio $P_{FALC}/P_{IG}$',size=14)
 plt.xlabel(r'Height [km]',size=14)
-#plt.show()
-
+plt.ylim([0,1.1])
+plt.show()
+"""
 #Plot total hydrogen density vs height
 #and overplot electron density,
 #proton density, and density of electrons not from
 #hydrogen ionization.
-"""
+
 #rho_e = nel*m_e	#electron density
 #rho_p = nprot*m_p #proton density
 n_eb = (nhyd - nprot)
@@ -189,10 +197,10 @@ plt.plot(h,nel) #electron vs h
 plt.plot(h,nprot) #proton vs h
 plt.plot(h,n_eb) #bound electron vs h
 plt.legend([r'$n_H$',r'$n_e$',r'$n_p$',r'$n_{be}$'])
-plt.title(r'Select densities vs height')
-plt.ylabel(r'Number density [cm$^{-3}$]',size=14)
+plt.title(r'Number Densities vs height')
+plt.ylabel(r'$n$ [cm$^{-3}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
-plt.yscale('log')
+#plt.yscale('log')
 plt.show()
 """
 #Plot ioniaztion fraction of hydrogen
@@ -203,7 +211,7 @@ hyd_ion = nprot/nhyd
 plt.figure(13)
 plt.plot(h,hyd_ion)
 plt.title(r'Ionization fraction of hydrogen vs height')
-plt.ylabel(r'Ionization fraction',size=14)
+plt.ylabel(r'log($n_p/n_H$)',size=14)
 plt.xlabel(r'Height [km]',size=14)
 plt.yscale('log')
 plt.ylim([0,1.1])
@@ -227,12 +235,13 @@ elogP = np.array(earth[1,:])
 etemp = np.array(earth[2,:])
 elogdens = np.array(earth[3,:])
 elogN = np.array(earth[4,:])
-"""
+
 #Plot temp,pressure,density,gas density
+"""
 plt.figure(14)
 plt.plot(eh,elogP) #ratio curves
 plt.title(r'Air pressure vs height logarithmic')
-plt.ylabel(r'log$P [dyn cm$^{-2}$]$',size=14)
+plt.ylabel(r'log$P$ [dyn cm$^{-2}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
 #plt.show()
 
@@ -248,15 +257,16 @@ plt.plot(eh,elogdens) #ratio curves
 plt.title(r'Gas density vs height logarithmic')
 plt.ylabel(r'log $\rho$ [g cm$^{-3}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
-plt.show()
+#plt.show()
 
 plt.figure(17)
 plt.plot(eh,elogN) #ratio curves
 plt.title(r'Particle density vs height')
 plt.ylabel(r'log $N$ [cm$^{-3}$]',size=14)
 plt.xlabel(r'Height [km]',size=14)
-#plt.show()
+plt.show()
 """
+
 #Plot pressure and density stratifications
 #together in normalized units in one graph
 
@@ -284,12 +294,11 @@ plt.xlabel(r'Height [km]')
 """
 #Plot mean molecular weight vs height
 my_E = edens/(eN*m_H) #mean molecular weight
-
 """
 plt.figure(19)
 plt.plot(eh,my_E)
 plt.title(r'Mean molecular weight vs height')
-plt.ylabel(r'$\mu_E$')
+plt.ylabel(r'$\mu_E$[]')
 plt.xlabel(r'Height [km]')
 plt.show()
 """
@@ -359,8 +368,8 @@ plt.xlim([0,2])
 plt.title('The four spectral distributions')
 plt.legend([r'$F_\lambda$',r'$F_\lambda^c$',r'$I_\lambda$',r'$I_\lambda^c$'])
 plt.xlabel(r'Wavelength $\lambda$ [$\mu m$]')
-plt.ylabel(r'Distributions [erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]')
-#plt.show()
+plt.ylabel(r'Distributions [$10^{10}$erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]')
+plt.show()
 """
 #Check that continiuum intensity reaches 4.6*10^10 at max
 print 'I_lambda_c = %e'%np.max(I_lambda_c) #check okay
@@ -375,16 +384,16 @@ I_nu_c 	= I_lambda_c 	*conversionfactor
 frequency = c/(wavelength*1e-4)
 """
 plt.figure(21)
-plt.plot(wavelength,F_nu)
-plt.plot(wavelength,F_nu_c)
-plt.plot(wavelength,I_nu)
-plt.plot(wavelength,I_nu_c)
+plt.plot(wavelength,F_nu*1e15)
+plt.plot(wavelength,F_nu_c*1e15)
+plt.plot(wavelength,I_nu*1e15)
+plt.plot(wavelength,I_nu_c*1e15)
 plt.title('The four spectral distributions')
 plt.legend([r'$F_\nu$',r'$F_\nu^c$',r'$I_\nu$',r'$I_\nu^c$'])
 plt.xlabel(r'Wavelength $\lambda$ [$\mu m$]')
-plt.ylabel(r'Distribtuions [erg cm$^{-2}$s$^{-1}$ster$^{-1}$Hz$^{-1}$]')
+plt.ylabel(r'Distribtuions [$10^{-5}$erg cm$^{-2}$s$^{-1}$ster$^{-1}$Hz$^{-1}$]')
 plt.xlim([0,2])
-#plt.show()
+plt.show()
 """
 print 'Peak I_nu_c = %e'%np.max(I_nu_c)
 
@@ -501,9 +510,9 @@ wav = np.linspace(3000,19000, 1000)
 FALCexthmin = exthmin(wav,temp[np.where(h==0)][0],nel[np.where(h==0)][0])
 print temp[np.where(h==0)][0]
 print nel[np.where(h==0)][0]
-print r'Maximum of exhtmin = %e at wavelength = %s angstrom$'%(np.max(FALCexthmin),
+print r'Maximum of exhtmin = %e at wavelength = %s angstrom'%(np.max(FALCexthmin),
 wav[np.where(FALCexthmin == np.max(FALCexthmin))][0]) 
-
+"""
 plt.figure(25)
 plt.title(r'H-minus bound-free + free-free extinction per H atom')
 plt.plot(wav*1e-4,FALCexthmin*1e26/(nel[np.where(h==0)][0]*kerg*temp[np.where(h==0)][0]))	#Note the 10^-24 i units
@@ -514,13 +523,90 @@ plt.ylim([0,5])
 #plt.xscale('log')
 #plt.yscale('log')
 #plt.show()
-
+"""
 #Plot variation of H^- exctinction with height for wav = 0.5 \mu m
-exthmin05 = exthmin(5000,temp,nel)
+exthmin05 = exthmin(5000,temp,nel)*(nhyd - nprot)
+thomson = 6.648*1e-25 #cm**2
+extincelec = thomson*nel
+exttotal = exthmin05+extincelec
+"""
 plt.figure(26)
-plt.plot(h,exthmin05*(nhyd - nprot)*1e26)
+plt.plot(h,exthmin05)
+plt.plot(h,extincelec)
+plt.plot(h,exttotal)
+plt.legend([r'Neutral H',r'Free electrons',r'Total'])
 plt.title(r'H-minus bf+ff extinction at $\lambda = 0.5 \mu m$')
 plt.ylabel(r'log $(\kappa)$ [cm$^{-1}$]',size=14)
 plt.xlabel(r'Height [km]')
-#plt.yscale('log')
+plt.yscale('log')
 plt.show()
+"""
+#part 2.3
+#integrate the extinction
+tau = np.zeros(np.size(tau5)) # initializing tau array
+for i in range(1,len(tau)): # index zero is not accounted for, so tau[0] = 0 because we have alr
+	tau[i] = tau[i-1] + 0.5*(exttotal[i]+exttotal[i-1])*(h[i-1]-h[i])*1e5
+"""
+plt.figure(27)
+plt.plot(h,tau5,'--',)
+plt.plot(h,tau,)
+plt.yscale('log')
+plt.legend(['FALC','Integrated'])
+plt.title(r'$\tau_{500}$ from FALC compared to numerical integration')
+plt.ylabel(r'Optical depth $\tau_{500}$')
+plt.xlabel(r'Height [km]')
+plt.show()
+"""
+
+#2.5 Emergent intensity
+ext = np.zeros(np.size(tau5)) 
+tau = np.zeros(np.size(tau5))
+integrand = np.zeros(np.size(tau5)) 
+contfunc = np.zeros(np.size(tau5)) #repeat for every parameter if e
+intt = 0.0 
+hint = 0.0
+wl = 1.6 #wavelength in micrometers
+for i in range(1,len(tau)): # the index zero is not accounted for
+	ext[i] = exthmin(wl*1e4, temp[i],nel[i])*(nhyd[i]-nprot[i])+0.664e-24*nel[i]
+	tau[i] = tau[i-1] + 0.5*(ext[i]+ext[i-1])*(h[i-1]-h[i])*1e5
+	integrand[i] = planck(temp[i],wl)*np.exp(-tau[i])
+	intt += 0.5*(integrand[i]+integrand[i-1])*(tau[i]-tau[i-1])
+	hint += h[i]*0.5*(integrand[i]+integrand[i-1])*(tau[i]-tau[i-1])
+	contfunc[i] = integrand[i]*ext[i]
+
+hmean = hint / intt
+
+#Compare the computed intensity at 500 nm with the obseved one
+print 'I_lambda_cont observed = ',I_lambda_c[np.where(wavelength==wl)][0]
+print 'I_lambda_cont computed = ',intt
+#print (1- I_lambda_c[np.where(wavelength==wl)][0]/intt)*100.	#deviation from observed
+print 'hmean = ',hmean #mean height of formation
+
+#plot peak normalized contrib func vs height
+print 'peak location = ', h[np.where(contfunc==np.max(contfunc))][0]
+"""
+plt.figure(28)
+plt.plot(h,contfunc/np.max(contfunc))
+plt.title(r'Contribution function vs height for $\lambda = 50000\AA$')
+plt.ylabel(r'$I_\lambda/I_\lambda^{peak}$',size=14)
+plt.xlabel(r'Height[km]')
+plt.show()
+"""
+
+def find_nearest(array,value):
+	index = (np.abs(array-value)).argmin()
+	return array[index],index
+print 'tau= ',find_nearest(tau,1)[0], 'at h= ', h[find_nearest(tau,1)[1]]
+
+#Print height where T is closest to T_b
+print 'For wav =  500nm, T is closest to T_b at h= ', h[find_nearest(temp,T_b[np.where(wavelength == 0.5)][0])[1]]
+print 'At that point T_B = ', T_b[np.where(wavelength == 0.5)][0], 'and T = ', temp[find_nearest(temp,T_b[np.where(wavelength == 0.5)])[1]]
+
+print 'For wav = 1000nm, T is closest to T_b at h= ', h[find_nearest(temp,T_b[np.where(wavelength == 1.0)][0])[1]]
+print 'At that point T_B = ', T_b[np.where(wavelength == 1.0)][0], 'and T = ', temp[find_nearest(temp,T_b[np.where(wavelength == 1.0)])[1]]
+
+print 'For wav = 1600nm, T is closest to T_b at h= ', h[find_nearest(temp,T_b[np.where(wavelength == 1.6)][0])[1]]
+print 'At that point T_B = ', T_b[np.where(wavelength == 1.6)][0], 'and T = ', temp[find_nearest(temp,T_b[np.where(wavelength == 1.6)])[1]]
+
+print 'For wav = 5000nm, T is closest to T_b at h= ', h[find_nearest(temp,T_b[np.where(wavelength == 5.0)][0])[1]]
+print 'At that point T_B = ', T_b[np.where(wavelength == 5.0)][0], 'and T = ', temp[find_nearest(temp,T_b[np.where(wavelength == 5.0)])[1]]
