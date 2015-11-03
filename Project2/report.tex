@@ -474,7 +474,7 @@ At $\lambda = 50000\AA$ we se a huge drop in the intensity. (Note the change in 
 The location of the peak shifts for the wavelengths, but its stays around the same height for the 3 first wavelengths. However if we switch to $\lambda = 50000 \AA$ it shoots up by several hundred kilometers. This can be attributed to XXXXXXXXXXXXXXXXXXXXXXXXX EXPLAIN WHY THE FUNCTION CHANGES XXXXXXXXXXXXXXXXXXXXXXXXX
 
 We should also check the validity of the LTE Eddington-Barbier approximation. This is done by comparing the mean height of formation with the locations where $\tau_\lambda = 1$ and with the locations where $T_b = T(h)$.
-Table \ref{ebtable} shows the values for the different wavelengths. While $h(\tau=1)$ and $<h>$ share some resemblence, $h_T$ is nowhere near any of them.
+Table \ref{ebtable} shows the values for the different wavelengths. While $h(\tau=1)$ and $<h>$ share some resemblence, $h_T$ is nowhere near any of them. This leads me to conclude that the LTE Eddington-Barbier approximation is not fullfilled in this case.
 
 \begin{table}
 \begin{tabular}{|c|c|c|c|}
@@ -494,6 +494,47 @@ $5000$nm&$490$km & $855$km & $499.2$km\\
 \label{ebtable}
 \end{table}
 
+\subsection{Disk-center Intensity}
+Repeating the steps from the last section for all wavelengths should give us the complete graph for the intensity of the solar continuum.
+Comparing it with the one we observe produces figure \ref{intensitycompared}. We see that the two graphs coincide well for wavelengths larger than 600nm. For shorter wavelengths however the computed one is much too large compared to the observed one.
+
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{intensitycompared.png}
+ \caption{Comparison between observation and computation of the intensity of the solar continuum.}
+ \label{intensitycompared}
+\end{figure}
+
+\subsection{Limb darkening}
+In this section we modify the expression for the intensity such that we now get the intensity that emerged under an angle $\mu =$ cos $\theta$. In plane-parallell approximation it is given by
+\begin{equation}
+ I_\lambda(0,\mu) = \int_0^\infty S_\lambda e^{-\tau_\lambda/\mu}d\tau_\lambda/\mu.
+\end{equation}
+With this we can study the change in intensity over angle by reapeating the last section for different angles $\mu$.
+In figure \ref{intensitycompared_angle} this has been done for $\mu = [0,1]$
+
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{intensitycompared_angle.png}
+ \caption{Comparison of the intensity of the solar continuum depending on angle $\mu$. Note that the intensity is largest for $\mu = 1$, while it is zero for $\mu = 0$.}
+\label{intensitycompared_angle}
+\end{figure}
+From this it becomes clear that that the ratio between the intensity at $\mu = 1$ and other angles changes depending on the wavelength of the radiation. Figure \ref{ratiointensityangle} shows this ratio for a few select wavelengths against angle $\mu$. 
+
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{ratiointensityangle.png}
+ \caption{Ratio of the intensity at angle $\mu=1$ and other angles for select wavelengths. Note that as $\mu$ decreases the angle increases. Recall $\mu = cos\theta$. This is the reason for the reversed x-axis. We see that for low wavelengths increasing the angle decreases the intensity considerably. This is what is reffered to as limb darkening. As one increases the wavelength one reaches a wavelength where the effect goes the other way. Note the increase in intensity for high angles for the $\lambda = 5000$nm graph. This is called limb brightening.}
+\label{ratiointensityangle}
+\end{figure}
+
+Instead of looking at $\mu = cos \theta$ we can look at $r/R_\odot = sin \theta$. Figure \ref{ratiointensityrRsun} plots the same ratio as before against $r/R_\odot$. 
+
+\begin{figure}
+ \includegraphics[width=.49\textwidth]{ratiointensityrRsun.png}
+ \caption{Here we observe the same effect as before. As the distance from the center of the sun increases, the intensity of low wavelengths is suppressed considerably. Note that the line for $\lambda = 500$nm (visible light) is reduced down to almost $30\%$ at the edge compared to the center. We also see the limb brightening for $\lambda = 5000$nm.}
+\label{ratiointensityrRsun}
+\end{figure}
+The reason why we see a different intensity on the edge compared to the center is because the height at which the optical depth is unity is different. This means that the temperature at the height of optical depth unity is different, which means that he intensity we observe from there is different. In the case of visible light the temperature is lower, causing the observed intensity to be lower near the edge than at the center. For high wavelengths however the temperature at optical depth unity is higher, giving a higher intensity. Now one could ask the question why the optical depth changes for different wavelengths. This is because optical depth is dependent on extinction, and extinction is dependent on wavelength. 
+
+\subsection{Flux integration}
 
 
 %\begin{acknowledgements}

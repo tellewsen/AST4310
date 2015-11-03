@@ -2,7 +2,7 @@
 import numpy as np # numerical package
 import matplotlib.pyplot as plt # plotting package
 from matplotlib import rc 
-rc('font',**{'family':'serif','size':12}) # This is for Latex writing
+rc('font',**{'family':'serif','size':14}) # This is for Latex writing
 
 
 # Definition of constants and variables
@@ -610,3 +610,94 @@ print 'At that point T_B = ', T_b[np.where(wavelength == 1.6)][0], 'and T = ', t
 
 print 'For wav = 5000nm, T is closest to T_b at h= ', h[find_nearest(temp,T_b[np.where(wavelength == 5.0)][0])[1]]
 print 'At that point T_B = ', T_b[np.where(wavelength == 5.0)][0], 'and T = ', temp[find_nearest(temp,T_b[np.where(wavelength == 5.0)])[1]]
+
+
+#2.5 Disk center intensity
+ext = np.zeros(np.size(tau5)) 
+tau = np.zeros(np.size(tau5))
+integrand = np.zeros(np.size(tau5)) 
+contfunc = np.zeros(np.size(tau5)) #repeat for every parameter if e
+intt = np.zeros(np.size(wavelength))
+hint = np.zeros(np.size(wavelength))
+for j in range(np.size(wavelength)):
+	for i in range(1,len(tau)): # the index zero is not accounted for
+		ext[i] = exthmin(wavelength[j]*1e4, temp[i],nel[i])*(nhyd[i]-nprot[i])+0.664e-24*nel[i]
+		tau[i] = tau[i-1] + 0.5*(ext[i]+ext[i-1])*(h[i-1]-h[i])*1e5
+		integrand[i] = planck(temp[i],wavelength[j])*np.exp(-tau[i])
+		intt[j] += 0.5*(integrand[i]+integrand[i-1])*(tau[i]-tau[i-1])
+		hint[j] += h[i]*0.5*(integrand[i]+integrand[i-1])*(tau[i]-tau[i-1])
+		contfunc[i] = integrand[i]*ext[i]
+"""
+plt.figure(29)
+plt.plot(wavelength,intt)
+plt.plot(wavelength,I_lambda_c)
+plt.title(r'Disk-center intensity',size=14)
+plt.xlabel(r'Wavelength [$\mu$m]',size=14)
+plt.ylabel(r'Intensity $I_\lambda$ [$10^{10}$ erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]',size=14)
+plt.legend([r"Computed","Observed"])
+plt.show()
+"""
+
+#2.5 Disk center intensity
+ext = np.zeros(np.size(tau5)) 
+tau = np.zeros(np.size(tau5))
+integrand = np.zeros(np.size(tau5)) 
+mu = np.linspace(0.1,1,50)
+intt = np.zeros((np.size(mu),np.size(wavelength)))
+hint = np.zeros((np.size(mu),np.size(wavelength)))
+for k in range(0,np.size(mu)):
+	for j in range(np.size(wavelength)):
+		for i in range(1,len(tau)): # the index zero is not accounted for
+			ext[i] = exthmin(wavelength[j]*1e4, temp[i],nel[i])*(nhyd[i]-nprot[i])+0.664e-24*nel[i]
+			tau[i] = tau[i-1] + 0.5*(ext[i]+ext[i-1])*(h[i-1]-h[i])*1e5
+			integrand[i] = planck(temp[i],wavelength[j])*np.exp(-tau[i]/mu[k])/mu[k]
+			intt[k,j] += 0.5*(integrand[i]+integrand[i-1])*(tau[i]-tau[i-1])
+			hint[k,j] += h[i]*0.5*(integrand[i]+integrand[i-1])*(tau[i]-tau[i-1])
+			#print j
+"""
+plt.figure(29)
+for k in range(np.size(mu)):
+	plt.plot(wavelength,intt[k],label=r'$\mu=%s$'%mu[k])
+plt.title(r'Disk-center intensity',size=14)
+plt.xlabel(r'Wavelength [$\mu$m]',size=14)
+plt.ylabel(r'Intensity $I_\lambda$ [$10^{10}$ erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]',size=14)
+#plt.ylim([-.1,6.])
+plt.legend(loc='best')
+#plt.yscale('log')
+#plt.show()
+"""
+ratio1 = np.zeros(np.size(mu))
+ratio2 = np.zeros(np.size(mu))
+ratio3 = np.zeros(np.size(mu))
+ratio4 = np.zeros(np.size(mu))
+
+for i in range(np.size(mu)):
+	ratio1[i] = intt[i,np.where(wavelength==0.5)]/intt[-1,np.where(wavelength==0.5)]
+	ratio2[i] = intt[i,np.where(wavelength==1.0)]/intt[-1,np.where(wavelength==1.0)]
+	ratio3[i] = intt[i,np.where(wavelength==1.6)]/intt[-1,np.where(wavelength==1.6)]
+	ratio4[i] = intt[i,np.where(wavelength==5.0)]/intt[-1,np.where(wavelength==5.0)]
+
+plt.figure(30)
+plt.plot(mu,ratio1,label=r'$\lambda = 500$nm')
+plt.plot(mu,ratio2,label=r'$\lambda = 1000$nm')
+plt.plot(mu,ratio3,label=r'$\lambda = 1600$nm')
+plt.plot(mu,ratio4,label=r'$\lambda = 5000$nm')
+plt.title(r'Ratio $I_\lambda(0,\mu)/I_\lambda(0,1)$ for select wavelengths')
+plt.ylabel(r'$I_\lambda(0,\mu)/I_\lambda(0,1)$')
+plt.xlabel(r'Angle $\mu$')
+plt.xlim([np.max(mu),np.min(mu)])
+plt.legend(loc='best')
+#plt.show()
+
+rRsun  = np.sin(np.arccos(mu))
+plt.figure(31)
+plt.plot(rRsun,ratio1,label=r'$\lambda = 500$nm')
+plt.plot(rRsun,ratio2,label=r'$\lambda = 1000$nm')
+plt.plot(rRsun,ratio3,label=r'$\lambda = 1600$nm')
+plt.plot(rRsun,ratio4,label=r'$\lambda = 5000$nm')
+plt.title(r'Ratio $I_\lambda(0,\mu)/I_\lambda(0,1)$ for select wavelengths')
+plt.ylabel(r'$I_\lambda(0,\mu)/I_\lambda(0,1)$')
+plt.xlabel(r'$r/R_\odot$')
+#plt.xlim([np.max(rRsun),np.min(rRsun)])
+plt.legend(loc='best')
+plt.show()
