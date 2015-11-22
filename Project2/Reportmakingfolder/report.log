@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.30)  3 NOV 2015 13:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.30)  19 NOV 2015 11:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1093,407 +1093,387 @@ LaTeX Font Info:    Font shape `T1/txss/m/it' in size <10> not available
 LaTeX Font Info:    Font shape `T1/txss/m/sl' will be
 (Font)              scaled to size 9.49997pt on input line 119.
 
-<falctemp.png, id=57, 586.8324pt x 442.2924pt>
+<falctemp.png, id=85, 586.8324pt x 442.2924pt>
 File: falctemp.png Graphic file (type png)
  <use falctemp.png>
 Package pdftex.def Info: falctemp.png used on input line 123.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<falc_pressure.png, id=61, 586.8324pt x 442.2924pt>
+<falc_pressure.png, id=89, 586.8324pt x 442.2924pt>
 File: falc_pressure.png Graphic file (type png)
  <use falc_pressure.png>
 Package pdftex.def Info: falc_pressure.png used on input line 138.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<falc_pressure_log.png, id=62, 586.8324pt x 442.2924pt>
+<falc_pressure_log.png, id=90, 586.8324pt x 442.2924pt>
 File: falc_pressure_log.png Graphic file (type png)
 
 <use falc_pressure_log.png>
 Package pdftex.def Info: falc_pressure_log.png used on input line 143.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<Hdensratio_height.png, id=64, 586.8324pt x 442.2924pt>
+<Hdensratio_height.png, id=92, 586.8324pt x 442.2924pt>
 File: Hdensratio_height.png Graphic file (type png)
 
 <use Hdensratio_height.png>
 Package pdftex.def Info: Hdensratio_height.png used on input line 150.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
- <col_height.png, id=67, 586.8324pt x 442.2924pt>
+ <col_height.png, id=95, 586.8324pt x 442.2924pt>
 File: col_height.png Graphic file (type png)
 
 <use col_height.png>
-Package pdftex.def Info: col_height.png used on input line 157.
+Package pdftex.def Info: col_height.png used on input line 156.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-Underfull \hbox (badness 1194) in paragraph at lines 155--161
-\T1/txr/m/n/10 ure [][]5[][]. Note that the curve be-comes nearly straight if w
-e
- []
-
-<col_height_log.png, id=68, 586.8324pt x 442.2924pt>
+ <col_height_log.png, id=96, 586.8324pt x 442.2924pt>
 File: col_height_log.png Graphic file (type png)
- <use col_height_log.png>
-Package pdftex.def Info: col_height_log.png used on input line 163.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<gdens_height.png, id=70, 586.8324pt x 442.2924pt>
+<use col_height_log.png>
+Package pdftex.def Info: col_height_log.png used on input line 162.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ <gdens_height.png, id=98, 586.8324pt x 442.2924pt>
 File: gdens_height.png Graphic file (type png)
- <use gdens_height.png>
-Package pdftex.def Info: gdens_height.png used on input line 171.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+<use gdens_height.png>
+Package pdftex.def Info: gdens_height.png used on input line 169.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 \openout3 = `report.upa'.
 
 
  <./falctemp.png> <./falc_pressure.png> <./falc_pressure_log.png>]
-<gas_height.png, id=102, 586.8324pt x 442.2924pt>
+<gas_height.png, id=130, 586.8324pt x 442.2924pt>
 File: gas_height.png Graphic file (type png)
  <use gas_height.png>
-Package pdftex.def Info: gas_height.png used on input line 193.
+Package pdftex.def Info: gas_height.png used on input line 190.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<gas_height_ratio.png, id=103, 586.8324pt x 442.2924pt>
+<gas_height_ratio.png, id=131, 586.8324pt x 442.2924pt>
 File: gas_height_ratio.png Graphic file (type png)
 
 <use gas_height_ratio.png>
-Package pdftex.def Info: gas_height_ratio.png used on input line 199.
+Package pdftex.def Info: gas_height_ratio.png used on input line 196.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<gas_height_hel.png, id=104, 586.8324pt x 442.2924pt>
+<gas_height_hel.png, id=132, 586.8324pt x 442.2924pt>
 File: gas_height_hel.png Graphic file (type png)
  <use gas_height_hel.png>
-Package pdftex.def Info: gas_height_hel.png used on input line 205.
+Package pdftex.def Info: gas_height_hel.png used on input line 202.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<gas_height_ratio_hel.png, id=105, 586.8324pt x 442.2924pt>
+<gas_height_ratio_hel.png, id=133, 586.8324pt x 442.2924pt>
 File: gas_height_ratio_hel.png Graphic file (type png)
 
 <use gas_height_ratio_hel.png>
-Package pdftex.def Info: gas_height_ratio_hel.png used on input line 211.
+Package pdftex.def Info: gas_height_ratio_hel.png used on input line 208.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<densities_height.png, id=107, 586.8324pt x 442.2924pt>
+<densities_height.png, id=135, 586.8324pt x 442.2924pt>
 File: densities_height.png Graphic file (type png)
 
 <use densities_height.png>
-Package pdftex.def Info: densities_height.png used on input line 222.
+Package pdftex.def Info: densities_height.png used on input line 219.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<densities_height_log.png, id=109, 586.8324pt x 442.2924pt>
+<densities_height_log.png, id=137, 586.8324pt x 442.2924pt>
 File: densities_height_log.png Graphic file (type png)
 
 <use densities_height_log.png>
-Package pdftex.def Info: densities_height_log.png used on input line 229.
+Package pdftex.def Info: densities_height_log.png used on input line 226.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
  [2 <./Hdensratio_height.png> <./col_height.png> <./col_height_log.png> <./gden
 s_height.png>]
-<hyd_ion.png, id=126, 586.8324pt x 442.2924pt>
+<hyd_ion.png, id=154, 586.8324pt x 442.2924pt>
 File: hyd_ion.png Graphic file (type png)
  <use hyd_ion.png>
-Package pdftex.def Info: hyd_ion.png used on input line 244.
+Package pdftex.def Info: hyd_ion.png used on input line 241.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-Underfull \hbox (badness 3849) in paragraph at lines 242--250
-[]\T1/txr/m/n/10 See fig-ure [][]14[][]. Note the log-a-rith-mic scale. There i
-s
- []
-
-
-Underfull \hbox (badness 6758) in paragraph at lines 242--250
-\T1/txr/m/n/10 a clear re-sem-b-lence to the tem-per-a-ture plot (see fig-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--250
-\T1/txr/m/n/10 ure [][]1[][]). XXXXXXXXXXXXXXXXXXXXXXXXX EX-
- []
-
-
-Underfull \hbox (badness 7415) in paragraph at lines 242--250
-\T1/txr/m/n/10 PLAIN WHY THAT IS AND WHY IT IS TILTED
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 259--262
-[]\T1/txr/m/n/10 XXXXXXXXXXXXXXXXXXXXXXXXX EX-PLAIN
- []
-
-
-Underfull \hbox (badness 1303) in paragraph at lines 259--262
-\T1/txr/m/n/10 WHY THIS IS XXXXXXXXXXXXXXXXXXXXXXXXX.
- []
-
-[3 <./gas_height.png> <./gas_height_ratio.png> <./gas_height_hel.png> <./gas_he
-ight_ratio_hel.png> <./densities_height.png>]
-<temp_earth.png, id=144, 586.8324pt x 442.2924pt>
+ [3 <./gas_height.png> <./gas_height_ratio.png> <./gas_height_hel.png> <./gas_h
+eight_ratio_hel.png> <./densities_height.png>]
+<temp_earth.png, id=172, 586.8324pt x 442.2924pt>
 File: temp_earth.png Graphic file (type png)
  <use temp_earth.png>
-Package pdftex.def Info: temp_earth.png used on input line 275.
+Package pdftex.def Info: temp_earth.png used on input line 268.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<pressure_earth.png, id=145, 586.8324pt x 442.2924pt>
+<pressure_earth.png, id=173, 586.8324pt x 442.2924pt>
 File: pressure_earth.png Graphic file (type png)
  <use pressure_earth.png>
-Package pdftex.def Info: pressure_earth.png used on input line 281.
+Package pdftex.def Info: pressure_earth.png used on input line 274.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<particle_dens_earth.png, id=146, 586.8324pt x 442.2924pt>
+<particle_dens_earth.png, id=174, 586.8324pt x 442.2924pt>
 File: particle_dens_earth.png Graphic file (type png)
 
 <use particle_dens_earth.png>
-Package pdftex.def Info: particle_dens_earth.png used on input line 287.
+Package pdftex.def Info: particle_dens_earth.png used on input line 280.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<gas_dens_earth.png, id=147, 586.8324pt x 442.2924pt>
+<gas_dens_earth.png, id=175, 586.8324pt x 442.2924pt>
 File: gas_dens_earth.png Graphic file (type png)
  <use gas_dens_earth.png>
-Package pdftex.def Info: gas_dens_earth.png used on input line 293.
+Package pdftex.def Info: gas_dens_earth.png used on input line 286.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-Underfull \hbox (badness 1292) in paragraph at lines 298--300
-\T1/txr/m/n/10 if one nor-mal-izes each to their re-spec-tive max-i-mums and
- []
+<pressure_density_compare.png, id=177, 586.8324pt x 442.2924pt>
+File: pressure_density_compare.png Graphic file (type png)
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 298--300
-\T1/txr/m/n/10 to iden-ti-cal. XXXXXXXXXXXXXXXXXXXXXXXXX
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 298--300
-\T1/txr/m/n/10 COM-MENT WHY THEY LOOK THE SAME
- []
-
-<mu_E.png, id=149, 586.8324pt x 442.2924pt>
+<use pressure_density_compare.png>
+Package pdftex.def Info: pressure_density_compare.png used on input line 293.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ <mu_E.png, id=179, 586.8324pt x 442.2924pt>
 File: mu_E.png Graphic file (type png)
- <use mu_E.png>
-Package pdftex.def Info: mu_E.png used on input line 303.
+
+<use mu_E.png>
+Package pdftex.def Info: mu_E.png used on input line 299.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
  [4 <./densities_height_log.png> <./hyd_ion.png> <./temp_earth.png> <./pressure
-_earth.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 342--343
-[]\T1/txr/m/n/10 XXXXXXXXXXXXXXXXXXXXXXXXX COM-MENT
- []
-
-<distrib.png, id=166, 586.8324pt x 442.2924pt>
+_earth.png>] <distrib.png, id=198, 586.8324pt x 442.2924pt>
 File: distrib.png Graphic file (type png)
- <use distrib.png>
-Package pdftex.def Info: distrib.png used on input line 351.
+
+<use distrib.png>
+Package pdftex.def Info: distrib.png used on input line 345.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 349--356
-[]\T1/txr/m/n/10 The four quan-tites are plot-ted in fig-ure [][]20[][].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 349--356
-\T1/txr/m/n/10 XXXXXXXXXXXXXXXXXXXXXXXXX EX-PLAIN
- []
-
-
-Underfull \hbox (badness 1796) in paragraph at lines 349--356
-\T1/txr/m/n/10 WHY THEY SHARE THE SAME UNITS AND THEIR
- []
-
-<distrib_freq.png, id=168, 586.8324pt x 442.2924pt>
+ [5 <./particle_dens_earth.png> <./gas_dens_earth.png> <./pressure_density_comp
+are.png> <./mu_E.png>]
+<distrib_freq.png, id=210, 586.8324pt x 442.2924pt>
 File: distrib_freq.png Graphic file (type png)
  <use distrib_freq.png>
-Package pdftex.def Info: distrib_freq.png used on input line 359.
+Package pdftex.def Info: distrib_freq.png used on input line 352.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<planckfit.png, id=170, 586.8324pt x 442.2924pt>
+<planckfit.png, id=212, 586.8324pt x 442.2924pt>
 File: planckfit.png Graphic file (type png)
  <use planckfit.png>
-Package pdftex.def Info: planckfit.png used on input line 367.
+Package pdftex.def Info: planckfit.png used on input line 360.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<planckfit_freq.png, id=172, 586.8324pt x 442.2924pt>
+<planckfit_freq.png, id=214, 586.8324pt x 442.2924pt>
 File: planckfit_freq.png Graphic file (type png)
  <use planckfit_freq.png>
-Package pdftex.def Info: planckfit_freq.png used on input line 373.
+Package pdftex.def Info: planckfit_freq.png used on input line 366.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<planck_invert.png, id=174, 586.8324pt x 442.2924pt>
+<planck_invert.png, id=216, 586.8324pt x 442.2924pt>
 File: planck_invert.png Graphic file (type png)
  <use planck_invert.png>
-Package pdftex.def Info: planck_invert.png used on input line 382.
+Package pdftex.def Info: planck_invert.png used on input line 375.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-[5 <./particle_dens_earth.png> <./gas_dens_earth.png> <./mu_E.png>]
-<extinction.png, id=190, 586.8324pt x 442.2924pt>
+<extinction.png, id=218, 586.8324pt x 442.2924pt>
 File: extinction.png Graphic file (type png)
  <use extinction.png>
-Package pdftex.def Info: extinction.png used on input line 391.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
- [6 <./distrib.png> <./distrib_freq.png> <./planckfit.png> <./planckfit_freq.pn
-g> <./planck_invert.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 397--398
-[]\T1/txr/m/n/10 We can ac-tu-ally make this re-sem-ble the plot
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 397--398
-\T1/txr/m/n/10 for bright-ness tem-per-a-ture against wave-length by
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 397--398
-\T1/txr/m/n/10 XXXXXXXXXXXXXXXXXXXXXXXXX EX-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 397--398
-\T1/txr/m/n/10 PLAIN WHAT YOU DO AND WHY IT WORKS
- []
-
-<extinc_5000.png, id=202, 586.8324pt x 442.2924pt>
-File: extinc_5000.png Graphic file (type png)
- <use extinc_5000.png>
-Package pdftex.def Info: extinc_5000.png used on input line 404.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-<optical_depth.png, id=204, 586.8324pt x 442.2924pt>
-File: optical_depth.png Graphic file (type png)
- <use optical_depth.png>
-Package pdftex.def Info: optical_depth.png used on input line 417.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-[7 <./extinction.png> <./extinc_5000.png> <./optical_depth.png>]
-
-LaTeX Warning: Command \r invalid in math mode on input line 438.
-
-<contfunc_5000.png, id=221, 586.8324pt x 442.2924pt>
-File: contfunc_5000.png Graphic file (type png)
- <use contfunc_5000.png>
-Package pdftex.def Info: contfunc_5000.png used on input line 444.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 445.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 449.
-
-<contfunc_10000.png, id=223, 586.8324pt x 442.2924pt>
-File: contfunc_10000.png Graphic file (type png)
- <use contfunc_10000.png>
-Package pdftex.def Info: contfunc_10000.png used on input line 452.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 453.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 457.
-
-<contfunc_16000.png, id=225, 586.8324pt x 442.2924pt>
-File: contfunc_16000.png Graphic file (type png)
- <use contfunc_16000.png>
-Package pdftex.def Info: contfunc_16000.png used on input line 460.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 461.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 465.
-
-<contfunc_50000.png, id=227, 586.8324pt x 442.2924pt>
-File: contfunc_50000.png Graphic file (type png)
- <use contfunc_50000.png>
-Package pdftex.def Info: contfunc_50000.png used on input line 468.
-(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 469.
-
-
-LaTeX Warning: Command \r invalid in math mode on input line 474.
-
-
-Underfull \hbox (badness 2762) in paragraph at lines 474--475
-[]\T1/txr/m/n/10 The lo-ca-tion of the peak shifts for the wave-lengths,
- []
-
-
-Underfull \hbox (badness 6094) in paragraph at lines 474--475
-\T1/txr/m/n/10 but its stays around the same height for the 3 first
- []
-
-
-Underfull \hbox (badness 2035) in paragraph at lines 474--475
-\T1/txr/m/n/10 wave-lengths. How-ever if we switch to $\OML/txmi/m/it/10 ^^U \O
-T1/txr/m/n/10 = 50000Å$ \T1/txr/m/n/10 it
- []
-
-
-Underfull \hbox (badness 1199) in paragraph at lines 474--475
-\T1/txr/m/n/10 shoots up by sev-eral hun-dred kilo-me-ters. This can be at-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 474--475
-\T1/txr/m/n/10 tributed to XXXXXXXXXXXXXXXXXXXXXXXXX
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 474--475
-\T1/txr/m/n/10 EX-PLAIN WHY THE FUNC-TION CHANGES
- []
-
-<intensitycompared.png, id=230, 586.8324pt x 442.2924pt>
-File: intensitycompared.png Graphic file (type png)
-
-<use intensitycompared.png>
-Package pdftex.def Info: intensitycompared.png used on input line 502.
+Package pdftex.def Info: extinction.png used on input line 384.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <./contfunc_5000.png> <./contfunc_10000.png> <./contfunc_16000.png>]
-<intensitycompared_angle.png, id=246, 586.8324pt x 442.2924pt>
+ [6 <./distrib.png> <./distrib_freq.png> <./planckfit.png> <./planckfit_freq.pn
+g>]
+<extinc_5000.png, id=233, 586.8324pt x 442.2924pt>
+File: extinc_5000.png Graphic file (type png)
+ <use extinc_5000.png>
+Package pdftex.def Info: extinc_5000.png used on input line 395.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+<optical_depth.png, id=235, 586.8324pt x 442.2924pt>
+File: optical_depth.png Graphic file (type png)
+ <use optical_depth.png>
+Package pdftex.def Info: optical_depth.png used on input line 408.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+[7 <./planck_invert.png> <./extinction.png> <./extinc_5000.png>]
+
+LaTeX Warning: Command \r invalid in math mode on input line 429.
+
+<contfunc_5000.png, id=252, 586.8324pt x 442.2924pt>
+File: contfunc_5000.png Graphic file (type png)
+ <use contfunc_5000.png>
+Package pdftex.def Info: contfunc_5000.png used on input line 435.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 436.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 440.
+
+<contfunc_10000.png, id=254, 586.8324pt x 442.2924pt>
+File: contfunc_10000.png Graphic file (type png)
+ <use contfunc_10000.png>
+Package pdftex.def Info: contfunc_10000.png used on input line 443.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 444.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 448.
+
+<contfunc_16000.png, id=256, 586.8324pt x 442.2924pt>
+File: contfunc_16000.png Graphic file (type png)
+ <use contfunc_16000.png>
+Package pdftex.def Info: contfunc_16000.png used on input line 451.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 452.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 456.
+
+<contfunc_50000.png, id=257, 586.8324pt x 442.2924pt>
+File: contfunc_50000.png Graphic file (type png)
+ <use contfunc_50000.png>
+Package pdftex.def Info: contfunc_50000.png used on input line 459.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 460.
+
+
+LaTeX Warning: Command \r invalid in math mode on input line 464.
+
+<intensitycompared.png, id=260, 586.8324pt x 442.2924pt>
+File: intensitycompared.png Graphic file (type png)
+
+<use intensitycompared.png>
+Package pdftex.def Info: intensitycompared.png used on input line 491.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./optical_depth.png> <./contfunc_5000.png> <./contfunc_10000.png>]
+<intensitycompared_angle.png, id=275, 586.8324pt x 442.2924pt>
 File: intensitycompared_angle.png Graphic file (type png)
 
 <use intensitycompared_angle.png>
-Package pdftex.def Info: intensitycompared_angle.png used on input line 516.
+Package pdftex.def Info: intensitycompared_angle.png used on input line 505.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<ratiointensityangle.png, id=248, 586.8324pt x 442.2924pt>
+<ratiointensityangle.png, id=277, 586.8324pt x 442.2924pt>
 File: ratiointensityangle.png Graphic file (type png)
 
 <use ratiointensityangle.png>
-Package pdftex.def Info: ratiointensityangle.png used on input line 523.
+Package pdftex.def Info: ratiointensityangle.png used on input line 512.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
-<ratiointensityrRsun.png, id=250, 586.8324pt x 442.2924pt>
+<ratiointensityrRsun.png, id=279, 586.8324pt x 442.2924pt>
 File: ratiointensityrRsun.png Graphic file (type png)
 
 <use ratiointensityrRsun.png>
-Package pdftex.def Info: ratiointensityrRsun.png used on input line 531.
+Package pdftex.def Info: ratiointensityrRsun.png used on input line 520.
 (pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
- [9 <./contfunc_50000.png> <./intensitycompared.png> <./intensitycompared_angle
-.png> <./ratiointensityangle.png>] [10
+ [9 <./contfunc_16000.png> <./contfunc_50000.png> <./intensitycompared.png> <./
+intensitycompared_angle.png>]
+<solarflux.png, id=295, 586.8324pt x 442.2924pt>
+File: solarflux.png Graphic file (type png)
+ <use solarflux.png>
+Package pdftex.def Info: solarflux.png used on input line 539.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
 
- <./ratiointensityrRsun.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 552.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 552.
+Underfull \vbox (badness 1715) has occurred while \output is active []
+
+
+<Na1observed_wavelength.png, id=298, 586.8324pt x 442.2924pt>
+File: Na1observed_wavelength.png Graphic file (type png)
+
+<use Na1observed_wavelength.png>
+Package pdftex.def Info: Na1observed_wavelength.png used on input line 555.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+<Na1observed_wavelength_air.png, id=299, 586.8324pt x 442.2924pt>
+File: Na1observed_wavelength_air.png Graphic file (type png)
+
+<use Na1observed_wavelength_air.png>
+Package pdftex.def Info: Na1observed_wavelength_air.png used on input line 560.
+
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+Underfull \vbox (badness 1303) has occurred while \output is active []
+
+ [10 <./ratiointensityangle.png> <./ratiointensityrRsun.png> <./solarflux.png> 
+<./Na1observed_wavelength.png>] <Boltzmann_NaI.png, id=314, 586.8324pt x 442.29
+24pt>
+File: Boltzmann_NaI.png Graphic file (type png)
+
+<use Boltzmann_NaI.png>
+Package pdftex.def Info: Boltzmann_NaI.png used on input line 624.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ <Saha_Na.png, id=316, 586.8324pt x 442.2924pt>
+File: Saha_Na.png Graphic file (type png)
+
+<use Saha_Na.png>
+Package pdftex.def Info: Saha_Na.png used on input line 631.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ <dopplerterms.png, id=318, 586.8324pt x 442.2924pt>
+File: dopplerterms.png Graphic file (type png)
+
+<use dopplerterms.png>
+Package pdftex.def Info: dopplerterms.png used on input line 638.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ <Dopplerwidth.png, id=320, 586.8324pt x 442.2924pt>
+File: Dopplerwidth.png Graphic file (type png)
+
+<use Dopplerwidth.png>
+Package pdftex.def Info: Dopplerwidth.png used on input line 645.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ <voigt_NaID1.png, id=322, 586.8324pt x 442.2924pt>
+File: voigt_NaID1.png Graphic file (type png)
+
+<use voigt_NaID1.png>
+Package pdftex.def Info: voigt_NaID1.png used on input line 652.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ <correction.png, id=324, 586.8324pt x 442.2924pt>
+File: correction.png Graphic file (type png)
+
+<use correction.png>
+Package pdftex.def Info: correction.png used on input line 663.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+<extinction_center_D1.png, id=326, 586.8324pt x 442.2924pt>
+File: extinction_center_D1.png Graphic file (type png)
+
+<use extinction_center_D1.png>
+Package pdftex.def Info: extinction_center_D1.png used on input line 670.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+<extinction_D1_height.png, id=328, 586.8324pt x 442.2924pt>
+File: extinction_D1_height.png Graphic file (type png)
+
+<use extinction_D1_height.png>
+Package pdftex.def Info: extinction_D1_height.png used on input line 677.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+
+<intensity_NaID1.png, id=330, 586.8324pt x 442.2924pt>
+File: intensity_NaID1.png Graphic file (type png)
+
+<use intensity_NaID1.png>
+Package pdftex.def Info: intensity_NaID1.png used on input line 683.
+(pdftex.def)             Requested size: 256.53291pt x 193.34723pt.
+ [11 <./Na1observed_wavelength_air.png>] [12 <./Boltzmann_NaI.png> <./Saha_Na.p
+ng> <./dopplerterms.png> <./Dopplerwidth.png>]
+[13 <./voigt_NaID1.png> <./correction.png> <./extinction_center_D1.png> <./exti
+nction_D1_height.png>] [14
+
+ <./intensity_NaID1.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 702.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 702.
  (./report.aux
 * soulpos - computing points - it may take a few seconds *
 \openout3 = `report.upb'.
 
  (./report.upa))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 552.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 552.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 702.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 702.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 0AE2FB3452B6294DE37B4A2B61314D2E;937.
+(rerunfilecheck)             Checksum: AFC3EF4DF04A64A6D91DDAF66A482D66;1401.
  ) 
 Here is how much of TeX's memory you used:
- 12956 strings out of 495028
- 194146 string characters out of 6181497
- 310352 words of memory out of 5000000
- 15759 multiletter control sequences out of 15000+600000
+ 13096 strings out of 495028
+ 196669 string characters out of 6181497
+ 320899 words of memory out of 5000000
+ 15846 multiletter control sequences out of 15000+600000
  60233 words of font info for 107 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
  42i,11n,45p,1080b,419s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1506,10 +1486,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/urw/times/utmri8a.pfb>
-Output written on report.pdf (10 pages, 1193198 bytes).
+Output written on report.pdf (14 pages, 1748222 bytes).
 PDF statistics:
- 319 PDF objects out of 1000 (max. 8388607)
- 225 compressed objects within 3 object streams
- 75 named destinations out of 1000 (max. 500000)
- 280 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 440 PDF objects out of 1000 (max. 8388607)
+ 315 compressed objects within 4 object streams
+ 115 named destinations out of 1000 (max. 500000)
+ 401 words of extra memory for PDF output out of 10000 (max. 10000000)
 

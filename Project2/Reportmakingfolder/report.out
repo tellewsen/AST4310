@@ -2,7 +2,7 @@
 \BOOKMARK [2][-]{subsection.1.1}{FALC temperature stratification}{section.1}% 2
 \BOOKMARK [2][-]{subsection.1.2}{FALC density stratification}{section.1}% 3
 \BOOKMARK [2][-]{subsection.1.3}{Comparison with the earth's atmosphere}{section.1}% 4
-\BOOKMARK [1][-]{section.2}{Continous spectrum from the solar atmosphere}{}% 5
+\BOOKMARK [1][-]{section.2}{Continuous spectrum from the solar atmosphere}{}% 5
 \BOOKMARK [2][-]{subsection.2.1}{Observed solar continua}{section.2}% 6
 \BOOKMARK [2][-]{subsection.2.2}{Continuous extinction}{section.2}% 7
 \BOOKMARK [2][-]{subsection.2.3}{Optical Depth}{section.2}% 8
@@ -10,4 +10,11 @@
 \BOOKMARK [2][-]{subsection.2.5}{Disk-center Intensity}{section.2}% 10
 \BOOKMARK [2][-]{subsection.2.6}{Limb darkening}{section.2}% 11
 \BOOKMARK [2][-]{subsection.2.7}{Flux integration}{section.2}% 12
-\BOOKMARK [1][-]{section.3}{References}{}% 13
+\BOOKMARK [1][-]{section.3}{Spectral lines from the solar atmosphere}{}% 13
+\BOOKMARK [2][-]{subsection.3.1}{Observed Na I D line profiles}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.2}{LTE Line formation}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.3}{Line extinction}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.4}{Line Broadening}{section.3}% 17
+\BOOKMARK [2][-]{subsection.3.5}{Implementation}{section.3}% 18
+\BOOKMARK [1][-]{section.4}{Conclusion}{}% 19
+\BOOKMARK [1][-]{section.5}{References}{}% 20

@@ -1,0 +1,335 @@
+# importing useful libraries
+import numpy as np # numerical package
+import matplotlib.pyplot as plt # plotting package
+from scipy import special
+from matplotlib import rc 
+rc('font',**{'family':'serif','size':14}) # This is for Latex writing
+
+
+# Definition of constants and variables
+keV	= 8.61734E-5 	#Boltzmann constant in eV/K
+kerg	= 1.380658E-16	#Boltzmann constant in erg K 
+kJoule  = kerg*1e-7	#Boltzmann constant in joule/K
+h	= 6.62607E-27	#Planck constant in erg s
+c	= 2.99792E10	#Speed of light in cm/s
+m_e	= 9.109390E-28	#Electron mass in grams
+m_H     = 1.67352E-24   #Hydrogen mass in grams
+m_He    = 3.98*m_H 	#Helium mass in grams
+m_p     = 1.67262E-24	#Proton mass in grams
+m_u	= 1.660538e-24	#Atomic mass unit in grams
+m_Na = 22.99*1.6605*1e-24 #Sodium mass in grams
+R_sun   = 696300	#Radius sun in km
+D_sun   = 1.496e8 	#Distance sun-earth in km
+erg2eV = 6.242e11	#Convert erg to ev
+
+
+#Read in solarspectrum data
+Nadata = np.loadtxt('int_nad.dat',unpack=True)
+wavenumber = Nadata[0]
+E_spec = Nadata[1]
+S_spec = Nadata[2]
+S_spec_corr = Nadata[3]
+
+#Read in falc data and arrange in arrays
+falc = np.loadtxt('falc.dat',unpack=True)
+height   = np.array(falc[0,:])
+tau5     = np.array(falc[1,:])
+colm     = np.array(falc[2,:])
+temp     = np.array(falc[3,:])
+vturb    = np.array(falc[4,:])
+nhyd     = np.array(falc[5,:])
+nprot    = np.array(falc[6,:])
+nel      = np.array(falc[7,:])
+ptot     = np.array(falc[8,:])
+pgasptot = np.array(falc[9,:])
+dens     = np.array(falc[10,:])
+"""
+plt.figure(0)
+plt.plot(wavenumber,S_spec)
+plt.title('Observed Solar spectrum')
+#plt.ylabel('')
+plt.xlabel(r'Wavenumber[cm$^{-1}$]')
+plt.xlim([np.min(wavenumber),np.max(wavenumber)])
+#plt.show()
+"""
+wavelength = 1./wavenumber*1e8
+"""
+plt.figure(1)
+plt.plot(wavelength,S_spec)
+plt.title('Observed Solar spectrum')
+#plt.ylabel('')
+plt.xlabel(r'Wavelength[$\AA$]')
+plt.xlim([np.min(wavelength),np.max(wavelength)])
+plt.show()
+"""
+#Split the spectrum into two regimes to find local minimums
+S_spec1 = S_spec[:3600]
+S_spec2 = S_spec[3600:]
+#print wavelength of respective minima
+print 'First line has minimum at : ',wavelength[3600+np.argmin(S_spec2)],'angstrom'
+print 'Second line has minimum at : ',wavelength[np.argmin(S_spec1)],'angstrom'
+def vac_to_air(wavelength):
+	"takes in vacuum wavelength in ansgtrom and returns air wavelength in angstrom"""
+	return (0.99972683*wavelength + 0.0107 - 196.25/wavelength)
+
+wavelength_air = vac_to_air(wavelength)
+print 'First line after correction has minimum at : ',vac_to_air(wavelength[3600+np.argmin(S_spec2)]),'angstrom'
+print 'Second line after corection has minimum at : ',vac_to_air(wavelength[np.argmin(S_spec1)]),'angstrom'
+"""
+plt.figure(2)
+plt.plot(wavelength_air,S_spec)
+plt.title('Observed Solar spectrum in air')
+#plt.ylabel('')
+plt.xlabel(r'Wavelength[$\AA$]')
+plt.xlim([np.min(wavelength_air),np.max(wavelength_air)])
+plt.show()
+"""
+#Part3.6
+def partfunc_Na(temp):
+	u = np.zeros(3)
+	theta = 5040. / temp
+	c0=0.30955
+	c1=-0.17778
+	c2=1.10594
+	c3=-2.42847
+	c4=1.70721
+	logU1 = ( c0 + c1 * np.log10(theta) + c2 * np.log10(theta)**2 + c3 * np.log10(theta)**3
+	+ c4 * np.log10(theta)**4 )
+	u[0]=10**logU1
+	u[1]=1.
+	u[2]=6.
+	return u
+
+b_l = 1.
+b_u = 1.
+
+A_Na = 1.8*1e-6
+f_lu = [0.318,0.631] 
+E_ionization = np.array([5.139, 47.29, 71.64])
+
+
+def boltz_Na(temp,r,s):
+	"Boltzmann distribution n_r,s/N_r"
+	E_n1 = h*c / 5895.94e-8 * erg2eV
+	E_n2 = h*c / 5889.97e-8 * erg2eV
+	u = partfunc_Na(temp)
+	chi = [0,E_n1,E_n2]
+	g = [2,2,4]
+	relnrs = g[s]/u[r]*np.exp(-(chi[s])/(keV*temp))
+	return relnrs
+
+boltz = np.zeros((3,len(temp)))
+for i in range(len(temp)):
+	boltz[0,i] = boltz_Na(temp[i], 0, 0)
+	boltz[1,i] = boltz_Na(temp[i], 0, 1)
+	boltz[2,i] = boltz_Na(temp[i], 0, 2)
+"""
+plt.figure(0)
+plt.plot(height,boltz[0],label=r's=1 groundstate')
+plt.plot(height,boltz[1],'--',label=r's=2 upper level D1')
+plt.plot(height,boltz[2],'-.',label=r's=3 upper level D2')
+plt.title(r'Boltzmann distribution of Na I')
+plt.xlabel(r'Height [km]')
+plt.ylabel(r'Population fraction $n_{1,s}/N_1$')
+plt.xlim([np.min(height),2000])
+plt.legend(loc='best')
+plt.show()
+"""
+
+#Saha
+def saha_Na(temp,eldens,ionstage):
+	keVT = keV*temp
+	kergT =kerg*temp
+	u = partfunc_Na(temp)
+	u = np.append(u,2) #append element to array
+	sahaconst = (2.*np.pi *m_e*kergT/(h*h))**(3./2)*2./eldens
+	nstage = np.zeros(4)
+	nstage[0] = 1.
+	for r in range(3):
+		nstage[r+1] =nstage[r]*sahaconst*u[r+1]/u[r] * np.exp(-E_ionization[r]/keVT) 	
+	ntotal = np.sum(nstage)
+	nstagerel = nstage/ntotal
+	return nstagerel[ionstage-1]
+
+saha = np.zeros((2,len(temp)))
+for i in range(len(temp)):
+	saha[0,i] = saha_Na(temp[i],nel[i],1)
+	saha[1,i] = saha_Na(temp[i],nel[i],2)
+"""
+plt.figure(1)
+plt.plot(height,saha[0],'-',label='Na I')
+plt.plot(height,saha[1],'--',label='Na II')
+plt.xlim([np.min(height),2000])
+plt.ylim([1e-4,10])
+plt.yscale('log')
+plt.title(r'Saha distribution of Na ')
+plt.xlabel(r'Height [km]')
+plt.ylabel(r'Ionization state fraction $N_r/N_{total}$')
+plt.legend(loc='best')
+plt.show()
+"""
+
+#Sahaboltzmann
+def sahabolt_Na(temp, eldens, ionstage, level):
+	return saha_Na(temp, eldens, ionstage)*boltz_Na(temp, ionstage, level)
+
+"""
+sahaboltz = np.zeros((3,len(temp)))
+for i in range(len(temp)):
+	sahaboltz[0,i] = sahabolt_Na(temp[i], nel[i], 0, 0)
+	sahaboltz[1,i] = sahabolt_Na(temp[i], nel[i], 0, 1)
+	sahaboltz[2,i] = sahabolt_Na(temp[i], nel[i], 0, 2)
+plt.figure(0)
+plt.plot(height,sahaboltz[0])
+plt.plot(height,sahaboltz[1])
+plt.plot(height,sahaboltz[2])
+plt.show()
+"""
+
+#Dopplerwidth testing
+
+def dopplerwidth(wav,temp,v_t,m):
+	'''Takes in central wavelength in cm,temperature in K, v_t in km/s, 
+	and m in grams and returns dopplerwidth in cm.'''
+	return wav/c*np.sqrt(2.*kerg*temp/m + v_t*v_t*1e10)
+
+doppler_term1 = np.sqrt(2.*kerg*temp/m_Na)*1e-5
+doppler_term2 = np.sqrt(vturb*vturb)
+"""
+plt.figure(2)
+plt.plot(height,doppler_term1,label=r'$\sqrt{2kT/m_{Na}}$')
+plt.plot(height,doppler_term2,'--',label=r'$v_{turb}$')
+plt.xlim(np.min(height),2000)
+plt.ylim(0,5)
+plt.ylabel('[km/s]')
+plt.xlabel('Height [km]')
+plt.title('Na Doppler broadening and microturbulence')
+plt.legend(loc='best')
+plt.show()
+"""
+
+doppler= np.zeros((2,len(temp)))
+wav = np.array([5895.94,5889.97])*1e-8	#wavelengths of line in cm
+doppler[0] = dopplerwidth(wav[0],temp,vturb,m_Na) #values for NaID1
+doppler[1] = dopplerwidth(wav[1],temp,vturb,m_Na) # for NaID2
+"""
+plt.figure(3)
+plt.plot(height,doppler[0]*1e8,label='Na I D1')
+plt.plot(height,doppler[1]*1e8,'r--',label='Na I D2')
+plt.xlim(np.min(height),2000)
+plt.ylabel(r'Doppler width [$\AA$]')
+plt.xlabel(r'Height [km]')
+plt.title(r'Doppler width')
+plt.legend()
+plt.show()
+"""
+#Van der Waal broadening Na I D1 line
+def gammavdw_NaD(temp, pgas, s): # do not forget to look at the statement for constants and explanations
+	rsq_u = rsq_NaD(s)
+	rsq_l = rsq_NaD(1)
+	loggvdw=6.33 + 0.4*np.log10(rsq_u - rsq_l) + np.log10(pgas) - 0.7 * np.log10(temp)
+	return 10**loggvdw
+
+def rsq_NaD(s): # put constants in statement here
+	E_n = np.zeros(3, dtype=float)
+	E_n[1] = h*c / wav[0] * erg2eV
+	E_n[2] = h*c / wav[1] * erg2eV
+	Z = 1.
+	Rydberg = 13.6
+	l = [0., 1., 1.]
+	nstar_sq = Rydberg * Z**2 / (E_ionization[0] - E_n[s-1])
+	rsq = nstar_sq / 2. / Z**2 * (5*nstar_sq + 1 - 3*l[s-1]*(l[s-1] + 1))
+	return rsq
+
+pgas = pgasptot*ptot
+vdwbroadening = np.zeros(len(temp))
+for i in range(len(temp)):
+	vdwbroadening[i] =  gammavdw_NaD(temp[i], pgas[i],2)
+"""
+plt.figure(4)
+plt.plot(height,vdwbroadening)
+plt.yscale('log')
+plt.xlim([np.min(height),2000])
+plt.title('Van der Waal broadening')
+plt.xlabel('Height [km]')
+plt.ylabel('$\gamma_{vdW}$ [s$^{-1}$]')
+plt.show()
+"""
+#Define voigt function
+def voigt(a,u):
+    "Calculates the voigt function for values u and a"
+    z = u + 1.j*a
+    return special.wofz(z).real
+
+
+#Compute damping parameter
+wavelen = np.linspace(wav[0]-2e-8,wav[0]+2e-8,1001) #range around center
+
+#prepare arrays
+a = np.zeros((len(height),len(wavelen)))
+v = np.zeros((len(height),len(wavelen)))
+voigtprofile = np.zeros((len(height),len(wavelen)))
+gamma = np.zeros(len(height))
+
+#calculate the voigtprofile for the different height
+gamma = gammavdw_NaD(temp,pgas,2)	#damping parameter
+for j in range(len(height)):
+	for i in range(len(wavelen)):
+		a[j][i] = wavelen[i]**2/(4*np.pi*c)*gamma[j]/doppler[0][j]
+		v[j][i] = (wavelen[i]-wav[0])/doppler[0][np.where(height==0)][0]
+		voigtprofile[j][i] = voigt(a[j][i],v[j][i])*doppler[0][np.where(height==0)][0]*np.sqrt(np.pi)
+
+
+deltawav = (wavelen - wav[0])*1e8	#delta wav in angstrom
+"""
+plt.figure(5)
+plt.plot(deltawav,voigtprofile[np.where(height==0)][0],'-',label='0km')
+plt.plot(deltawav,voigtprofile[np.where(height==200)][0],'--',label='200km')
+plt.plot(deltawav,voigtprofile[np.where(height==400)][0],'-.',label='400km')
+plt.yscale('log')
+plt.xlabel('$\Delta \lambda$[$\AA$]')
+plt.title('Voigt function for Na I in FALC')
+plt.xlim([np.min(deltawav),np.max(deltawav)])
+plt.legend()
+plt.show()
+"""
+correction = 1- b_u/b_l*np.exp(-h*c/wav[0]/kerg/temp)
+"""
+plt.figure(5)
+plt.plot(height,correction)
+plt.xlim([np.min(height),2000])
+plt.title(r'Correction term')
+plt.xlabel(r'Height [km]')
+plt.ylabel(r'')
+plt.show()
+"""
+#NaID1 extiction
+
+NaD1_extinction = np.zeros(len(height))
+for i in range(len(temp)):
+	ionstage =1
+	level = 2
+	part1 = np.sqrt(np.pi)*np.exp(2)/m_e/c*wav[0]*wav[0]/c*b_l
+	part2 = sahabolt_Na(temp[i],nel[i],ionstage,level)
+	part3 = nhyd[i]*A_Na*f_lu[0]
+	part4 = np.sqrt(np.pi)*voigtprofile[i,np.where(wavelength==wav[0])[0]][0]
+	part5 = 1. - b_u/b_l*np.exp(-h*c/wav[0]/kerg/temp[i])
+	NaD1_extinction[i] = part1*part2*part3*part4*part5
+plt.figure(6)
+plt.plot(height,NaD1_extinction)
+plt.xlim([np.min(height),2000])
+plt.title(r'NaD1 extinction')
+plt.xlabel(r'Height [km]')
+plt.ylabel(r'Extinction $\alpha_\lambda^l$ [cm$^{-1}$]')
+plt.yscale('log')
+plt.ylim([1e-14,1e-2])
+plt.show()
+"""
+#Compute the extinction for NaID1line
+
+#a = wavelength**2/(4*np.pi*c)*gammavdw_NaD(temp,pgasptot*ptot,s)	#damping parameter
+extinctionD1 = np.zeros(len(temp))
+
+for i in range(len(temp)):
+	extinctionD1[i] = NaD1_ext(wavelength,temp[i],nel[i],nhyd[i],vturb[i])
+"""

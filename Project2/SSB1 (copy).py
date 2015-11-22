@@ -1121,7 +1121,7 @@ wavelen *=1e8	#convert wavelen from cm to Angstrom
 plt.figure()
 
 plt.plot(wavelen,intt/np.max(intt),'-')
-plt.plot(wavelength_vac,S_spec,'--')
+plt.plot(wavelength_air,S_spec,'--')
 plt.xlim([wav[0]*1e8-2, wav[0]*1e8+2])
 plt.title(r'Disk center intensity around line center of the NaID1 line')
 plt.xlabel(r'Wavelength[$\AA$]')

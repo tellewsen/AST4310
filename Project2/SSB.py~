@@ -799,8 +799,10 @@ def vac_to_air(wavelength):
 	return (0.99972683*wavelength + 0.0107 - 196.25/wavelength)
 
 wavelength_air = vac_to_air(wavelength_vac)
-print 'First line after correction has minimum at : ',vac_to_air(wavelength_vac[3600+np.argmin(S_spec2)]),'angstrom'
-print 'Second line after corection has minimum at : ',vac_to_air(wavelength_vac[np.argmin(S_spec1)]),'angstrom'
+NaI_D2_minimum = vac_to_air(wavelength_vac[3600+np.argmin(S_spec2)])
+NaI_D1_minimum = vac_to_air(wavelength_vac[np.argmin(S_spec1)])
+print 'First line after correction has minimum at : ',NaI_D1_minimum,'angstrom'
+print 'Second line after corection has minimum at : ',NaI_D2_minimum,'angstrom'
 """
 plt.figure(2)
 plt.plot(wavelength_air,S_spec)
@@ -935,7 +937,7 @@ plt.show()
 """
 
 doppler= np.zeros((2,len(temp)))
-wav = np.array([5895.94,5889.97])*1e-8	#wavelengths of line in cm
+wav = np.array([NaI_D1_minimum,NaI_D2_minimum])*1e-8	#wavelengths of line in cm
 doppler[0] = dopplerwidth(wav[0],temp,vturb,m_Na) #values for NaID1
 doppler[1] = dopplerwidth(wav[1],temp,vturb,m_Na) # for NaID2
 """
@@ -1068,7 +1070,6 @@ plt.ylim([1e-14,1e-2])
 plt.show()
 """
 
-
 #3.7 Computed Na D1 line profile
 """
 Calculate extiction for each wavelength at each height.
@@ -1084,7 +1085,7 @@ for i in range(len(height)):
 		NaD1_extinction_swapped[i][j] = NaD1_extinction[j][i]
 		extcont_swapped[i][j] = extcont[j][i]
 		exttotal_swapped[i][j] =exttotal[j][i]
-"""
+
 plt.figure(7)
 plt.plot(deltawav,NaD1_extinction_swapped[np.where(height==0)][0],'-.',label='NaI h=0')
 plt.plot(deltawav,extcont_swapped[np.where(height==0)][0],'--',label='Cont h=0')
@@ -1099,7 +1100,7 @@ plt.ylabel(r'Extinction $\alpha_\lambda^l$ [cm$^{-1}$]')
 plt.xlabel(r'$\Delta\lambda$[$\AA$]')
 plt.legend(loc='best')
 plt.show()
-"""
+
 
 #Compute the extinction for NaID1line
 tau = np.zeros(np.size(tau5))
@@ -1119,9 +1120,8 @@ for j in range(np.size(wavelen)):
 wavelen *=1e8	#convert wavelen from cm to Angstrom
 
 plt.figure()
-
 plt.plot(wavelen,intt/np.max(intt),'-')
-plt.plot(wavelength_vac,S_spec,'--')
+plt.plot(wavelength_air,S_spec,'--')
 plt.xlim([wav[0]*1e8-2, wav[0]*1e8+2])
 plt.title(r'Disk center intensity around line center of the NaID1 line')
 plt.xlabel(r'Wavelength[$\AA$]')
