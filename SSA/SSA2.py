@@ -132,11 +132,11 @@ def sahabolt_Ca(temp, elpress, ionstage, level):
 #Part2
 
 #Compute partition function for T=5000,10000,20000
-"""
+
 for temp in [5000,10000,20000]:
 	print partfunc_E(temp)
-"""
-"""
+
+
 #Compute distribution for T=5000,
 distribution_5k = np.zeros(11)
 distribution_10k = np.zeros(11)
@@ -148,18 +148,18 @@ for s in range(1,11):
 print distribution_5k
 print distribution_10k
 print distribution_20k
-"""
+
 #Compute saha_E for different temp
-"""
+
 for r in range(1,6):
 	print saha_E(20000,1e3,r)
 print "----"
 for r in range(1,6):
 	print saha_E(10000,1e3,r)
-"""
+
 
 #Compute Saha_bolt_E for different temperatures
-"""
+
 for s in range(1,6):
 	print sahabolt_E(5000, 1e3, 1, s)
 print "----"
@@ -171,9 +171,9 @@ for s in range(1,6):
 print "----"
 for s in range(1,6):
 	print sahabolt_E(20000, 1e3, 4, s)
-"""
+
 #Plotting the population vs temperature for s=1 and P_e = 131
-"""
+
 temp = np.arange(0,30001,1000)
 #print temp
 pop = np.zeros((5,31))
@@ -194,9 +194,9 @@ plt.ylim([1e-3,1.1])
 plt.legend(loc='best')
 plt.title('Population vs Temperature for s=1')
 plt.show()
-"""
+
 #Plotting the population vs temperature for s=2
-"""
+
 temp = np.arange(0,30001,1000)
 #print temp
 pop = np.zeros((5,31))
@@ -217,9 +217,9 @@ plt.ylim([1e-3,1.1])
 plt.legend(loc='best')
 plt.title('Population vs Temperature for s=2')
 plt.show()
-"""
+
 #Plotting the population vs temperature for s=4
-"""
+
 temp = np.arange(0,30001,1000)
 #print temp
 pop = np.zeros((5,31))
@@ -240,14 +240,14 @@ plt.ylim([1e-3,1.1])
 plt.legend(loc='best')
 plt.title('Population vs Temperature for s=4')
 plt.show()
-"""
+
 #Printing hydrogen levels
-"""
+
 sahabolt_H(5000,1e2,1) this works as it should
-"""
+
 
 #Solar Ca+K versus Ha:line strength
-"""
+
 temp = np.arange(1000,20001,100)
 CaH = np.zeros(temp.shape)
 Caabund = 2e-6
@@ -265,9 +265,9 @@ plt.title('Ca/H Ratio versus temperature')
 plt.show()
 print 'Ca/H ratio at 5000 K = ', CaH[np.argwhere(temp==5000)][0][0]
 
-"""
+
 #solar Ca+K versus Ha: temperature sensitivity
-"""
+
 temp = np.arange(2000,12001,100)
 dNCadT = np.zeros(temp.shape)
 dNHdT = np.zeros(temp.shape)
@@ -299,10 +299,10 @@ plt.xlabel(r'temperature $T/K$',size=14)
 plt.ylabel(r'$\left| \left( \Delta n(r,s) / \Delta T\right) /  n(r,s) \right|$',size=20)
 plt.legend(loc=4,fontsize=12)	
 plt.show()
-"""
+
 
 #Hot stars vs cold stars
-"""
+
 "Find at which temperature the hydrogen in stellar photospheres with P_e = 100 is about 50% ionized."
 for T in np.arange(7000,10001,100):
 	print T,sahabolt_H(T,1e2,1)
@@ -316,4 +316,3 @@ plt.xlabel(r'temperature $T/K$',size=14)
 plt.ylabel(r'neutral hydrogen fraction',size=14)
 plt.title('Fraction of neutral hydrogen in stellar photospheres')
 plt.show()
-"""
