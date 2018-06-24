@@ -1,15 +1,16 @@
-from numpy import *
+from numpy import array
 
 """
 sums 1D array ARR (but IDL's total is faster and more general)
 """
-arr = array([2])
+ar = array([2])
 
-def addup(arr):
-	sumarr=0
-	for i in range(len(arr)):
-	    sumarr +=arr[i]
-	return sumarr
 
-print addup(arr)
+def add_up(arr):
+    sum_arr = 0
+    for i in range(len(arr)):
+        sum_arr += arr[i]
+    return sum_arr
 
+
+print add_up(ar)
