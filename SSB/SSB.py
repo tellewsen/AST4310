@@ -1,8 +1,8 @@
 # importing useful libraries
-import numpy as np  # numerical python
 import matplotlib.pyplot as plt  # plotting package
-from scipy import special
-from matplotlib import rc 
+
+from functions import *
+from matplotlib import rc
 rc('font', **{'family': 'serif', 'size': 14})  # This is for Latex writing
 
 
@@ -39,7 +39,6 @@ dens = np.array(falc[10, :])
 
 # 1.1
 # Plot falc model
-
 plt.figure(0)
 plt.plot(height, temp)
 plt.ylim([3000, 10000])
@@ -49,7 +48,6 @@ plt.ylabel(r'Temperature [K]', size=14)
 
 # 1.2
 # Plot total pressure vs column mass linearly
-
 plt.figure(1)
 plt.plot(colm, ptot*1e-4)
 plt.title(r'$P_{total}$ vs column mass m')
@@ -64,7 +62,7 @@ plt.ylabel(r'log$P_{total}$ [dyn cm$^{-2}$]', size=14)
 plt.xlabel(r'Column mass m [g cm$^{-2}$]', size=14)
 plt.yscale('log')
 # plt.xscale('log')
-# plt.show()
+
 
 # Find average c value
 g_S = np.average(ptot/colm)
@@ -79,21 +77,19 @@ plt.figure(3)
 plt.plot(height, rho_H/dens)
 plt.plot(height, rho_He/dens)
 plt.plot(height, (rho_H+rho_He)/dens)
-
-plt.legend([r'$\rho_{H}/\rho_{total}$', r'$\rho_{He}/\rho_{total}$',
+plt.legend([r'$\rho_{H}/\rho_{total}$',
+            r'$\rho_{He}/\rho_{total}$',
             r'$(\rho_{H}+\rho_{He})/\rho_{total}$'], loc='best')
 plt.title(r'Density fractions of total as a function of height')
 plt.ylim([0, 1.1])
 plt.ylabel(r'$\rho/\rho_{total}$', size=14)
 plt.xlabel(r'Height [km]', size=14)
-# plt.show()
 
 # Metal fraction
 metalfraction = 1. - np.average((rho_H+rho_He)/dens)
 print 'Metal fraction = ', metalfraction
 
 # Plot column mass vs height
-
 plt.figure(4)
 plt.plot(height, colm)
 # plt.legend([])
@@ -101,7 +97,6 @@ plt.title(r'Column mass vs height')
 # plt.ylim([0,1.1])
 plt.ylabel(r'm [g cm$^{-2}$]', size=14)
 plt.xlabel(r'Height [km]', size=14)
-# plt.show()
 
 
 # Logarithmic
@@ -113,7 +108,6 @@ plt.title(r'Column mass vs height logarithmic')
 plt.yscale('log')
 plt.ylabel(r'log(m) [g cm$^{-2}$]', size=14)
 plt.xlabel(r'Height [km]', size=14)
-plt.show()
 
 
 # Scale height
@@ -133,7 +127,7 @@ plt.title(r'Gas density vs height')
 plt.ylabel(r'Gas density $\rho$ [g cm$^{-3}$]', size=14)
 plt.xlabel(r'Height [km]', size=14)
 plt.legend(['Gas density', r'$\rho/e$'])
-plt.show()
+
 
 # Compute gas pressure and plot against height
 pgas = pgasptot*ptot  # Gas pressure
@@ -149,7 +143,7 @@ plt.title(r'Gas pressure vs height')
 # plt.yscale('log')
 plt.ylabel(r'Gas pressure $P_{gas}$ [$10^4$ dyn cm$^{-2}$]', size=14)
 plt.xlabel(r'Height [km]', size=14)
-# plt.show()
+
 
 # Plot ratio between curves
 
@@ -158,7 +152,6 @@ plt.plot(height, pgas/idealgas)  # ratio curves
 plt.title(r'Ratio gas pressure from falc and ideal gas law')
 plt.ylabel(r'Gas pressure $P_{gas}$ [dyn cm$^{-2}$]', size=14)
 plt.xlabel(r'Height [km]', size=14)
-# plt.show()
 
 # Add n_helium and plot again
 idealgas_hel = (nhyd + nel + nhel)*kerg*temp
@@ -174,7 +167,7 @@ plt.title(r'Gas pressure vs height')
 # plt.yscale('log')
 plt.ylabel(r'$P_{gas}$ [$10^4$ dyn cm$^{-2}$]', size=14)
 plt.xlabel(r'Height [km]', size=14)
-# plt.show()
+
 
 # Plot ratio between curves
 
@@ -184,7 +177,7 @@ plt.title(r'Ratio gas pressure from falc and ideal gas law')
 plt.ylabel(r'Ratio $P_{FALC}/P_{IG}$', size=14)
 plt.xlabel(r'Height [km]', size=14)
 plt.ylim([0, 1.1])
-plt.show()
+
 
 # Plot total hydrogen density vs height and overplot electron density,
 # proton density, and density of electrons not from hydrogen ionization.
@@ -201,10 +194,9 @@ plt.title(r'Number Densities vs height')
 plt.ylabel(r'$n$ [cm$^{-3}$]', size=14)
 plt.xlabel(r'Height [km]', size=14)
 # plt.yscale('log')
-plt.show()
+
 
 # Plot ionization fraction of hydrogen logarithmically against height
-
 hyd_ion = nprot/nhyd
 
 plt.figure(12)
@@ -213,9 +205,8 @@ plt.title(r'Ionization fraction of hydrogen vs height')
 plt.ylabel(r'log($n_p/n_H$)', size=14)
 plt.xlabel(r'Height [km]', size=14)
 plt.yscale('log')
-plt.ylim([0, 1.1])
 plt.xlim([-100, 2220])
-plt.show()
+
 
 # Photon density
 N_phot = 20*temp**3
@@ -242,32 +233,29 @@ plt.plot(eh, elogP)  # ratio curves
 plt.title(r'Air pressure vs height logarithmic')
 plt.ylabel(r'log$P$ [dyn cm$^{-2}$]', size=14)
 plt.xlabel(r'Height [km]', size=14)
-# plt.show()
+
 
 plt.figure(14)
 plt.plot(eh, etemp)  # ratio curves
 plt.title(r'Temperature vs height')
 plt.ylabel(r'Temperature [K]', size=14)
 plt.xlabel(r'Height [km]', size=14)
-# plt.show()
+
 
 plt.figure(15)
 plt.plot(eh, elogdens)  # ratio curves
 plt.title(r'Gas density vs height logarithmic')
 plt.ylabel(r'log $\rho$ [g cm$^{-3}$]', size=14)
 plt.xlabel(r'Height [km]', size=14)
-# plt.show()
+
 
 plt.figure(16)
 plt.plot(eh, elogN)  # ratio curves
 plt.title(r'Particle density vs height')
 plt.ylabel(r'log $N$ [cm$^{-3}$]', size=14)
 plt.xlabel(r'Height [km]', size=14)
-plt.show()
-
 
 # Plot pressure and density stratifications together in normalized units in one graph
-
 eP = 10.**elogP	 # Convert from log to actual
 edens = 10.**elogdens  # Convert from log to actual
 eN = 10.**elogN
@@ -277,8 +265,6 @@ edense.fill(edens[np.where(eh == 0)][0]/np.exp(1))
 plt.figure(17)
 plt.plot(eh, edens)
 plt.plot(eh, edense)
-plt.show()
-
 
 plt.figure(18)
 plt.plot(eh, edens/np.max(edens))
@@ -289,7 +275,6 @@ plt.legend([r'$\rho/\rho_{max}$', '$P/P_{max}$', '$N/N_{max}$'])
 plt.title(r'Density and pressure stratification')
 plt.ylabel(r'Values')
 plt.xlabel(r'Height [km]')
-plt.show()
 
 # Plot mean molecular weight vs height
 my_E = edens/(eN*m_H)  # mean molecular weight
@@ -367,7 +352,7 @@ plt.title('The four spectral distributions')
 plt.legend([r'$F_\lambda$', r'$F_\lambda^c$', r'$I_\lambda$', r'$I_\lambda^c$'])
 plt.xlabel(r'Wavelength $\lambda$ [$\mu m$]')
 plt.ylabel(r'Distributions [$10^{10}$erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]')
-plt.show()
+
 
 # Check that continuum intensity reaches 4.6*10^10 at max
 print 'I_lambda_c = %e' % np.max(I_lambda_c)  # check okay
@@ -391,27 +376,9 @@ plt.legend([r'$F_\nu$', r'$F_\nu^c$', r'$I_\nu$', r'$I_\nu^c$'])
 plt.xlabel(r'Wavelength $\lambda$ [$\mu m$]')
 plt.ylabel(r'Distributions [$10^{-5}$erg cm$^{-2}$s$^{-1}$ster$^{-1}$Hz$^{-1}$]')
 plt.xlim([0, 2])
-plt.show()
+
 
 print 'Peak I_nu_c = %e' % np.max(I_nu_c)
-
-
-# Use planck func from SSA
-def planck(temp, wav):
-    # This function takes in wavelength in micrometers and temperature in K.
-    # and returns the planck function with units [1e10 erg/cm^2/s/micrometer/steradian]
-    h = 6.62607E-27	 # Planck constant in erg s
-    b = 2.*h*c*c/((wav*1e-4)**5) / (np.exp((h*c) / ((wav*1e-4)*kerg*temp)) - 1)
-    return b*1e-14  # 1e-14 coverts to same units as in tables
-
-
-def planck_nu(temp, wav):
-    # This function takes in wavelength in micrometers and temperature in K.
-    # and returns the planck function with units [1e10 erg/cm^2/s/micrometer/steradian]
-    h = 6.62607E-27	 # Planck constant in erg s
-    b = 2.*h*c*c/((wav*1e-4)**5) / (np.exp((h*c) / ((wav*1e-4)*kerg*temp)) - 1)
-    return b*1e-14*conversionfactor  # 1e-14 coverts to same units as in tables
-
 
 planckfit1 = planck(6200, wavelength)
 planckfit2 = planck(6300, wavelength)
@@ -427,7 +394,7 @@ plt.title(r'Observed intensity of continuum vs Planck fit')
 plt.ylabel(r'Intensity [$10^{10}$ erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]')
 plt.xlabel(r'Wavelength $\lambda$ [$\mu m$]')
 plt.legend([r'$I_\lambda^c$', r'$B_\lambda(6200)$', r'$B_\lambda(6300)$', r'$B_\lambda(6400)$'])
-# plt.show()
+
 
 # planckfit for frequency
 planckfit4 = planck_nu(6200, wavelength)*1e15  # 1e15 changes units on y axis.
@@ -444,17 +411,6 @@ plt.title(r'Observed intensity of continuum vs Planck fit')
 plt.ylabel(r'Intensity [$10^{-5}$ erg cm$^{-2}$s$^{-1}$ster$^{-1}$Hz$^{-1}$]')
 plt.xlabel(r'Wavelength $\lambda$ [$\mu m$]')
 plt.legend([r'$I_\nu^c$', r'$B_\nu(6200)$', r'$B_\nu(6300)$', r'$B_\nu(6400)$'])
-plt.show()
-
-
-# Invert planckfunction
-
-def planck_invert(I, wavelength):
-    # Takes in intensity in units 10^10 erg cm^-2 s^-1 ster^-1\mu m^-1,
-    # and wavelength in units \mu m, and returns brightness temperature T_b
-    h = 6.62607E-27  # Planck constant in erg s
-    T_b = h*c/(wavelength*1e-4*kerg)*1./np.log((2.*h*c*c)/(I*1e14*(wavelength*1e-4)**5)+1.)
-    return T_b
 
 
 T_b = planck_invert(I_lambda_c, wavelength)  # Brightness temperature solar continuum
@@ -464,45 +420,9 @@ plt.plot(wavelength, T_b)
 plt.title(r'Brightness temperature vs wavelength for the solar continuum')
 plt.ylabel(r'Brightness temperature $T_b$[K] ')
 plt.xlabel(r'Wavelength [$\mu$m]')
-plt.show()
 
 
 # 2.2 Continuous extinction
-def exthmin(wav, temp, eldens):
-    # in: 	wav = wavelength [Angstrom] (float or fltarr)
-    # temp = temperature [K]
-    # eldens = electron density [electrons cm-3]
-    #
-    # out: 	H-minus bf+ff extinction [cm^2 per neutral hydrogen atom]
-    # assuming LTE ionization H/H-min
-
-    h = 6.626076E-27   #Planck constant (erg s)
-    theta = 5040. / temp
-    elpress = eldens*kerg*temp
-    sigmabf = (1.99654 - 1.18267E-5*wav + 2.64243E-6*wav**2 - 4.40524E-10*wav**3 + 3.23992E-14*wav**4
-               - 1.39568E-18*wav**5 + 2.78701E-23*wav**6)
-
-    sigmabf *= 1e-18
-    for i in range(np.size(wav)-1):
-        if sigmabf[i] >= 16444:
-            sigmabf[i] = 0
-
-    graysaha = 4.158E-10*elpress*theta**2.5*10.**(0.754*theta)
-    kappabf = sigmabf*graysaha
-    kappabf = kappabf*(1.-np.exp(-h*c/(wav*1E-8*kerg*temp)))
-
-    lwav = np.log10(wav)
-
-    f0 = -2.2763 - 1.6850*lwav + 0.76661*lwav**2 - 0.0533464*lwav**3
-    f1 = 15.2827 - 9.2846*lwav + 1.99381*lwav**2 - 0.142631*lwav**3
-    f2 = (-197.789 + 190.266*lwav - 67.9775*lwav**2 + 10.6913*lwav**3 - 0.625151*lwav**4)
-
-    ltheta = np.log10(theta)
-    kappaff = 1E-26*elpress*10**(f0+f1*ltheta+f2*ltheta**2)
-
-    return kappaff + kappabf
-
-
 wav = np.linspace(3000, 19000, 1000)
 FALCexthmin = exthmin(wav, temp[np.where(height == 0)][0], nel[np.where(height == 0)][0])
 print temp[np.where(height == 0)][0]
@@ -510,16 +430,17 @@ print nel[np.where(height == 0)][0]
 print r'Maximum of exhtmin = %e at wavelength = %s angstrom' % \
       (np.max(FALCexthmin), wav[np.where(FALCexthmin == np.max(FALCexthmin))][0])
 
-# plt.figure(25)
-# plt.title(r'H-minus bound-free + free-free extinction per H atom')
-# plt.plot(wav*1e-4, FALCexthmin*1e26/(nel[np.where(h == 0)][0]*kerg*temp[np.where(h == 0)][0]))  # Note the 10^-24 units
-# plt.ylabel(r'$\kappa /P_e [10^{-26}$cm$^2$/dyn cm$^{-2}$]', size=14)
-# plt.xlabel(r'Wavelength [$\mu$m]')
-# plt.xlim([0, 2])
-# plt.ylim([0, 5])
-# # plt.xscale('log')
-# # plt.yscale('log')
-# # plt.show()
+plt.figure(25)
+plt.title(r'H-minus bound-free + free-free extinction per H atom')
+plt.plot(wav*1e-4, FALCexthmin*1e26/(nel[np.where(height == 0)][0] *
+                                     kerg*temp[np.where(height == 0)][0]))  # Note the 10^-24 units
+plt.ylabel(r'$\kappa /P_e [10^{-26}$cm$^2$/dyn cm$^{-2}$]', size=14)
+plt.xlabel(r'Wavelength [$\mu$m]')
+plt.xlim([0, 2])
+plt.ylim([0, 5])
+plt.xscale('log')
+plt.yscale('log')
+
 
 # Plot variation of H^- extinction with height for wav = 0.5 \mu m
 exthmin05 = exthmin(5000, temp, nel)*(nhyd - nprot)
@@ -536,7 +457,6 @@ plt.title(r'H-minus bf+ff extinction at $\lambda = 0.5 \mu m$')
 plt.ylabel(r'log $(\kappa)$ [cm$^{-1}$]', size=14)
 plt.xlabel(r'Height [km]')
 plt.yscale('log')
-plt.show()
 
 # part 2.3
 # integrate the extinction
@@ -552,7 +472,6 @@ plt.legend(['FALC', 'Integrated'])
 plt.title(r'$\tau_{500}$ from FALC compared to numerical integration')
 plt.ylabel(r'Optical depth $\tau_{500}$')
 plt.xlabel(r'Height [km]')
-plt.show()
 
 # 2.5 Emergent intensity
 ext = np.zeros(np.size(tau5)) 
@@ -587,12 +506,6 @@ plt.title(r'Contribution function vs height for $\lambda = 50000\AA$')
 plt.ylabel(r'$I_\lambda/I_\lambda^{peak}$', size=14)
 plt.xlabel(r'Height[km]')
 plt.xlim([np.min(height), 1500])
-plt.show()
-
-
-def find_nearest(array, value):
-    index = (np.abs(array-value)).argmin()
-    return array[index], index
 
 
 print 'tau= ', find_nearest(tau, 1)[0], 'at h= ', height[find_nearest(tau, 1)[1]]
@@ -634,14 +547,13 @@ for j in range(np.size(wavelength)):
         contfunc[i] = integrand[i]*ext[i]
 
 
-# plt.figure(29)
-# plt.plot(wavelength, intt)
-# plt.plot(wavelength, I_lambda_c)
-# plt.title(r'Disk-center intensity', size=14)
-# plt.xlabel(r'Wavelength [$\mu$m]', size=14)
-# plt.ylabel(r'Intensity $I_\lambda$ [$10^{10}$ erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]', size=14)
-# plt.legend([r"Computed", "Observed"])
-# plt.show()
+plt.figure(29)
+plt.plot(wavelength, intt)
+plt.plot(wavelength, I_lambda_c)
+plt.title(r'Disk-center intensity', size=14)
+plt.xlabel(r'Wavelength [$\mu$m]', size=14)
+plt.ylabel(r'Intensity $I_\lambda$ [$10^{10}$ erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]', size=14)
+plt.legend([r"Computed", "Observed"])
 
 
 # 2.5 Disk center intensity continued
@@ -671,7 +583,6 @@ for k in range(0, np.size(mu)):
 # # plt.ylim([-.1, 6.])
 # plt.legend(loc='best')
 # # plt.yscale('log')
-# # plt.show()
 
 
 # 2.6 Limb darkening
@@ -688,52 +599,35 @@ for i in range(np.size(mu)):
     ratio4[i] = intt[i, np.where(wavelength == 5.0)]/intt[-1, np.where(wavelength == 5.0)]
 
 
-# plt.figure(30)
-# plt.plot(mu, ratio1, label=r'$\lambda = 500$nm')
-# plt.plot(mu, ratio2, label=r'$\lambda = 1000$nm')
-# plt.plot(mu, ratio3, label=r'$\lambda = 1600$nm')
-# plt.plot(mu, ratio4, label=r'$\lambda = 5000$nm')
-# plt.title(r'Ratio $I_\lambda(0,\mu)/I_\lambda(0,1)$ for select wavelengths')
-# plt.ylabel(r'$I_\lambda(0,\mu)/I_\lambda(0,1)$')
-# plt.xlabel(r'Angle $\mu$')
-# plt.xlim([np.max(mu), np.min(mu)])
-# plt.legend(loc='best')
-# # plt.show()
+plt.figure(30)
+plt.plot(mu, ratio1, label=r'$\lambda = 500$nm')
+plt.plot(mu, ratio2, label=r'$\lambda = 1000$nm')
+plt.plot(mu, ratio3, label=r'$\lambda = 1600$nm')
+plt.plot(mu, ratio4, label=r'$\lambda = 5000$nm')
+plt.title(r'Ratio $I_\lambda(0,\mu)/I_\lambda(0,1)$ for select wavelengths')
+plt.ylabel(r'$I_\lambda(0,\mu)/I_\lambda(0,1)$')
+plt.xlabel(r'Angle $\mu$')
+plt.xlim([np.max(mu), np.min(mu)])
+plt.legend(loc='best')
 
 
 rRsun = np.sin(np.arccos(mu))
 
 
-# plt.figure(31)
-# plt.plot(rRsun, ratio1, label=r'$\lambda = 500$nm')
-# plt.plot(rRsun, ratio2, label=r'$\lambda = 1000$nm')
-# plt.plot(rRsun, ratio3, label=r'$\lambda = 1600$nm')
-# plt.plot(rRsun, ratio4, label=r'$\lambda = 5000$nm')
-# plt.title(r'Ratio $I_\lambda(0,\mu)/I_\lambda(0,1)$ for select wavelengths')
-# plt.ylabel(r'$I_\lambda(0,\mu)/I_\lambda(0,1)$')
-# plt.xlabel(r'$r/R_\odot$')
-# # plt.xlim([np.max(rRsun),np.min(rRsun)])
-# plt.legend(loc='best')
-# plt.show()
+plt.figure(31)
+plt.plot(rRsun, ratio1, label=r'$\lambda = 500$nm')
+plt.plot(rRsun, ratio2, label=r'$\lambda = 1000$nm')
+plt.plot(rRsun, ratio3, label=r'$\lambda = 1600$nm')
+plt.plot(rRsun, ratio4, label=r'$\lambda = 5000$nm')
+plt.title(r'Ratio $I_\lambda(0,\mu)/I_\lambda(0,1)$ for select wavelengths')
+plt.ylabel(r'$I_\lambda(0,\mu)/I_\lambda(0,1)$')
+plt.xlabel(r'$r/R_\odot$')
+# plt.xlim([np.max(rRsun),np.min(rRsun)])
+plt.legend(loc='best')
+plt.show()
 
 
 # 2.7 Flux integration
-def intensity_mu(tau5, wavelength, mu):
-    # Takes in an array of optical depths tau5, a wavelength and an angle mu and
-    # returns the intensity and the height multiplied intensity
-    ext = np.zeros(np.size(tau5))
-    tau = np.zeros(np.size(tau5))
-    integrand = np.zeros(np.size(tau5))
-    intt = 0
-    hint = 0
-    for i in range(1, len(tau)):  # the index zero is not accounted for
-        ext[i] = exthmin(wavelength*1e4, temp[i], nel[i])*(nhyd[i]-nprot[i])+0.664e-24*nel[i]
-        tau[i] = tau[i-1] + 0.5*(ext[i]+ext[i-1])*(height[i-1]-height[i])*1e5
-        integrand[i] = planck(temp[i], wavelength)*np.exp(-tau[i]/mu)/mu
-        intt += 0.5*(integrand[i]+integrand[i-1])*(tau[i]-tau[i-1])
-        hint += height[i]*0.5*(integrand[i]+integrand[i-1])*(tau[i]-tau[i-1])
-    return [intt, hint]
-
 
 # Gauss-Legendre quadrature for the integral
 xgauss = [-0.7745966692, 0.0000000000, 0.7745966692]
@@ -745,19 +639,19 @@ for imu in range(3):
     wg = wgauss[imu]/2.
     for iw in range(np.size(wavelength)):
         wl = wavelength[iw]
-        intt = intensity_mu(tau5, wl, mu)[0]
+        intt = intensity_mu(tau5, wl, mu, temp, nel, nhyd, nprot, height)[0]
         intmu[imu, iw] = intt
         fluxspec[iw] = fluxspec[iw]+wg*intmu[imu, iw]*mu
 fluxspec *= 2.
 
-# plt.figure(32)
-# plt.plot(wavelength, fluxspec, label=r'Calculated')
-# plt.plot(wavelength, F_lambda_c, label=r'Observed')
-# plt.title(r'Solar flux')
-# plt.ylabel(r'$F_\lambda$ [$10^{10}$erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]]', size=14)
-# plt.xlabel(r'wavelength [$\mu$m]', size=14)
-# plt.legend(loc='best')
-# plt.show()
+plt.figure(32)
+plt.plot(wavelength, fluxspec, label=r'Calculated')
+plt.plot(wavelength, F_lambda_c, label=r'Observed')
+plt.title(r'Solar flux')
+plt.ylabel(r'$F_\lambda$ [$10^{10}$erg cm$^{-2}$s$^{-1}$ster$^{-1}\mu$m$^{-1}$]]', size=14)
+plt.xlabel(r'wavelength [$\mu$m]', size=14)
+plt.legend(loc='best')
+plt.show()
 
 
 # Part3
@@ -770,23 +664,23 @@ S_spec = Nadata[2]
 S_spec_corr = Nadata[3]
 
 
-# plt.figure(0)
-# plt.plot(wavenumber, S_spec)
-# plt.title('Observed Solar spectrum')
-# # plt.ylabel('')
-# plt.xlabel(r'Wavenumber[cm$^{-1}$]')
-# plt.xlim([np.min(wavenumber), np.max(wavenumber)])
-# # plt.show()
+plt.figure(33)
+plt.plot(wavenumber, S_spec)
+plt.title('Observed Solar spectrum')
+# plt.ylabel('')
+plt.xlabel(r'Wavenumber[cm$^{-1}$]')
+plt.xlim([np.min(wavenumber), np.max(wavenumber)])
+# plt.show()
 
 wavelength_vac = 1./wavenumber*1e8
 
-# plt.figure(1)
-# plt.plot(wavelength, S_spec)
-# plt.title('Observed Solar spectrum')
-# # plt.ylabel('')
-# plt.xlabel(r'Wavelength[$\AA$]')
-# plt.xlim([np.min(wavelength), np.max(wavelength)])
-# plt.show()
+plt.figure(34)
+plt.plot(wavelength_vac, S_spec)
+plt.title('Observed Solar spectrum')
+# plt.ylabel('')
+plt.xlabel(r'Wavelength[$\AA$]')
+plt.xlim([np.min(wavelength_vac), np.max(wavelength_vac)])
+plt.show()
 
 # Split the spectrum into two regimes to find local minimums
 S_spec1 = S_spec[:3600]
@@ -796,101 +690,52 @@ print 'First line has minimum at : ', wavelength_vac[3600+np.argmin(S_spec2)], '
 print 'Second line has minimum at : ', wavelength_vac[np.argmin(S_spec1)], 'angstrom'
 
 
-def vac_to_air(wavelength):
-    # Takes in vacuum wavelength in angstrom and returns air wavelength in angstrom
-    return 0.99972683*wavelength + 0.0107 - 196.25/wavelength
-
-
 wavelength_air = vac_to_air(wavelength_vac)
 NaI_D2_minimum = vac_to_air(wavelength_vac[3600+np.argmin(S_spec2)])
 NaI_D1_minimum = vac_to_air(wavelength_vac[np.argmin(S_spec1)])
 print 'First line after correction has minimum at : ', NaI_D1_minimum, 'angstrom'
 print 'Second line after corection has minimum at : ', NaI_D2_minimum, 'angstrom'
 
-# plt.figure(2)
-# plt.plot(wavelength_air, S_spec)
-# plt.title('Observed Solar spectrum in air')
-# # plt.ylabel('')
-# plt.xlabel(r'Wavelength[$\AA$]')
-# plt.xlim([np.min(wavelength_air), np.max(wavelength_air)])
-# plt.show()
+plt.figure(35)
+plt.plot(wavelength_air, S_spec)
+plt.title('Observed Solar spectrum in air')
+# plt.ylabel('')
+plt.xlabel(r'Wavelength[$\AA$]')
+plt.xlim([np.min(wavelength_air), np.max(wavelength_air)])
 
 
 # Part3.6
-def part_func_na(temperature):
-    u = np.zeros(3)
-    theta = 5040. / temperature
-    c0 = 0.30955
-    c1 = -0.17778
-    c2 = 1.10594
-    c3 = -2.42847
-    c4 = 1.70721
-    logu1 = (c0 + c1 * np.log10(theta) + c2 * np.log10(theta)**2 + c3 * np.log10(theta)**3 + c4 * np.log10(theta)**4)
-    u[0] = 10**logu1
-    u[1] = 1.
-    u[2] = 6.
-    return u
-
-
 b_l = 1.
 b_u = 1.
-
 A_Na = 1.8*1e-6
 f_lu = [0.318, 0.631]
 E_ionization = np.array([5.139, 47.29, 71.64])
-
-
-def boltz_na(temp, r, s):
-    # Boltzmann distribution n_r,s/N_r
-    e_n1 = h*c / 5895.94e-8 * erg2eV
-    e_n2 = h*c / 5889.97e-8 * erg2eV
-    u = part_func_na(temp)
-    chi = [0, e_n1, e_n2]
-    g = [2, 2, 4]
-    relnrs = g[s]/u[r]*np.exp(-(chi[s])/(keV*temp))
-    return relnrs
-
-
 boltz = np.zeros((3, len(temp)))
-for i in range(len(temp)):
-    boltz[0, i] = boltz_na(temp[i], 0, 0)
-    boltz[1, i] = boltz_na(temp[i], 0, 1)
-    boltz[2, i] = boltz_na(temp[i], 0, 2)
 
-# plt.figure(0)
-# plt.plot(height, boltz[0], label=r's=1 groundstate')
-# plt.plot(height, boltz[1], '--', label=r's=2 upper level D1')
-# plt.plot(height, boltz[2], '-.', label=r's=3 upper level D2')
-# plt.title(r'Boltzmann distribution of Na I')
-# plt.xlabel(r'Height [km]')
-# plt.ylabel(r'Population fraction $n_{1,s}/N_1$')
-# plt.xlim([np.min(height), 2000])
-# plt.legend(loc='best')
-# plt.show()
+for i in range(len(temp)):
+    boltz[0, i] = boltzmann_na(temp[i], 0, 0)
+    boltz[1, i] = boltzmann_na(temp[i], 0, 1)
+    boltz[2, i] = boltzmann_na(temp[i], 0, 2)
+
+plt.figure(36)
+plt.plot(height, boltz[0], label=r's=1 groundstate')
+plt.plot(height, boltz[1], '--', label=r's=2 upper level D1')
+plt.plot(height, boltz[2], '-.', label=r's=3 upper level D2')
+plt.title(r'Boltzmann distribution of Na I')
+plt.xlabel(r'Height [km]')
+plt.ylabel(r'Population fraction $n_{1,s}/N_1$')
+plt.xlim([np.min(height), 2000])
+plt.legend(loc='best')
+plt.show()
 
 
 # Saha
-def saha_na(temp, el_dens, ionstage):
-    kevt = keV*temp
-    kergt = kerg*temp
-    u = part_func_na(temp)
-    u = np.append(u, 2)  # append element to array
-    saha_const = (2.*np.pi*m_e*kergt/(h*h)) ** (3./2) * 2. / el_dens
-    n_stage = np.zeros(4)
-    n_stage[0] = 1.
-    for r in range(3):
-        n_stage[r+1] = n_stage[r]*saha_const*u[r+1]/u[r] * np.exp(-E_ionization[r]/kevt)
-    n_total = np.sum(n_stage)
-    n_stage_rel = n_stage/n_total
-    return n_stage_rel[ionstage-1]
-
-
 saha = np.zeros((2, len(temp)))
 for i in range(len(temp)):
-    saha[0, i] = saha_na(temp[i], nel[i], 1)
-    saha[1, i] = saha_na(temp[i], nel[i], 2)
+    saha[0, i] = saha_na(temp[i], nel[i], 1, E_ionization)
+    saha[1, i] = saha_na(temp[i], nel[i], 2, E_ionization)
 
-# plt.figure(1)
+# plt.figure(37)
 # plt.plot(height, saha[0], '-', label='Na I')
 # plt.plot(height, saha[1], '--', label='Na II')
 # plt.xlim([np.min(height), 2000])
@@ -904,16 +749,13 @@ for i in range(len(temp)):
 
 
 # Saha Boltzmann
-def sahabolt_Na(temp, eldens, ionstage, level):
-    return saha_na(temp, eldens, ionstage) * boltz_na(temp, ionstage, level)
-
 
 sahaboltz = np.zeros((3, len(temp)))
 for i in range(len(temp)):
-    sahaboltz[0, i] = sahabolt_Na(temp[i], nel[i], 0, 0)
-    sahaboltz[1, i] = sahabolt_Na(temp[i], nel[i], 0, 1)
-    sahaboltz[2, i] = sahabolt_Na(temp[i], nel[i], 0, 2)
-# plt.figure(0)
+    sahaboltz[0, i] = sahabolt_na(temp[i], nel[i], 0, 0, E_ionization)
+    sahaboltz[1, i] = sahabolt_na(temp[i], nel[i], 0, 1, E_ionization)
+    sahaboltz[2, i] = sahabolt_na(temp[i], nel[i], 0, 2, E_ionization)
+# plt.figure(38)
 # plt.plot(height, sahaboltz[0])
 # plt.plot(height, sahaboltz[1])
 # plt.plot(height, sahaboltz[2])
@@ -921,15 +763,11 @@ for i in range(len(temp)):
 
 
 # Dopplerwidth testing
-def dopplerwidth(wav, temp, v_t, m):
-    # Takes in central wavelength in cm,temperature in K, v_t in km/s, and m in grams and returns dopplerwidth in cm.
-    return wav/c*np.sqrt(2.*kerg*temp/m + v_t*v_t*1e10)
-
 
 doppler_term1 = np.sqrt(2.*kerg*temp/m_Na)*1e-5
 doppler_term2 = np.sqrt(vturb*vturb)
 
-# plt.figure(2)
+# plt.figure(39)
 # plt.plot(height, doppler_term1, label=r'$\sqrt{2kT/m_{Na}}$')
 # plt.plot(height, doppler_term2, '--', label=r'$v_{turb}$')
 # plt.xlim(np.min(height), 2000)
@@ -940,13 +778,12 @@ doppler_term2 = np.sqrt(vturb*vturb)
 # plt.legend(loc='best')
 # plt.show()
 
-
 doppler = np.zeros((2, len(temp)))
 wav = np.array([NaI_D1_minimum, NaI_D2_minimum])*1e-8  # wavelengths of line in cm
-doppler[0] = dopplerwidth(wav[0], temp, vturb, m_Na)  # values for NaID1
-doppler[1] = dopplerwidth(wav[1], temp, vturb, m_Na)  # for NaID2
+doppler[0] = doppler_width(wav[0], temp, vturb, m_Na)  # values for NaID1
+doppler[1] = doppler_width(wav[1], temp, vturb, m_Na)  # for NaID2
 
-# plt.figure(3)
+# plt.figure(40)
 # plt.plot(height, doppler[0]*1e8, label='Na I D1')
 # plt.plot(height, doppler[1]*1e8, 'r--', label='Na I D2')
 # plt.xlim(np.min(height), 2000)
@@ -958,45 +795,19 @@ doppler[1] = dopplerwidth(wav[1], temp, vturb, m_Na)  # for NaID2
 
 
 # Van der Waal broadening Na I D1 line
-def gammavdw_nad(temperature, p_gas, s):
-    rsq_u = rsq_nad(s)
-    rsq_l = rsq_nad(1)
-    log_vdw = 6.33 + 0.4 * np.log10(rsq_u - rsq_l) + np.log10(p_gas) - 0.7 * np.log10(temperature)
-    return 10**log_vdw
-
-
-def rsq_nad(s):  # put constants in statement here
-    E_n = np.zeros(3, dtype=float)
-    E_n[1] = h*c / wav[0] * erg2eV
-    E_n[2] = h*c / wav[1] * erg2eV
-    z = 1.
-    rydberg = 13.6
-    l = [0., 1., 1.]
-    nstar_sq = rydberg * z**2 / (E_ionization[0] - E_n[s-1])
-    rsq = nstar_sq / 2. / z**2 * (5*nstar_sq + 1 - 3*l[s-1]*(l[s-1] + 1))
-    return rsq
-
-
 pgas = pgasptot*ptot
-vdwbroadening = np.zeros(len(temp))
+vdw_broadening = np.zeros(len(temp))
 for i in range(len(temp)):
-    vdwbroadening[i] = gammavdw_nad(temp[i], pgas[i], 2)
+    vdw_broadening[i] = gammavdw_nad(temp[i], pgas[i], 2, wav, E_ionization)
 
-# plt.figure(4)
-# plt.plot(height, vdwbroadening)
+# plt.figure(41)
+# plt.plot(height, vdw_broadening)
 # plt.yscale('log')
 # plt.xlim([np.min(height), 2000])
 # plt.title('Van der Waal broadening')
 # plt.xlabel('Height [km]')
 # plt.ylabel('$\gamma_{vdW}$ [s$^{-1}$]')
 # plt.show()
-
-
-# Define Voigt function
-def voigt(a, u):
-    # Calculates the voigt function for values u and a
-    z = u + 1.j*a
-    return special.wofz(z).real
 
 
 # Compute damping parameter
@@ -1008,7 +819,7 @@ v = np.zeros((len(height), len(wavelen)))
 voigtprofile = np.zeros((len(height), len(wavelen)))
 
 # calculate the voigt profile for the different height
-gamma = gammavdw_nad(temp, pgas, 2)  # van der waal damping
+gamma = gammavdw_nad(temp, pgas, 2, wav, E_ionization)  # van der waal damping
 for j in range(len(height)):
     for i in range(len(wavelen)):
         a[j][i] = wavelen[i]**2/(4*np.pi*c)*gamma[j]/doppler[0][j]
@@ -1018,7 +829,7 @@ for j in range(len(height)):
 
 deltawav = (wavelen - wav[0])*1e8  # delta wav in angstrom
 
-# plt.figure(5)
+# plt.figure(42)
 # plt.plot(deltawav, voigtprofile[np.where(height == 0)][0], '-', label='0km')
 # plt.plot(deltawav, voigtprofile[np.where(height == 200)][0], '--', label='200km')
 # plt.plot(deltawav, voigtprofile[np.where(height == 400)][0], '-.', label='400km')
@@ -1053,7 +864,7 @@ for j in range(len(wavelen)):
     for i in range(len(height)):
         # Calculate NaID1 extinction
         part1 = np.sqrt(np.pi)*np.exp(2)/m_e/c*wavelen[j]*wavelen[i]/c*b_l
-        part2 = sahabolt_Na(temp[i], nel[i], ionstage, level)
+        part2 = sahabolt_na(temp[i], nel[i], ionstage, level, E_ionization)
         part3 = nhyd[i]*A_Na*f_lu[0]
         part4 = np.sqrt(np.pi)*voigtprofile[i, j]
         part5 = 1. - b_u/b_l*np.exp(-h*c/wav[0]/kerg/temp[i])
@@ -1064,7 +875,7 @@ for j in range(len(wavelen)):
         # Sum to get the total
         exttotal[j][i] = NaD1_extinction[j][i] + extcont[j][i]
 
-# plt.figure(6)
+# plt.figure(43)
 # plt.plot(height, NaD1_extinction[np.where(wavelen == wav[0])][0], '-', label='NaID1')
 # plt.plot(height, extcont[np.where(wavelen == wav[0])][0], '--', label='Continuum')
 # # plt.plot(height, exttotal[np.where(wavelen == wav[0])][0], '-.', label='Sum')
@@ -1093,7 +904,7 @@ for i in range(len(height)):
         extcont_swapped[i][j] = extcont[j][i]
         exttotal_swapped[i][j] = exttotal[j][i]
 
-# plt.figure(7)
+# plt.figure(44)
 # plt.plot(deltawav, NaD1_extinction_swapped[np.where(height == 0)][0], '-.', label='NaI h=0')
 # plt.plot(deltawav, extcont_swapped[np.where(height == 0)][0], '--', label='Cont h=0')
 # plt.plot(deltawav, exttotal_swapped[np.where(height == 0)][0], label=r'Total h=0')
@@ -1126,7 +937,7 @@ for j in range(np.size(wavelen)):
 
 wavelen *= 1e8  # convert wavelen from cm to Angstrom
 
-plt.figure(100)
+plt.figure(45)
 plt.plot(wavelen, intt/np.max(intt), '-')
 plt.plot(wavelength_air, S_spec, '--')
 plt.xlim([wav[0]*1e8-2, wav[0]*1e8+2])
